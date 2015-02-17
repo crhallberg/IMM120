@@ -1,0 +1,31 @@
+body {
+	background: gray;
+	text-align: center;
+}
+hr {
+	width: 500px;
+}
+a { color: #FFF }
+ul {
+	display: inline;
+	display: block;
+	display: table;
+	margin: auto;
+	text-align: left;
+}
+p {
+	display: inline;
+	margin: 5px;
+	height: 40px;
+	padding: 5px;
+}
+
+.blue { color: blue }
+
+#hobbes {
+	border: 10px solid white;
+	border-bottom-width: 20px;
+}
+
+div .blue {color:#600;}
+div {color:#060;}

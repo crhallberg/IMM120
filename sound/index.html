@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <title>IMM 120 - Sound</title>
+
+    <!-- p5js -->
+    <script src="../p5.min.js"></script>
+    <script src="../p5.dom.js"></script>
+    <script src="../p5.sound.js"></script>
+
+    <!-- parse functions -->
+    <script language="javascript" src="../parsefunctions.js"></script>
+
+    <!-- google prettify -->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+    <!-- sketches -->
+    <script src="sketch.js"></script>
+    <style type="text/css">
+      body {padding: 0; margin: 0}
+      canvas { border: 1px solid #ccc; }
+      .prettyprint ol.linenums > li { list-style-type: decimal; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="title" href="../index.html">IMM 120</a>
+        <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a>
+        <a href="../topics.html">Class Topic Notes</a>
+        <a href="http://p5js.org/reference/">p5.js Reference</a>
+        <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
+      </div>
+    </header>
+    <div class="container">
+
+      <h1>Sound</h1>
+      <p>Sounds are not hard, they are perhaps easier than images because they don't need to be placed, but they are much more annoying if used incorrectly. You need to put them in your sketch folder (just like images) and load them in. I've included the sound library in the new empty project download, so make sure to <a href="../empty.zip">download a fresh copy.</a></p>
+      <p>Next! Make a variable for your sound object.</p>
+<pre class="prettyprint">
+  // Variables
+  var laser;
+</pre>
+In <code>preload</code> or <code>setup</code>, load your sound.
+
+<pre class="prettyprint">
+  laser = loadSound('./laser.ogg');
+</pre>
+
+At the appropriate second you want to play the sound, use .play();
+
+<pre class="prettyprint">
+  function mouseClicked()
+  {
+    if(condition) {
+      laser.play();
+    }
+  }
+</pre>
+
+      <p>The attached sketch should do exactly this. Be careful when making your own sketches because it will play the sound every time you tell it to. Even if you tell it to every draw frame, which would be 30 times every second. Close to your browser tab quickly or keep a finger on the mute button to prevent ear bleeding.</p>
+
+      <p>I recommend tying the sounds in with input events or win conditions or things that happen less frequently.</p>
+
+      <p>Use headphones! Good luck!</p>
+      <div id="sketch" style="position:relative"></div>
+<pre class="prettyprint linenums">// Variables
+var laser;
+
+function preload()
+{
+  laser = loadSound("./laser.ogg");
+}
+
+function setup() {
+  // Set size
+  var canvas = createCanvas(200, 200);
+  canvas.parent('sketch');
+  background(200);
+  
+  textAlign(CENTER);
+  text("Click Me", width/2, height/2);
+}
+
+function mouseClicked()
+{
+  laser.play();
+  print("Pew!");
+}</pre>
+    </div>
+  </body>
+</html>

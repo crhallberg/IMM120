@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" initial-scale="1" width="device-width">
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <!-- parse functions
     <script language="javascript" src="./parsefunctions.js"></script> -->
@@ -13,7 +13,7 @@
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
 
-    <title>IMM 120-01 - Spring 2015</title>
+    <title>IMM 120 - Section 3</title>
     <script>
       function toggle(id) {
         var ol = document.getElementById(id);
@@ -40,7 +40,7 @@
       }
 
       function serverStatus() {
-        var sio = window.io.connect('http://207.172.118.50:8120');
+        var sio = window.io.connect('http://romeo.crhallberg.com:8120');
         sio.on('connect', function (reason) {
           document.getElementById('server-status').innerHTML = '<i class="fa fa-check-circle" style="color:green"></i>';
         });
@@ -55,250 +55,466 @@
         });
       }
     </script>
+    <style>
+      .closed * {display:none}
+      textarea {font-size:12pt;vertical-align:middle;width:40%;}
+      table th {font-weight:normal;text-align:left;}
+      table td {font-weight:bold;padding:0 1em;text-align:right;}
+    </style>
   </head>
   <body onLoad="serverStatus()">
     <header>
       <div class="container">
         <a class="title" href="index.html">IMM 120</a>
-        <a href="https://docs.google.com/document/d/1v5rIEEG1ZPkuqIgr6r_5pm1QptR9BMAnUvyGu996mDg">Syllabus</a>
-        <a href="https://processing.org/download/?processing">Download Processing</a>
-        <a href="https://processing.org/reference/">Processing Reference</a>
+        <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a>
+        <a href="./empty.zip">Download Empty Project</a>
+        <a href="http://p5js.org/reference/">p5.js Reference</a>
         <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
       </div>
     </header>
     <div class="container">
-      <h1>Intro to Interactive Multimedia, Spring 2014</h1>
-      <h3>Mo 5:30PM - 9:20PM; AIMM Building, Room 202</h3>
-
-      <h1><a name="assignment"/>Assignment</h1>
+      <h1>Grade Percentages</h1>
+      <table>
+        <tr><th>Build A Clock</th>           <td>5% </td> <th>Average Grade: 94.6%</th></tr>
+        <tr><th>Roll Call Attendance</th>    <td>15%</td> <th>Standard Deviation: ~8.0</th></tr>
+        <tr><th>Jam Project With Sound</th>  <td>30%</td> <th>Skewness: -2.32034</th></tr>
+        <tr><th>Technology Presentation</th> <td>15%</td></tr>
+        <tr><th>Final Project</th>           <td>35%</td></tr>
+      </table>
+      <h1>Final Project</h1>
+      <p>Your final project will be the sole focus of the remainder of the semester. The remaining classes will be lab time for this project and I will be available to help. I will not be as hands-on as with the mid-term projects, this is your chance to show and hone your skills.</p>
+      <p><strong>The project is an individual project, it is due December 17th at 5pm.</strong></p>
+      <p>I will be grading based on creativity and use of skills learned in class.</p>
+      <p>Creativity does not mean pretty, you can be creative with your code solutions.</p>
+      <p><strong>Your project must incorporate at least 6 points based on the following skills:</strong></p>
       <ul>
-        <li>Display a full deck of cards.</li>
-        <li>All cards must be present, in their proper color.</li>
-        <li>Special card symbols:
+        <li>Mouse/Key Input</li>
+        <li>Graphics</li>
+        <li>Objects</li>
+        <li>Lists</li>
+        <li>Images</li>
+        <li>Sound</li>
+        <li>Networked/Connected programs
+          <ul><li style="font-size:85%">
+            The server still running for your use: <code>romeo.crhallberg.com:8120</code>
+            <span id="server-status"><i class="fa fa-check-circle" style="color:green"></i></span>
+          </li></ul>
+        </li>
+        <li>Video</li>
+        <li>Libraries</li>
+        <li>Text input and manipulation</li>
+        <li>File analysis</li>
+        <li>Website Integration</li>
+      </ul>
+      <p>Use of a skill will get you 1 point. Advanced use of a skill will get you 2 points. In order for a skill to qualify as advanced, you must use the skill outside of the scope taught in class (demonstrating research), use in a way not directly covered in class (color analysis of a picture), or thoroughly explore a skill as a core factor of your project. I will clarify upon request and feel free to clarify intention to use of a skill in an advanced way when you make your submission.</p>
+      <!--
+      <h1>News</h1>
+      <ul>
+        <li><b>2 Oct 2014</b> &mdash; Live Stream was fun! Thank you all! <a href="javascript:toggle('stream1')">details</a>
+          <div id="stream1" class="closed">
+            <ul>
+              <li><a href="http://www.twitch.tv/crhallberg/b/574276999">Watch the whole livestream here</a>
+                <ul>
+                  <li><a href="http://www.twitch.tv/crhallberg/c/5225064">A 15-minute review of Objects</a></li>
+                </ul>
+              </li>
+              <li><a href="stream/oct2">Final project</a> (colliding cars with sound)</li>
+              <li><a href="stream/cars">Cars Example</a></li>
+              <li><a href="stream/people.js">People code</a></li>
+              <li>Glad everyone liked the stream! Which means...
+                <ol>
+                  <li><b>I will have more streams</b>! Probably in the place of Bonus Rounds</li>
+                  <li><a href="http://doodle.com/segz587viawgvbty"><b>Go here to vote</b></a> on what night I would have them! Right now Tuesday around 7 or 8 looks best.</li>
+                  <li>Since tonight's was a Review on Objects, <b>next week will be HTML</b> and editting live online</li>
+                  <li><b>I will answer any questions</b> as soon as I can, more important than the lesson</li>
+                  <li>Most importantly, if you prefer to learn this way, <b>I can Skype with you and share my screen</b>, that way you can see me code as I answer your questions! Skype handle: crhallberg</li>
+                  <li><b>Better chat</b>, probably here (<a href="http://webchat.freenode.net/">http://webchat.freenode.net</a>) in the room IMM120stream. I recommend your first and last name as your username (ChrisHallberg)</li>
+                </ol>
+              </li>
+              <li>See you soon!</li>
+            </ul>
+          </div>
+        </li>
+        <li><b>26 Sept 2014</b> &mdash; p5.js fixed the bug! Update to <a href="arrowkeys">Arrow Keys</a> using my favorite method of key detection. Updated <a href="empty.zip">empty.zip</a> with the latest code.</li>
+        <li><b>26 Sept 2014</b> &mdash; New Announcement on Canvas about Coding Live Streams</li>
+        <li><b>24 Sept 2014</b> &mdash; All examples now contain a download.zip. For example: <a href="http://crhallberg.com/snow/download.zip">http://crhallberg.com/snow/download.zip</a> will download the snow sketch.</li>
+        <li><a href="#" onClick="this.parentElement.style.display='none';document.getElementById('oldnews').style.display='block';">Old News</a></li>
+        <div id="oldnews" style="display:none">
+          <li><b>22 Sept 2014</b> &mdash; Having difficulty logging onto Canvas, email me questions!</li>
+          <li><b>9 Sept 2014</b> &mdash; Class now available on Canvas!</li>
+          <li><b>25 Aug 2014</b> &mdash; <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a> posted</li>
+        </div>
+      </ul>
+
+      <h1><a name="assignments"/>Assignments</h1>
+      <ul>
+        <li>None this week... you're welcome.</li>
+        <li>If you run into anyone on the <a href="node">Group Drawing Board</a>, let me know</li>
+      </ul>-->
+
+      <h1><a name="presentations"/>Presentations</h1> <a href="javascript:toggle('prezs')">show</a>
+      <ul id="prezs" class="closed">
+        <li>Nov 6
           <ul>
-            <li>Spade   - \u2660</li>
-            <li>Club    - \u2663</li>
-            <li>Heart   - \u2665</li>
-            <li>Diamond - \u2666</li>
-            <li><a href="./16feb/card_symbols.zip">Card Symbol Sketch</a></li>
+            <li>Colin    - Apple Pay and NFC
+            <li>Dickson  - PhotoMath
+            <li>Matthew  - Ouijiband
+            <li>Rebecca  - iBox Nano
+            <li>Rocco    - Remote Doctor Services
+            <li>Chris H. - <a href="https://docs.google.com/presentation/d/148yHsHPHGHUOZE9m1PQN14Wtk6tVuE2CPyjawc71URg/edit?usp=sharing">GIT and GitHub</a>
           </ul>
         </li>
-        <li>You can use H for hearts, C for clubs, etc. if you wish instead of the symbols.</li>
+        <li>Nov 13)<br/>
+          <ul>
+            <li>Chris R. - Self-driving cars</li>
+            <li>Dylan    - Pay Per Laugh</li>
+            <li>Kate     - Air powered umbrella</li>
+            <li>Kylie    - NAO Robot</li>
+            <li>Luana    - TBD</li>
+            <li>Nick G.  - Hoverboards</li>
+            <li>Nick P.  - Tesla Motors</li>
+            <li>Philip   - Oculus Rift</li>
+            <li>Aaron    - Vocaloid</li>
+          </ul>
+        </li>
       </ul>
 
       <h1><a name="schedule"/>Class Schedule</h1>
       <ul class="schedule">
+        <li><a href="http://www.twitch.tv/crhallberg/profile"><b>Link to Live Streams</b></a></li>
         <li>
-          <b style="color:darkred">January 26, 2014 - Snow Day</a></b>
+          <b>Halloween Eve &mdash; Intro to <a href="http://processing.org">Processing</a></b> <a href="javascript:toggle('30oct')">show</a>
+          <div id="30oct" class="closed">
+            <ul>
+              <li><a href="http://processing.org/download/?processing">Download Processing</a></li>
+              <li>Presentation Assignment</li>
+              <li>Presentations
+                <ul>
+                  <li>Andrew   - Smart Tennis Racket</li>
+                  <li>Kristina - Google Glass</li>
+                </ul>
+              </li>
+              <li>Intro to Processing</li>
+              <li><a href="haunted">Haunted Sketch</a></li>
+              <li><a href="haunted/thunder.mp3">Thunder Sound</a></li>
+              <li><a href="haunted/haunted.zip">Full haunting as a Processing file</a></li>
+            </ul>
+          </div>
         </li>
         <li>
-          <b>February 2 - Fashionably Late</b> <a href="javascript:toggle('2feb')">show</a>
-          <div id="2feb" class="closed">
+          <b>23 Oct 2014 &mdash; Connected Sketches and Libraries</b> <a href="javascript:toggle('23oct')">show</a><br/>
+          Server still running for your use: <code>romeo.crhallberg.com:8120</code>
+          <span id="server-status"><i class="fa fa-check-circle" style="color:green"></i></span>
+          <div id="23oct" class="closed">
             <ul>
-              <li><mark><a href="./2feb.zip">Chris' Project</a></mark></li>
-              <li>A little about me</li>
-              <li>Getting To Know You</li>
-              <li><a href="https://docs.google.com/document/d/1v5rIEEG1ZPkuqIgr6r_5pm1QptR9BMAnUvyGu996mDg">Syllabus</a></li>
-              <li>Intro to <a href="https://processing.org">Processing</a>
+              <li>preload
                 <ul>
-                  <li>Project</li>
-                  <li>Saving and Sending</li>
-                  <li>crhallberg@gmail.com</li>
-                </ul>
-              </li>
-              <li>Basic Vocabulary
-                <ul>
-                  <li>Code - <i>Instructions for the computer written in an easy to read format.</i></li>
-                  <li>Algorithm - <i>A series of instructions to be completed in order.</i></li>
-                  <li>Function or Method - <i>A portion of code organized under a label, making it easier to reuse.</i></li>
-                  <li>Variable - <i>A stored value within a program that can be changed, saved, and used by name.</i></li>
-                  <li>Syntax - <i>The spelling of the code. What it looks like, not what it means.</i></li>
-                </ul>
-              </li>
-              <li>Talking to Computers (The Second Language)</li>
-              <li>Drawing Shapes
-                <ul>
-                  <li>Positioning</li>
-                  <li>Project Size <code><a href="https://processing.org/reference/size_.html">size(width, height)</a></code>
+                  <li>Grading for Projects</li>
+                  <li>Looking Ahead:
                     <ul>
-                      <li>Sets two variables: <code>width</code> and <code>height</code>.</li>
+                      <li>Cool tech presentations starting in two weeks
+                        <ul>
+                          <li>5 minute presentation</li>
+                          <li>What?, Where?, Who?, How?</li>
+                          <li>A few presentations a class</li>
+                          <li>Will let you know by tomorrow night</li>
+                        </ul>
+                      </li>
+                      <li>Cool tech presentations starting in two weeks</li>
+                    </ul>
+                </ul>
+              </li>
+              <li>draw
+                <ul>
+                  <li><a href="http://nodejs.org">Node.js</a></li>
+                  <li><a href="node">Group Drawing Board</a></li>
+                  <li><a href="networking.zip">Networking Sketch ZIP</a></li>
+                </ul>
+              </li>
+              <li>Libraries
+                <ul>
+                  <li><a href="http://p5js.org/reference/#/libraries/p5.dom">DOM (sliders and buttons)</a></li>
+                  <pre style="white-space:pre-line">
+                    slider = createSlider(min, max, start);
+                    slider.position(x, y);
+                    slider.parent('sketch');
+                    slider.size(width);
+                  </pre>
+                  <li><a href="physics">Physics</a> <small>(<a href="physics/download.zip">download</a>)</small></li>
+                  <li>Mobile
+                    <ul>
+                      <li>touchX, touchY</li>
+                      <li><a href="http://p5js.org/reference/#/p5/touches[]">touches[]</a></li>
+                      <li><a href="http://qrfree.kaywa.com/?l=1&s=8&d=http%3A%2F%2Fwww.crhallberg.com%2FIMM120%2Fnode%2Ftouches">Scan</a></li>
+                      <li><a href="http://www.crhallberg.com/IMM120/node/touches">Screen</a></li>
                     </ul>
                   </li>
-                  <li>Rectangles <code><a href="https://processing.org/reference/rect_.html">rect(x, y, width, height)</a></code></li>
-                  <li>Circles <code><a href="https://processing.org/reference/ellipse_.html">ellipse(x, y, width, height)</a></code></li>
-                  <li>Lines <code><a href="https://processing.org/reference/line_.html">line(x1, y1, x2, y2)</a></code></li>
-                </ul>
-              </li>
-              <li>Color
-                <ul>
-                  <li><a href="http://upload.wikimedia.org/wikipedia/commons/2/2c/Additive_color_mixing_simulated.png">Additive Color</a></li>
-                  <li><a href="http://www.huevaluechroma.com/042.php">Red, Green, Blue</a></li>
-                  <li><a href="http://upload.wikimedia.org/wikipedia/commons/c/c5/RGB_color_wheel_10.svg">Pixel Color Wheel</a></li>
-                  <li><code><a href="https://processing.org/reference/stroke_.html">stroke(r, g, b)</a></code> and <code><a href="https://processing.org/reference/fill_.html">fill(r, g, b)</a></code></li>
-                  <li><code>fill(grey)</code>, <code>fill(r, g, a, transparency)</code>, <code>fill(grey, transparency)</code></li>
-                </ul>
-              </li>
-              <li>Making Things Move
-                <ul>
-                  <li><code>mouseX</code> and <code>mouseY</code></li>
-                </ul>
-              </li>
-              <pre class="prettyprint">
-void setup() {
-  // Code to run first and once
-}
-void draw() {
-  // Code looped over and over
-}</pre>
-              <li>Asking Questions
-                <ul>
-                  <li>Conditional - <i>A fork in the road, a point where a question is asked and a part of the code is executed or ignored.</i></li>
-                  <li>Boolean - <i>A statement, variable, or value that equals TRUE or FALSE.</i></li>
-                  <li>Block - <i>A part of code between two braces: {}. Defines what is called a scope (TBL).</i></li>
-                  <li><code>if(boolean statement) { }</code></li>
-                  <li><code>mousePressed</code> and <code>keyPressed</code></li>
                 </ul>
               </li>
             </ul>
           </div>
         </li>
         <li>
-          <b style="color:#C00">February 9 - No Class, Professor in Portland</b> <!-- <a href="javascript:toggle('9feb')">show</a>-->
-          <div id="9feb" class="closed"></div>
-        </li>
-        <li>
-          <b>February 16</b> <!-- <a href="javascript:toggle('16feb')">show</a>-->
-          <div id="16feb">
-            <i>Feb 19 - Last Day to Apply for Graduation</i><br/>
-            <i>$35 Late Fee</i>
+          <b>16 Oct 2014 &mdash; The Power of Words</b> <a href="javascript:toggle('16oct')">show</a>
+          <div id="16oct" class="closed">
             <ul>
-              <li><mark><b><a href="./16feb/random.zip">Random Number Counter</a></b></mark></li>
-              <li><mark><b><a href="./16feb/windows.zip">Windows Sketch</a></b></mark></li>
-              <li>Homework Review</li>
-              <li>Processing Reference</li>
-              <li>Intro to Variables
+              <li>String Manipulation
                 <ul>
-                  <li><code>println()</code></li>
-                  <li><code><a href="https://processing.org/reference/int.html">int</a></code></li>
-                  <li><code><a href="https://processing.org/reference/float.html">float</a></code></li>
-                  <li><code><a href="https://processing.org/reference/boolean.html">boolean</a></code></li>
-                  <li><code><a href="https://processing.org/reference/String.html">String</a></code></li>
-                </ul>
-              </li>
-              <li>Thinking With Loops</li>
-              <li><code><a href="https://processing.org/reference/random_.html">random()</a></code></li>
-              <li>More Loops
-                <ul>
-                  <li><a href="http://www.menshealth.com/living/sites/default/files/mhliving/imagecache/505x295/HowTo_Window.jpg">One Window</a></li>
-                  <li><a href="http://images.fineartamerica.com/images-medium-large-5/rocky-mountains-horses-white-window-frame-view-james-bo-insogna.jpg">A Couple Windows</a></li>
-                  <li><a href="http://upload.wikimedia.org/wikipedia/commons/c/cd/Whitehall_building_windows_-_2012-07-17.jpg">More Windows?</a></li>
-                  <li><code><a href="https://processing.org/reference/while.html">while</a>(true) { }</code></li>
-                  <li><code><a href="https://processing.org/reference/for.html">for</a>(int i=start ; while&gt;check ; change) { }</code></li>
+                  <li><a href="./old-faithful-2010.txt">Reading Files</a></li>
+                  <li>Lists of Words</li>
+                  <li>Basic String transformation</li>
+                  <li>String analysis</li>
                 </ul>
               </li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>February 23</b> <!-- <a href="javascript:toggle('23feb')">show</a>-->
-          <div id="23feb" class="closed">
+        <li>
+          <b>9 Oct 2014 &mdash; Collisions and Gravity</b> <a href="javascript:toggle('9oct')">show</a>
+          <div id="9oct" class="closed">
             <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>March 2</b> <!-- <a href="javascript:toggle('2mar')">show</a>-->
-          <div id="2mar" class="closed">
-            <ul>
-              <li>Maybe</li>
+              <li>Sound Review</li>
+              <li>Collisions
+                <ul>
+                  <li><a href="http://crhallberg.com/notes/collision">Collision Code</a></li>
+                  <li><a href="http://crhallberg.com/notes/snakecollision">'Snake' Collision</a></li>
+                </ul>
+              </li>
+              <li><a href="gravity">Gravity</a></li>
             </ul>
           </div>
         </li>
         <li>
-          <b>March 9 - Mid-Terms</b> <!-- <a href="javascript:toggle('9mar')">show</a>-->
-          <div id="9mar" class="closed">
+          <b>2 Oct 2014 &mdash; Adding Sound</b>
+          <div id="2oct">
             <ul>
-              <li></li>
+              <li>Class Cancelled</li>
+              <li><a href="http://www.twitch.tv/crhallberg/c/5225064">Live Stream</a> occured</li>
+              <li><a href="sound">Sound Example</a> created</li>
             </ul>
           </div>
         </li>
         <li>
-          <b style="color:#0A0">March 16 - Spring Break!</b> <!-- <a href="javascript:toggle('16mar')">show</a>-->
-          <div id="16mar" class="closed">
+          <b>25 Sept 2014 &mdash; Project Jam 1</b> <a href="javascript:toggle('25sept')">show</a>
+          <div id="25sept" class="closed">
             <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>March 23</b> <!-- <a href="javascript:toggle('23mar')">show</a>-->
-          <div id="23mar" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>March 30</b> <!-- <a href="javascript:toggle('30mar')">show</a>-->
-          <div id="30mar" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b style="color:#35D">April 6</b> <!-- <a href="javascript:toggle('6apr')">show</a>-->
-          <div id="6apr" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>April 13</b> <!-- <a href="javascript:toggle('13apr')">show</a>-->
-          <div id="13apr" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>April 20</b> <!-- <a href="javascript:toggle('20apr')">show</a>-->
-          <div id="20apr" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>April 27</b> <!-- <a href="javascript:toggle('27apr')">show</a>-->
-          <div id="27apr" class="open">
-            <ul>
-              <li>Online Student Feedback Week!</li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>May 4</b> <!-- <a href="javascript:toggle('4may')">show</a>-->
-          <div id="4may" class="closed">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>May 11</b> <!-- <a href="javascript:toggle('11may')">show</a>-->
-          <div id="11may" class="closed">
-            <ul>
-              <li></li>
+              <li><b>A Few Things First</b>
+                <ul>
+                  <li>Unrolling Loops</li>
+                  <li><a href="arrowkeys">Arrow Keys</a> <small>(<a href="arrowkeys/download.zip">download</a>)</small></li>
+                  <li><a href="fireworks">Fireworks</a> <small>(<a href="fireworks/download.zip">download</a>)</small></li>
+                  <li>Wednesday Processing Jams
+                    <ul>
+                      <li>10-12 in the Ubiquitous Lab</li>
+                      <li>Lead by John Kuiphoff</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><b>Project Jam</b>
+                <ul>
+                  <li>Write out your idea in English</li>
+                  <li>Details, Details, Details</li>
+                  <li>Pseudocode</li>
+                  <li>Code</li>
+                  <li><b>Jam Over @ 7:30pm</b></li>
+                  <li>Finish Project for Homework</li>
+                </ul>
+              </li>
+              <li><b>Bonus Round @ 7:30pm</b>
+                <ul>
+                  <li>FileZilla Review (Online vs Offline)</li>
+                  <li>Basic HTML</li>
+                  <li>CSS, aka Making It Pretty</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </li>
         <li>
-          <b>May 18 - Finals, Open Lab</b>
-          <ul><li>To be clarified</li></ul>
+          <b>18 Sept 2014 &mdash; Functions and Objects</b> <a href="javascript:toggle('18sept')">show</a>
+          <div id="18sept" class="closed">
+            <ul>
+              <li><b><a href="debug/download.zip">Debugging Exercise</a></b></li>
+              <li><b>Logic</b>
+                <ul>
+                  <li>Conditions</li>
+                  <li>Booleans</li>
+                  <li>The ones you know</li>
+                  <li>NOT</li>
+                  <li>AND / OR</li>
+                  <li>Order of Operations</li>
+                  <li><a href="http://www.wolframalpha.com/">Truth tables</a></li>
+                </ul>
+              </li>
+              <li><b>Objects</b>
+                <ul>
+                  <li><a href="snow">Snow</a> (<a href="snow/download.zip">download</a>)</li>
+                  <li>Thinking with objects</li>
+                  <li>Lists of lists to Objects</li>
+                  <li>Building the object, prototype</li>
+                  <li><code>var obj = new Obj();</code></li>
+
+                  <li><b>Example Object: <a href="images">Images</a></b>
+                    <ul>
+                      <li><code>var img = loadImage(src);</code></li>
+                      <li>Cross-Site Security</li>
+                      <li><code>image(img, x, y);</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </li>
+        <li>
+          <b><a style="border-bottom:1px solid #CCC;color:#000;text-decoration:none;" href="http://99percentinvisible.org/episode/episode-35-elegy-for-wtc/" title="Something to Remember by">11 Sept</a> 2014 &mdash; Interaction</b> <a href="javascript:toggle('11sept')">show</a>
+          <div id="11sept" class="closed">
+            <ul>
+              <li><b>Questions and Corrections</b>
+                <ul>
+                  <li>Questions and Clock final touches</li>
+                  <li>Assignment Due Dates</li>
+                  <li>Using Canvas</li>
+                  <li>{ Brackets }</li>
+                  <li><a href="grid">Moving and Shaking</a></li>
+                  <li>Viewing the Source</li>
+                </ul>
+              </li>
+
+              <li><b>Functions and Interaction</b>
+                <ul>
+                  <li><a href="fclock">Chris' Clock</a> <small>(<a href="fclock/download.zip">download</a>)</small></li>
+                  <li><a href="http://p5js.org/reference/#group-Input">Interaction</a></li>
+                  <li><a href="pencil">Pencil</a> <small>(<a href="pencil/download.zip">download</a>)</small></li>
+                  <li>Mouse Position
+                    <ul>
+                      <li><code>mouseX</code> and <code>mouseY</code></li>
+                      <li>Touching squares</li>
+                      <li>Touching circles</li>
+                      <li><code>pmouseX</code> and <code>pmouseY</code></li>
+                    </ul>
+                  </li>
+                  <li>Mouse Clicking and Events
+                    <ul>
+                      <li><code>mouseIsPressed</code> and boolean variables</li>
+                      <li><code>function mousePressed() {}</code></li>
+                      <li><code>function mouseReleased() {}</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <b>28 Aug 2014 &mdash; Starting From Scratch</b> <a href="javascript:toggle('28aug')">show</a>
+          <ol id="28aug" class="closed">
+            <li>Go over <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a></li>
+            <li>Learn to program (<a href="http://scratch.mit.edu">Scratch</a>)</li>
+            <li>Yes, it's that easy</li>
+            <li>Watch at your convenience: <a href="https://www.youtube.com/watch?v=eBV14-3LT-g">The Art of Creative Coding</a></li>
+          </ol>
+        </li>
+        <li>
+          <b>4 Sept 2014 &mdash; Coding as a Second Language</b> <a href="javascript:toggle('sept4')">show</a><br/>
+          <div id="sept4" class="closed">
+            <br/><ul><li><b>IN CLASS SKETCHES: <a href="sept4/shapes.js">SHAPES</a> and <a href="sept4/bounce.js">BOUNCING BALLS</a></b></li></ul><br/>
+            <code>function preload() {</code>
+              <ul id="sept4ques" class="closed">
+                <li>Questions and Corrections
+                  <ul>
+                    <li>Before vs Inside Loops</li>
+                    <li>Textbook Corrections
+                      <ul>
+                        <li><i>Learning Processing</i>
+                          <ul>
+                            <li>NOT REQUIRED but excellent.</li>
+                            <li><a href="http://www.amazon.com/Learning-Processing-Beginners-Programming-Interaction/dp/0123736021">$40</a></li>
+                            <li><a href="http://www.learningprocessing.com/tutorials/">Great resources online</a></li>
+                            <li>Learning Processing 2 is <a href="https://github.com/shiffman/LearningProcessing">open source</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="http://shiffman.net/">Daniel Shiffman</a></li>
+                        <li><a href="http://natureofcode.com/book"><i>Nature of Code</i></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <code>}</code><br/>
+            <code>function setup() {</code>
+              <ul>
+                <li><a href="http://www.sublimetext.com">Sublime Text Editor</a></li>
+                <li><a href="./empty.zip">Empty Project Download</a></li>
+                <li>Your new friends
+                  <ul>
+                    <li><a href="http://p5js.org/reference/">p5.js Reference</a></li>
+                    <li>The Console</li>
+                  </ul>
+                </li>
+              </ul>
+            <code>}</code><br/>
+            <code>function teach() {</code>
+              <ul>
+                <li>Intro to Text-Based Programming
+                  <ul>
+                    <li><a target="_new" href="http://www.qwantz.com/comics/comic2-212.png">Syntax</a> <a target="_new" href="http://funixx.files.wordpress.com/2012/09/5eg6e45sreb4trsdd.png">Errors</a></li>
+                    <li>Variables and Lists</li>
+                    <li>Functions and Parameters</li>
+                    <li>Conditionals</li>
+                  </ul>
+                </li>
+                <li>Intro to <a href="http://p5js.org">p5.js</a></li>
+                <li>Program Structure with <code>setup()</code> and <code>draw()</code></li>
+                <li><a href="http://processing.org/tutorials/drawing/">Drawing Shapes</a></li>
+                <li>A Touch of Color</li>
+                <li>Using <a href="http://p5js.org/reference/#p5/text"><code>text</code></a></li>
+                <li>Lists and Loops</li>
+              </ul>
+            <code>}</code><br/>
+            <b>List of Functions from Class</b><br/>
+            <pre class="prettyprint linenums">
+line(x1, y1, x2, y2);
+ellipse();
+rect();
+triangle();
+mouseX;
+mouseY;
+var x = 0;
+var y = [0, 1, 2, 3];
+y[2] = 7; // [0, 1, 7, 3];
+for(start=0;start&gt;end;start++) {}
+if(answer) {}
+sin();
+cos();</pre>
+          </div>
+        </li>
+      </ul>
+
+      <h1>Chris' Sketchs</h1>
+      <ul>
+        <li><a href="arrowkeys">Arrow Keys</a> <small>(<a href="arrowkeys/download.zip">download</a>)</small></li>
+        <li><a href="debug">Debug Challenge</a> <small>(<a href="debug/download.zip">download</a>)</small>
+          <ul>
+            <li><a href="IlIllIIIlllIIlIlIIllIlIlllIlIllllIIlIlIllIlllIIIIllIIIIIIIIlIIll">Answer</a> <small>(<a href="IlIllIIIlllIIlIlIIllIlIlllIlIllllIIlIlIllIlllIIIIllIIIIIIIIlIIll/download.zip">download</a>)</small></li>
+          </ul>
+        </li>
+        <li><a href="fclock">Digital Clock</a> <small>(<a href="fclock/download.zip">download</a>)</small></li>
+        <li><a href="fireworks">Fireworks</a> <small>(<a href="fireworks/download.zip">download</a>)</small></li>
+        <li><a href="gravity">Gravity</a> <small>(<a href="gravity/download.zip">download</a>)</small></li>
+        <li><a href="images">Images</a> <small>(tutorial)</small></li>
+        <li><a href="grid">Moving and Shaking</a> <small>(tutorial)</small></li>
+        <li><a href="node">Networking</a> <small>(<a href="node/download.zip">download</a>)</small></li>
+        <li><a href="pencil">Pencil</a> (start) <small>(<a href="pencil/download.zip">download</a>)</small></li>
+        <li><a href="physics">Physics</a> <small>(<a href="physics/download.zip">download</a>)</small></li>
+        <li><a href="sound">Sound</a> <small>(<a href="sound/download.zip">download</a>)</small></li>
+        <li><a href="sclock">Sand Clock</a> <small>(<a href="sclock/download.zip">download</a>)</small></li>
+        <li>Sept 4th (2nd week) <a href="sept4">in-class sketches</a></li>
+        <li><a href="snow">Snow</a> <small>(<a href="snow/download.zip">download</a>)</small></li>
+        <li><a href="sound">Sound</a> <small>(<a href="sound/download.zip">download</a>)</small></li>
+        <li><a href="geyser">Text Manipulation</a> (Old Faithful)</li>
+        <li><a href="math">Useful Math</a> <small>(tutorial)</small></li>
       </ul>
 
       <h1>Bonus Links</h1>
@@ -308,4 +524,3 @@ void draw() {
         <li><a href="https://stacksocial.com/sales/the-5-hour-developer-freebie-bundle?utm_source=stacksocial&utm_medium=social-facebook&utm_campaign=m6-5_Hour_Developer_Freebie#">5 Hours to Learn Web Development</a></li>
   </body>
 </html>
-

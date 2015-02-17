@@ -1,50 +1,18 @@
-html,body {
+﻿html,body {
   background:#F8F8F8;
-  font:13pt "Droid Serif", "Roboto";
+  font:13pt "Droid Serif";
   margin:0;
   padding:0;
 }
 body * { box-sizing:border-box; }
-canvas { border: 1px solid #ccc; }
-code {
-  background-color:#EEE;
-  border:1px solid #AAA;
-  border-radius: 4px;
-  color: #333;
-  font-family: monospace;
-  font-size: 85%;
-  font-weight:bold;
-  padding:0 4px 1px;
-  white-space: nowrap;
-}
-code a {color: #33A;text-decoration:none;}
-code a:hover {text-decoration:underline;}
 h1 { margin:10px 0; }
 h2 { font-size:1.3em; }
-i {font-size:75%;}
-mark {font-weight:bold;padding:0 6px;}
+canvas { border: 1px solid #ccc; }
 small {font-size:75%}
-table {
-  border-collapse:collapse;
-  border-spacing:0;
-  margin:0 0 4px -6px;
-}
-table th,table td {
-  border-bottom:1px solid #AAA;
-  margin:0;
-}
-table th {font-weight:bold;padding:4px 6px;text-align:left;}
-table td {font-weight:normal;padding:4px 1em;text-align:right;}
-textarea {font-size:12pt;vertical-align:middle;width:40%;}
-.closed * {display:none}
-.schedule .prettyprint {
+.prettyprint {
   background:#EEE;
   border:1px solid #AAA;
   border-radius:4px;
-  display:table;
-  font-size:85%;
-  margin:6px 0;
-  padding:4px 1em 6px;
 }
 .prettyprint ol.linenums > li {
   background:#FFF;
@@ -54,6 +22,14 @@ textarea {font-size:12pt;vertical-align:middle;width:40%;}
 }
 .prettyprint ol.linenums > li:nth-child(even) {
   background:#EEE;
+}
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  white-space: nowrap;
+  border-radius: 4px;
 }
 
 header {
@@ -117,5 +93,5 @@ header .title {
   max-width:1000px;
 }
 .schedule > li {
-  margin-bottom:.75em;
+  margin-bottom:1em;
 }

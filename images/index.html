@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <title>IMM 120 - Using Images</title>
+
+    <!-- p5js -->
+		<script src="../p5.min.js"></script>
+		<script src="../p5.dom.js"></script>
+
+		<!-- parse functions
+		<script language="javascript" src="../parsefunctions.js"></script>
+
+		<!-- google prettify -->
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+    <!-- sketches -->
+		<script src="drawing.js"></script>
+		<script src="sprites.js"></script> -->
+		<script src="pixels.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="title" href="../index.html">IMM 120</a>
+        <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a>
+        <a href="../topics.html">Class Topic Notes</a>
+        <a href="http://p5js.org/reference/">p5.js Reference</a>
+        <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
+      </div>
+    </header>
+    <div class="container">
+
+			<h1>Drawing Images</h1>
+
+      <p>Using images in your sketches requires you to load them first. Using the <code>loadImage()</code> will give you an image object, which has a lot of <a href="http://p5js.org/reference/#/p5.Image">properties and functions</a> that can be accessed using <code>img.x</code></p>
+
+      <div id="drawing" style="position:relative"></div>
+
+<pre class="prettyprint linenums">
+function preload() {
+  img = loadImage('http://upload.wikimedia.org/wikipedia/commons/7/72/Craters_of_the_Moon_from_space.jpg');
+}
+
+function setup() {
+  createCanvas(500, 500).parent('drawing');
+}
+
+function draw() {
+  background(255);
+  var w = img.width/2;
+  var h = img.height/2;
+  image(img, (width-w)/2, (height-h)/2, w, h);
+}
+</pre>
+
+
+      <h1>Image Data</h1>
+
+      <p>One of the cool things you can do with images is read and write individual pixel values using <code>loadPixels()</code> and <code>updatePixels()</code>, respectively. This is especially cool because Processing considers the entire sketch to be an entire image. Below is an example of one thing you can do using these functions.</p>
+
+      <div id="pixels" style="position:relative"></div>
+
+<pre class="prettyprint linenums">
+var img;
+function preload() {
+  img = loadImage("https://farm7.staticflickr.com/6010/5918455954_0e630bc393_m_d.jpg");
+}
+
+function setup() {
+  createCanvas(240, 180).parent('pixels');
+  img.loadPixels();
+}
+
+function draw() {
+  var mouseColor = img.get(floor(mouseX), floor(mouseY));
+  loadPixels();
+  for (var i = pixels.length; i--;) {
+    if(colorMatch(mouseColor, img.pixels[i], 60)) {
+      pixels[i] = img.pixels[i];
+    } else {
+      var b = saturation(img.pixels[i]);
+      pixels[i] = [b, b, b, 255];
+    }
+  }
+  updatePixels();
+}
+
+function colorMatch(color1, color2, threshold) {
+  return Math.abs(color1[0]-color2[0]) < threshold
+    && Math.abs(color1[1]-color2[1]) < threshold
+    && Math.abs(color1[2]-color2[2]) < threshold
+    && Math.abs(color1[3]-color2[3]) < threshold;
+}
+</pre>
+
+
+      <h1>Sprite Sheets</h1>
+
+      <p></p>
+
+      <div id="sprites" style="position:relative"></div>
+
+      <p>Here's an object to get you started</p>
+<pre class="prettyprint linenums">
+function Sprite(img, fw, fh, cs, rs, fc)
+{
+  this.sheet = img;
+  this.fWidth = fw;
+  this.fHeight = fh;
+  this.cellSpacing = cs + fw;
+  this.rowSpacing = rs + fh;
+  this.frameCounts = fc;
+}
+Sprite.prototype.width = function() {
+  return this.fWidth;
+};
+Sprite.prototype.height = function() {
+  return this.fHeight;
+};
+Sprite.prototype.draw = function(x, y, animation, frame) {
+  frame %= this.frameCounts[animation];
+  var s = this.sheet.get(
+    frame*this.cellSpacing,
+    animation*this.rowSpacing,
+    this.fWidth,
+    this.fHeight
+  );
+  sketch.image(s, x, y);
+};</pre>
+
+      <p>How to use:</p>
+<pre class="prettyprint linenums">
+function preload() {
+  img = loadImage("./dancing.png");
+}
+
+function setup() {
+  createCanvas(640, 180).parent('sprites');
+  sprite = new Sprite(img, 52, 52, 2, 0, [22]);
+  // Boxes are 52 pixels wide and tall, 2px apart, and there's one animation with 22 frames
+}
+
+function draw() {
+  background(255);
+  image(img, 0, 0);
+  if(frameCount % 4 === 0) {
+    frame++;
+  }
+  sprite.draw((width-sprite.width())/2, (height-sprite.height())/2, 0, frame);
+}
+</pre>
+
+      <h1>Licensing</h1>
+
+      <p>Make sure you are legally allowed to use the images in your project. For example: the pizza picture above is Create Common's property of <a href="https://www.flickr.com/photos/sshb/">Scorpions and Centaurs</a> on <a href="https://www.flickr.com/photos/sshb/5918455954/">Flicker</a>. The dancing sprite sheet I <a href="http://jesgrad07.deviantart.com/art/Dancin-Sprite-Sheet-186075869">found on deviantArt</a> is NOT Creative Commons, but copyright laws cover non-profit, academic use of images, so it's not a problem. If this were published as an art project or a game though, this would become a different matter.</p>
+
+      <p>If you're using Google Image search, use the "Usage Rights" drop down under Search Tools. Also use the <a href="http://search.creativecommons.org/">Creative Commons</a> search tool to be sure.</p>
+    </div>
+  </body>
+</html>

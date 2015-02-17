@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <title>IMM 120 - Drawing on the Grid</title>
+
+    <!-- p5js -->
+		<script src="../p5.min.js"></script>
+		<script src="../p5.dom.js"></script>
+
+		<!-- parse functions -->
+		<script language="javascript" src="../parsefunctions.js"></script>
+
+		<!-- google prettify -->
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+    <!-- sketches -->
+		<script src="arrows.js"></script>
+		<script src="matrix.js"></script>
+		<script src="spin.js"></script>
+		<style type="text/css">
+			body {padding: 0; margin: 0}
+			canvas { border: 1px solid #ccc; }
+			.prettyprint ol.linenums > li { list-style-type: decimal; }
+      #arrows {margin-bottom:80px}
+      #matrix {margin-bottom:150px}
+		</style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="title" href="../index.html">IMM 120</a>
+        <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a>
+        <a href="../topics.html">Class Topic Notes</a>
+        <a href="http://p5js.org/reference/">p5.js Reference</a>
+        <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
+      </div>
+    </header>
+    <div class="container">
+
+			<h1>Moving and Shaking</h1>
+
+      <h2>The Drawing Grid</h2>
+
+      <p>Everything you draw in a sketch is drawn onto a coordinate system, very similar to a graph in regular math, only flipped vertically.</p>
+      <div id="arrows" style="position:relative"></div>
+
+
+      <h2>Transforming the Grid</h2>
+
+      <p>The Processing language gives you the unique power to move and rotate this grid as you please, using <code>translate</code> and <code>rotate</code>. This can be very useful when you want to spin parts of your sketch around.</p>
+      <p><b>Remember:</b> the computer will still draw relative to the origin. <code>translate(10, 10); ellipse(10, 10, 5, 5);</code> will draw a tiny circle centered at 20, 20.</p>
+<pre class="prettyprint linenums">
+function setup() {
+  // set canvas size
+  createCanvas(200, 200);
+}
+
+function draw() {
+
+  // Move the grid 200px right and 10px down
+  translate(200, 10);
+  // Rotate around origin, you can use RADIANS or DEGREES, choose with angleMode();
+  rotate(HALF_PI);
+
+  // DRAW
+
+}</pre>
+      <div id="matrix" style="position:relative"></div>
+
+
+      <h2>Drawing with Multiple Transformations</h2>
+
+      <p>You are not limited to one transformation per draw loop. You can store your current transformations to the grid using <code>push()</code> to return to earlier states with <code>pop()</code> later. Using the stack to its full potential is often necessary to create the visuals you desire in a sketch.</p>
+
+      <div id="spin" style="position:relative"></div>
+<pre class="prettyprint linenums">
+function setup() {
+  var arrowCanvas = createCanvas(300, 300);
+  arrowCanvas.parent('spin');
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(255);
+
+  // Red rectangle
+  // Translate, then rotate
+  fill(255, 0, 0);
+  push(); // Save translate(0, 0) and rotate(0)
+    translate(150, 75);
+    rotate(frameCount);
+    line(-100, 0, 100, 0);
+    line(0, -100, 0, 100);
+    rect(0, 0, 60, 80);
+  pop(); // Back to 0,0:0
+
+  // Green rectangle
+  // Rotate, then translate
+  fill(0, 255, 0);
+  push();
+  rotate(frameCount);
+  translate(150, 150);
+  line(-100, 0, 100, 0);
+  line(0, -100, 0, 100);
+  rect(0, 0, 60, 80);
+  pop();
+
+  // Blue rectangle
+  // Translate, then rotate, draw at a position of -w/2, -h/2
+  //   where w and h are the width and height of the the rectangle
+  fill(0, 0, 255);
+  push();
+  translate(150, 225);
+  rotate(frameCount);
+  line(-100, 0, 100, 0);
+  line(0, -100, 0, 100);
+  rect(-30, -40, 60, 80);
+  pop();
+}
+</pre>
+    </div>
+  </body>
+</html>

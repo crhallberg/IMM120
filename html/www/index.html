@@ -1,0 +1,49 @@
+<HTML>
+	<HEAD>
+		<TITLE>The Awesome Home Page of Chris Hallberg</TITLE>
+		<LINK REL="stylesheet" HREF="./style.css"/>
+		<LINK REL="stylesheet" HREF="./simplegrid.css"/>
+		<link href='http://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+		<SCRIPT SRC="https://code.jquery.com/jquery-2.1.1.min.js"></SCRIPT>
+		<SCRIPT>
+			function loaded() {
+				var name = prompt('What is your name?');
+				var elem = document.getElementById('name');
+				elem.innerHTML = ", " + name + ", ";
+				
+				$('footer .k').html('<a href="http://learn.jquery.com/">Learn jQuery</a>');
+			}
+		</SCRIPT>
+	</HEAD>
+	<BODY onLoad="loaded()">
+		<HEADER>
+			<H3>Welcome<span id="name"></span> to</H3>
+			<H1>Chris Hallberg</span>'s Website</H1>
+			<NAV>
+				<A HREF="./hobbes.html">Old Hobbes Page</A>
+				<A HREF="">About Me</A>
+				<A HREF="">Portfolio</A>
+				<A HREF="" onClick="alert('Call me at 1-800-COOL-DEV')">Contact Me</A>
+			</NAV>
+		</HEADER>
+		
+		<DIV CLASS="body">
+			<div class="grid grid-pad">
+				<div class="menu col-3-12">
+					<div class="content">
+						MENU
+					</div>
+				</div>
+				<div class="meat col-9-12">
+					<div class="content">
+						MEAT AND POTATOES
+					</div>
+				</div>
+			</div>
+		</DIV>
+		
+		<FOOTER>
+			Some <span class="k">kind</span> of copyright
+		</FOOTER>
+	</BODY>
+</HTML>

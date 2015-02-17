@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <title>IMM 120 - Useful Math</title>
+
+    <!-- p5js -->
+		<script src="../p5.min.js"></script>
+		<script src="../p5.dom.js"></script>
+
+		<!-- parse functions -->
+		<script language="javascript" src="../parsefunctions.js"></script>
+
+		<!-- google prettify -->
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+    <!-- sketches -->
+    <script src="angle.js"></script>
+		<script src="atan.js"></script>
+		<script src="calculus.js"></script>
+		<style type="text/css">
+			body {padding: 0; margin: 0}
+			canvas { border: 1px solid #ccc; }
+			.prettyprint ol.linenums > li { list-style-type: decimal; }
+
+      #angles { margin-bottom:50px; }
+		</style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="title" href="../index.html">IMM 120</a>
+        <a href="https://docs.google.com/document/d/1vbjUR9wDInKTyYI3WI-viJD4jT2zF5s972r8aXW51dw/edit#">Syllabus</a>
+        <a href="../topics.html">Class Topic Notes</a>
+        <a href="http://p5js.org/reference/">p5.js Reference</a>
+        <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
+      </div>
+    </header>
+    <div class="container">
+
+			<h1>Useful Math</h1>
+      <p>Here is a brief reference of math that you thought you'd never use again in your life. WARNING: Below you will find calculus and trigonomitry and you may end up liking them at the end of this. You've been warned.</p>
+
+      <h1>The Basic Four</h1>
+      <h2>Adding</h2>
+      <ul>
+        <li>Obvious: <code>var c = a + b;</code></li>
+        <li>Short Assignment: <code>b += a;</code> increases b by a and saves it.</li>
+        <li>Incrementing: You can use <code>n++;</code> to add 1 to a number.
+          <ul>
+            <li>Specifically, it'll use the number first, then add 1. <code>++n;</code> will add 1 THEN use.</li>
+            <li>So <code>var a = 10; point(0, a++);</code> will draw a point at (0, 10) but <code>point(0, ++a);</code> will put it at 11.</li>
+          </ul>
+        </li>
+        <li>Strings: <code>"a" + "b" = "ab"</code>, <code>"a" + 9 = "a9"</code></li>
+        <li>Arrays behave like strings <a href="http://vimeo.com/94881698#t=1m21s">at best</a>: <code>8 + [9,3] = "89,3"</code>, <code>"a" + [9,3] = "a9,3"</code></li>
+      </ul>
+      <h2>Subtracting</h2>
+      <ul>
+        <li>Obvious: <code>var c = a - b;</code></li>
+        <li>Short Assignment: <code>b -= a;</code></li>
+      </ul>
+      <h2>Multiplying</h2>
+      <ul>
+        <li>Obvious: <code>var c = a * b;</code></li>
+        <li>Short Assignment: <code>b *= a;</code></li>
+        <li>Powers: <code>pow(a, 2)</code> is a squared</li>
+      </ul>
+      <h2>Dividing</h2>
+      <ul>
+        <li>Obvious: <code>var c = a / b;</code></li>
+        <li>Short Assignment: <code>b /= a;</code></li>
+        <li>Remainders with % (modulo): <code>10 % 4 = 2</code>. Divides and returns the remainder.</li>
+        <li>Modulo Assignment: <code>b %= a;</code> if b = 13 and a = 3, <code>b %= a;</code> sets b to 1.</li>
+        <li>Odd and Even: <code>num % 2</code> will return 1 if the number is odd and 0 if it's even.</li>
+      </ul>
+
+      <h1>Radians</h1>
+      <p>A brief reminder: the default <code>angleMode</code> for Processing projects is radians, which go from 0 to 2 &pi;. Processing has some built in constants to help with this, namely <code>PI</code>, <code>HALF_PI</code>, and <code>TWO_PI</code>. However, even if you draw with angles, other trig functions (below) will still expect radians. Converting from degrees to radians looks like this: <code>rad = deg*PI/180</code> and from radians to degrees <code>deg = rad*180/PI</code>.</p>
+
+      <h1>Angles to Coordinates</h1>
+      <p>Remember sine and cosine? SUPER useful when it comes to placing graphics and creating smooth motion. In geometry, <code>cos()</code> will give you the percent of the magnitude that is in the x direction, and <code>sin()</code> will give you the y. In Processing, this would put 0 radians/degrees pointing straight right.</p>
+      <p>A trick, instead of subtracting 90deg from the angle is to use <code>+ sin()</code> for x and <code>- cos()</code> for y.</p>
+      <div id="angles" style="position:relative"></div>
+<pre class="prettyprint linenums">
+var aslider;
+
+function setup() {
+  createCanvas(300, 300);
+
+  aslider = createSlider(0, TWO_PI*100, PI*100);
+  aslider.position(0, 310);
+  aslider.size(width);
+}
+
+function draw() {
+  background(200);
+
+  fill(0);
+  strokeWeight(1);
+  var frameAngle = frameCount*PI/180;
+  ellipse(sin(frameAngle)*(width/2-50)+width/2, 25, 25 ,25);
+  ellipse(25, cos(frameAngle)*(height/2-50)+height/2, 25 ,25);
+  ellipse(width/2+sin(frameAngle)*111, height/2+cos(frameAngle)*111, 10, 10);
+
+  fill(255);
+  strokeWeight(3);
+  ellipse(width/2, height/2, 200, 200);
+  stroke(0);
+  var angle = aslider.value()/100;
+  line(
+    width/2  + sin(angle)*50,
+    height/2 - cos(angle)*50,
+    width/2  + sin(angle)*100,
+    height/2 - cos(angle)*100
+  );
+}</pre>
+
+      <h1>Calculating Angles</h1>
+      <p>One common math problem in visual programming is determining the angle between two points. Luckily, arctangents exist, and they're this easy:</p>
+      <div id="atan" style="position:relative"></div>
+<pre class="prettyprint linenums">
+function setup() {
+  // set canvas size
+  createCanvas(200, 200);
+  noStroke();
+}
+
+function draw() {
+  // Clear
+  background(50);
+
+  // CALCULATE ANGLE FROM CENTER TO MOUSE
+  var angle = atan2(mouseY-height/2, mouseX-width/2);
+
+  // Eye
+  fill(255);
+  ellipse(width/2, height/2, 100, 100);
+  fill(0, 0, 150);
+  ellipse(width/2+cos(angle)*25, height/2+sin(angle)*25, 50, 50);
+}</pre>
+
+      <h1>Calculus</h1>
+      <div id="calculus" style="position:relative"></div>
+<br/><br/>
+    </div>
+  </body>
+</html>
