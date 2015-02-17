@@ -58,13 +58,12 @@
   </head>
   <body onLoad="serverStatus()">
     <header>
-      <div class="container">
-        <a class="title" href="index.html">IMM 120</a>
-        <a href="https://docs.google.com/document/d/1v5rIEEG1ZPkuqIgr6r_5pm1QptR9BMAnUvyGu996mDg">Syllabus</a>
-        <a href="https://processing.org/download/?processing">Download Processing</a>
-        <a href="https://processing.org/reference/">Processing Reference</a>
-        <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
-      </div>
+      <a class="title" href="index.html">IMM 120</a>
+      <a href="https://docs.google.com/document/d/1v5rIEEG1ZPkuqIgr6r_5pm1QptR9BMAnUvyGu996mDg">Syllabus</a>
+      <a href="https://github.com/crhallberg/IMM120">GitHub</a>
+      <a href="https://processing.org/download/?processing">Download Processing</a>
+      <a href="https://processing.org/reference/">Processing Reference</a>
+      <a class="email" href="mailto:crhallberg@gmail.com">Email Chris Hallberg</a>
     </header>
     <div class="container">
       <h1>Intro to Interactive Multimedia, Spring 2014</h1>
@@ -76,14 +75,23 @@
         <li>All cards must be present, in their proper color.</li>
         <li>Special card symbols:
           <ul>
-            <li>Spade   - \u2660</li>
-            <li>Club    - \u2663</li>
-            <li>Heart   - \u2665</li>
-            <li>Diamond - \u2666</li>
+            <li>Spade   - <code>"\u2660"</code></li>
+            <li>Club    - <code>"\u2663"</code></li>
+            <li>Heart   - <code>"\u2665"</code></li>
+            <li>Diamond - <code>"\u2666"</code></li>
             <li><a href="https://github.com/crhallberg/IMM120/blob/master/Feb_16/card_symbols/card_symbols.pde">Card Symbol Sketch</a> (<a href="./Feb_16/card_symbols.zip">download</a>)</li>
           </ul>
         </li>
         <li>You can use H for hearts, C for clubs, etc. if you wish instead of the symbols.</li>
+        <li>Rubric
+          <table>
+            <tr><th>Correct Use of Loops</th><td>10</td></tr>
+            <tr><th>All Cards Present</th><td>5</td></tr>
+            <tr><th>Correct Colors</th><td>5</td></tr>
+            <tr><th>Bonus: Use of suit symbols</th><td>+1</td></tr>
+            <tr><th>Bonus: <a href="http://en.wikipedia.org/wiki/Code_golf">Golf Challenge</a></th><td>+1/+2</td><td><i>+1 if your draw loop is &lt;45 lines long. +2 for shortest in class. See Canvas for full details.</i></td></tr>
+          </table>
+        </li>
       </ul>
 
       <h1><a name="schedule"/>Class Schedule</h1>
