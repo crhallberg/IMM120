@@ -22,7 +22,7 @@ code a:hover {text-decoration:underline;}
 h1 { margin:10px 0; }
 h2 { font-size:1.3em; }
 i {font-size:75%;}
-mark {font-weight:bold;padding:0 6px;}
+mark {background:#FF5;padding:2px 4px;}
 small {font-size:75%}
 table {
   border-collapse:collapse;
