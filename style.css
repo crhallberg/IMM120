@@ -1,0 +1,121 @@
+html,body {
+  background:#F8F8F8;
+  font:13pt "Droid Serif", "Roboto";
+  margin:0;
+  padding:0;
+}
+body * { box-sizing:border-box; }
+canvas { border: 1px solid #ccc; }
+code {
+  background-color:#EEE;
+  border:1px solid #AAA;
+  border-radius: 4px;
+  color: #333;
+  font-family: monospace;
+  font-size: 85%;
+  font-weight:bold;
+  padding:0 4px 1px;
+  white-space: nowrap;
+}
+code a {color: #33A;text-decoration:none;}
+code a:hover {text-decoration:underline;}
+h1 { margin:10px 0; }
+h2 { font-size:1.3em; }
+i {font-size:75%;}
+mark {font-weight:bold;padding:0 6px;}
+small {font-size:75%}
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+  margin:0 0 4px -6px;
+}
+table th,table td {
+  border-bottom:1px solid #AAA;
+  margin:0;
+}
+table th {font-weight:bold;padding:4px 6px;text-align:left;}
+table td {font-weight:normal;padding:4px 1em;text-align:right;}
+textarea {font-size:12pt;vertical-align:middle;width:40%;}
+.closed * {display:none}
+.schedule .prettyprint {
+  background:#EEE;
+  border:1px solid #AAA;
+  border-radius:4px;
+  display:table;
+  font-size:85%;
+  margin:6px 0;
+  padding:4px 1em 6px;
+}
+.prettyprint ol.linenums > li {
+  background:#FFF;
+  font:13px Courier;
+  list-style-type: decimal;
+  padding-left:5px;
+}
+.prettyprint ol.linenums > li:nth-child(even) {
+  background:#EEE;
+}
+
+header {
+  background:#111;
+  color:#FFF;
+  display:block;
+  margin-bottom:20px;
+  position:relative;
+  width:100%;
+}
+header a {
+  color:#FFF;
+  display:inline-block;
+  height:65px;
+  padding:23px;
+  text-decoration:none;
+  vertical-align:top;
+}
+header a:hover {
+  background:#444;
+  text-decoration:underline;
+}
+header .container {
+  text-align:center;
+}
+header .title {
+  font-size:16pt;
+  font-weight:bold;
+  padding:20px;
+  text-decoration:underline;
+}
+@media (max-width:930px) {
+  header .email {
+    display:none;
+  }
+}
+@media (max-width:767px) {
+  header a,
+  header .email,
+  header .title {
+    background:#111;
+    display:block;
+    float:none;
+    font-size:14pt;
+    height:50px;
+    padding:14px;
+    width:100%;
+  }
+  .container {
+    padding:0 20px;
+  }
+  header .container {
+    padding:0;
+  }
+}
+
+.container {
+  display:block;
+  padding:0 20px;
+  margin:auto;
+  max-width:1000px;
+}
+.schedule > li {
+  margin-bottom:.75em;
+}
