@@ -19,11 +19,17 @@ void draw()
       fill(255);
       rect(x, y, rwidth, 80);
       fill(0);
-      //text(card+"", x+3, y+20);
-      if(card % 2 > 0) { // Odd
-        ellipse(x+rwidth/2, y+30, 10, 10);
+      //text(card+"", x+3, y+20); 
+      if (card == 1) { // Odd
+        ellipse(x+rwidth/2, y+70, 10, 10);
       } else {
-        rect(x+2, y+2, 10, 10);
+        
+        if (card == 3) {
+          rect(x+rwidth-12, y+20, 10, 10);
+        } else {
+          text(card, x+2, y+20);
+        }
+        
       }
     }
 
