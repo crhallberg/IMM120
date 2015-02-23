@@ -22,6 +22,8 @@ void draw()
       //text(card+"", x+3, y+20);
       if(card % 2 > 0) { // Odd
         ellipse(x+rwidth/2, y+30, 10, 10);
+      } else {
+        rect(x+2, y+2, 10, 10);
       }
     }
 
