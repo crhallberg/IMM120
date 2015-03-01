@@ -12,7 +12,7 @@ class Cup implements Comparable
 
   void draw() {
     pushMatrix();
-    if (this.up) {      
+    if (this.up) {
       translate(hand * COLUMN_WIDTH, 20);
     } else {
       translate(this.column * COLUMN_WIDTH, this.y);
@@ -21,7 +21,7 @@ class Cup implements Comparable
       rotate(PI);
     }
     stroke(0);
-    fill(200, 0, 0);
+    fill(200);
     beginShape();
     vertex(-COLUMN_WIDTH, -CUP_HEIGHT/2);
     vertex(COLUMN_WIDTH, -CUP_HEIGHT/2);
@@ -30,7 +30,7 @@ class Cup implements Comparable
     endShape(CLOSE);
     popMatrix();
   }
-  
+
   int compareTo(Object o) {
     Cup e = (Cup)o;
     return e.y-this.y;
