@@ -6,11 +6,14 @@ void makeAPrettyStack()
 {
 
   /* -- YOUR CODE HERE -- */
-  for(int i=0;i<8;i++) {
-    
-    moveCup(5, flip);
+  for (int i=0; i<18; i=i+1) {
+    if (i%2 == 0) {
+      moveCup(5, true);
+    } else {
+      moveCup(5, false);
+    }
   }
-  
+
   moveCup(5, true);
   moveCup(7, false);
 }
