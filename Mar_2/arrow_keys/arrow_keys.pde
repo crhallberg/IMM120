@@ -1,16 +1,17 @@
-int x;
+int x, y;
 
 void setup()
 {
   size(800, 400);
   x = width/2;
+  y = height/2;
   strokeWeight(10);
 }
 
 void draw()
 {
-  background(240);
-  line(x, 0, x, height);
+  background(180);
+  ellipse(x, y, 50, 50);
 }
 
 void keyPressed()
@@ -25,5 +26,11 @@ void keyPressed()
   }
   if(keyCode == RIGHT) { // Press RIGHT arrow
     x = x + 20;
+  }
+  if(keyCode == UP) { // Press UP arrow
+    y = y - 20;
+  }
+  if(keyCode == DOWN) { // Press DOWN arrow
+    y = y + 20;
   }
 }
