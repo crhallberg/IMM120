@@ -17,7 +17,7 @@ void draw()
   int rectY = 20;
   int rectW = 300;
   int rectH = 300;
-  if (x > rectX && y > rectY && x < rectX+rectW && y < rectY+rectH) {
+  if (isInsideRect(x, y, rectX, rectY, rectW, rectH)) {
     fill(0, 255, 0);
   }
   rect(rectX, rectY, rectW, rectH);
@@ -54,8 +54,13 @@ void keyPressed()
 
 void mousePressed()
 {
-  if (isInsideCircle(mouseX, mouseY, x, y, circleSize/2)) {
+  boolean a = isInsideCircle(mouseX, mouseY, x, y, circleSize/2);
+  if (a) {
     background(200);
+  }
+  /* ... */
+  if (a) {
+    fill(200);
   }
 }
 
