@@ -11,7 +11,7 @@ void setup()
 void draw()
 {
   background(180);
-  ellipse(x, y, 50, 50);
+  ellipse(x, y, 200, 200);
 }
 
 void keyPressed()
@@ -33,4 +33,9 @@ void keyPressed()
   if(keyCode == DOWN) { // Press DOWN arrow
     y = y + 20;
   }
+}
+
+void mousePressed()
+{
+  
 }
