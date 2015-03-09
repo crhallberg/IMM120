@@ -35,7 +35,7 @@ void draw()
   if(isInsideRect(ballX, ballY, 50, bar1, 20, barHeight)) {
     ballSpeedX = -ballSpeedX;
   }
-  if(isInsideRect(ballX, ballY, width-70, mouseY, 20, barHeight)) {
+  if(isInsideRect(ballX, ballY, width-70, bar2, 20, barHeight)) {
     ballSpeedX = -ballSpeedX;
   }
   
@@ -50,7 +50,8 @@ void draw()
   strokeWeight(10);
   stroke(255);
   line(50, bar1, 50, bar1+barHeight);
-  line(width-50, mouseY, width-50, mouseY+barHeight);
+  bar2 = mouseY;
+  line(width-50, bar2, width-50, bar2+barHeight);
 }
 
 void keyPressed() 
