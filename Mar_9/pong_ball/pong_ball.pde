@@ -1,20 +1,50 @@
+
+
+
+
+
+
+
+
+
+
+
+
+Ball pong, pong2;
+
+void setup()
+{
+  size(800, 600);
+  background(0);
+  pong = new Ball(400, 300, color(255, 0, 0));
+  pong2 = new Ball(100, 100, color(255, 255, 255));
+}
+
+void draw()
+{
+  pong.draw();
+  pong2.draw();
+}
+
 class Ball
 {
-  int this.x, this.y;
-  int this.speedX, this.speedY;
-  int this.speed = 5;
+  int x, y;
+  int speedX, speedY;
+  int speed = 5;
+  color f;
 
-  Ball(int newx, int newy)
+  Ball(int newx, int newy, color c)
   {
     this.x = newx;
     this.y = newy;
-    this.speedX = speed;
-    this.speedY = speed;
+    this.speedX = this.speed;
+    this.speedY = this.speed;
+    this.f = c;
   }
 
   void draw()
   {
-    fill(255);
+    fill(this.f);
     ellipse(this.x, this.y, 30, 30);
 
     this.x = this.speedX + this.x;
