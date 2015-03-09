@@ -4,6 +4,7 @@ class Ball
   int speedX, speedY;
   int speed = 5;
   color f;
+  PImage apple = loadImage("http://www.happyhomeclc.com/about-child-care/apple-transparent.gif");
 
   Ball(int newx, int newy, color c)
   {
@@ -35,5 +36,9 @@ class Ball
     if (this.y > height) { // BOTTOM
       this.speedY = -this.speedY;
     }
+    
+    fill(this.f);
+    rect(this.x, this.y, apple.width, apple.height);
+    image(apple, this.x, this.y);
   }
 }
