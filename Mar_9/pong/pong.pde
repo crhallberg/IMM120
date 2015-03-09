@@ -38,9 +38,6 @@ void draw()
   if(isInsideRect(ballX, ballY, width-70, bar2, 20, barHeight)) {
     ballSpeedX = -ballSpeedX;
   }
-  if(ballX > width-70) {
-    ballSpeedX = -ballSpeedX;
-  }
   
   // GOOOOOOOOAL!
   if (ballX < 0) { // LEFT
