@@ -13,4 +13,23 @@ void setup()
 
 void draw()
 {
+  background(0);
+  fill(255);
+  ellipse(ballX, ballY, 30, 30);
+  
+  ballX = ballSpeedX + ballX;
+  ballY = ballSpeedY + ballY;
+  
+  if(ballX < 0) { // LEFT
+    ballSpeedX = -ballSpeedX;
+  }
+  if(ballY < 0) { // TOP
+    ballSpeedY = -ballSpeedY;
+  }
+  if(ballX > width) { // RIGHT
+    ballSpeedX = -ballSpeedX;
+  }
+  if(ballY > height) { // BOTTOM
+    ballSpeedY = -ballSpeedY;
+  }
 }
