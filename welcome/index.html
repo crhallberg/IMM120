@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>IMM 120 - Welcome!</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/imm120.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/monokai_sublime.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="../revealjs/lib/js/head.min.js"></script>
+    <script src="../revealjs/js/reveal.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>IMM 120 / CSC 101</h1>
+          <h3>Intro to Interactive Multimedia</h3>
+          <p>Chris Hallberg</p>
+          <p>Fall 2015</p>
+        </section>
+
+        <section>
+          <section>
+            <h1>Who Am I?</h1>
+            <h3>Chris Hallberg</h3>
+            <p>Class of 2011</p>
+            <p>IMM and Computer Science</p><br/>
+            <p>Master's in Computer Science from Villanova</p><br/>
+            <p>Open Source Web Developer</p>
+          </section>
+
+          <section>
+            <img src="https://motherofthemall.files.wordpress.com/2010/03/img_3383.jpg"/>
+          </section>
+
+          <section>
+            <h2>Contact</h2>
+            <p><i>Email</i><br/>crhallberg@gmail.com</p><br/>
+            <p><i>Office Hours</i><br/>
+            Mondays from 10 'til class<br/>
+            Top of the stairs, left, end of the hall
+            </p>
+          </section>
+
+          <section>
+            <h2>I'm Very Bad At Names</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <img src="http://p5js.org/img/p5js-beta.svg" style="background:none;border:0"/>
+            <p>Javascript + Visual Tools</p>
+            <p><a href="http://p5js.org">Website</a></p>
+          </section>
+          <section>
+            <h2>Why p5.js?</h2>
+            <ul>
+              <li>Javascript</li>
+              <li>Very visual</li>
+              <li>Right in the browser</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Like This!</h3>
+            <iframe data-example="likethis"></iframe>
+          </section>
+
+          <section>
+            <h3>The Code Is Very Simple</h3>
+            <pre><code id="followmouse" class="javascript" data-trim contenteditable>
+function setup() {
+  createCanvas(640, 480);
+}
+
+function draw() {
+  background(204);
+  fill(102); // Change this to fill(102, 0, 0);
+  ellipse(mouseX, mouseY, 200, 200);
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <iframe data-example="followmouse"></iframe>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>You're Going To Need</h2>
+            <ol>
+              <li>A Browser (<a href="http://getfirefox.com">Firefox</a>)</li>
+              <li>A Text Editor (<a href="http://www.sublimetext.com/2">Sublime</a>)
+                <ul>
+                  <li>Windows: <a href="https://notepad-plus-plus.org/download/v6.7.8.2.html">Notepad++</a></li>
+                  <li>Mac: <a href="http://macromates.com/download">TextMate</a></li>
+                  <li>Linux: <a href="http://kate-editor.org/get-it/">Kate</a></li>
+                </ul>
+              </li>
+              <li>The <a href="http://p5js.org/download/">p5.js library</a></li>
+            </ol>
+          </section>
+          <section>
+            <h3>Regular Text Editor</h3>
+            <pre class="code">
+var eyes = [];
+
+function setup() {
+  createCanvas(640, 360);
+
+  eyes.push(new Eye(250,  16, 120));
+  eyes.push(new Eye(164, 185,  80));
+  eyes.push(new Eye(410, 230, 220));
+  eyes.push(new Eye(-300, 100, 800));
+  eyes.push(new Eye(220, height-40, 50));
+  eyes.push(new Eye(400, 40, 60));
+  eyes.push(new Eye(width-50, height-80, 110));
+  eyes.push(new Eye(width-80, 80, 80));
+
+  strokeWeight(16);
+}
+
+function draw() {
+  background(102, 50);
+
+  noStroke();
+  for(var i=0;i&lt;eyes.length;i++) {
+    eyes[i].update(mouseX, mouseY);
+    eyes[i].display();
+  }
+
+  stroke(0, 204, 153);
+  line(mouseX, mouseY, pmouseX, pmouseY);
+}
+
+function Eye(tx, ty, ts) {
+  this.x = tx;
+  this.y = ty;
+  this.size = ts;
+  this.angle = 0.0;
+}
+Eye.prototype.update = function(mx, my) {
+  this.angle = atan2(my-this.y, mx-this.x);
+};
+Eye.prototype.display = function() {
+  push();
+  translate(this.x, this.y);
+  if (mouseIsPressed) {
+    fill(51);
+    ellipse(0, 0, this.size, this.size);
+  } else {
+    fill(255);
+    ellipse(0, 0, this.size, this.size);
+    rotate(this.angle);
+    fill(153, 204, 0);
+    ellipse(this.size/4, 0, this.size/2, this.size/2);
+  }
+  pop();
+}
+            </pre>
+          </section>
+          <section>
+            <h3>Syntax Highlighting</h3>
+            <pre><code id="likethis" class="javascript" data-trim>
+var eyes = [];
+
+function setup() {
+  createCanvas(640, 360);
+
+  eyes.push(new Eye(250,  16, 120));
+  eyes.push(new Eye(164, 185,  80));
+  eyes.push(new Eye(410, 230, 220));
+  eyes.push(new Eye(-300, 100, 800));
+  eyes.push(new Eye(220, height-40, 50));
+  eyes.push(new Eye(400, 40, 60));
+  eyes.push(new Eye(width-50, height-80, 110));
+  eyes.push(new Eye(width-80, 80, 80));
+
+  strokeWeight(16);
+}
+
+function draw() {
+  background(102, 50);
+
+  noStroke();
+  for(var i=0;i&lt;eyes.length;i++) {
+    eyes[i].update(mouseX, mouseY);
+    eyes[i].display();
+  }
+
+  stroke(0, 204, 153);
+  line(mouseX, mouseY, pmouseX, pmouseY);
+}
+
+function Eye(tx, ty, ts) {
+  this.x = tx;
+  this.y = ty;
+  this.size = ts;
+  this.angle = 0.0;
+}
+Eye.prototype.update = function(mx, my) {
+  this.angle = atan2(my-this.y, mx-this.x);
+};
+Eye.prototype.display = function() {
+  push();
+  translate(this.x, this.y);
+  if (mouseIsPressed) {
+    fill(51);
+    ellipse(0, 0, this.size, this.size);
+  } else {
+    fill(255);
+    ellipse(0, 0, this.size, this.size);
+    rotate(this.angle);
+    fill(153, 204, 0);
+    ellipse(this.size/4, 0, this.size/2, this.size/2);
+  }
+  pop();
+}
+            </code></pre>
+          </section>
+          <section>
+            <h2>You May Also Want</h2>
+            <ul>
+              <li><a href="https://git-scm.com/">git bash</a>
+                <ul>
+                  <li>GitHub Client</li>
+                  <li><a href="https://windows.github.com/">Windows</a></li>
+                  <li><a href="https://mac.github.com/">Mac</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>To Download All The Course Material</h3>
+            <i>This will make a folder and download:</i>
+            <pre class="code">
+cd Desktop
+git clone http://github.com/crhallberg/IMM120</pre>
+            <i>To Update, go to the folder:</i>
+            <pre class="code">git pull</pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Syllabus</h1>
+            <p>While that's all downloading,<br/>time for some fine print.</p>
+          </section>
+
+          <section>
+            <h2>Goal of This Class</h2>
+            <p class="left">The goal of this class is to teach <b>programming literacy</b>: the ability to read and write programs. By the end of this semester, you should be able to break down project ideas and problems into programmable chunks, communicate ideas in an algorithmic manner, and use code to bring your ideas to life.</p><br/>
+            <p>Official Course Descriptions: <a href="http://new.immtcnj.com/courses.php">IMM 120</a>, <a href="https://computerscience.tcnj.edu/about-the-department/courses-offered/csc-101-imm-120-introduction-to-interactive-computing/">CSC 101</a></p>
+          </section>
+
+          <section>
+            <h2>Important Links</h2>
+            <p><i>Class Website</i><br/><a href="http://crhallberg.com/IMM120">http://crhallberg.com/IMM120</a></p>
+            <p><i>Class GitHub</i><br/><a href="http://github.com/crhallberg/IMM120">http://github.com/crhallberg/IMM120</a></p>
+            <p><i>p5.js Reference</i><br/><a href="http://p5js.org/reference/">http://p5js.org/reference/</a></p>
+          </section>
+
+          <section>
+            <h2>Important Dates</h2>
+            <p><i>Fall Break</i><br/>Monday, 10/12 – Tuesday, 10/13</p><br/>
+            <p><i>Last Class</i><br/>November 30 (17 classes)</p><br/>
+            <p><i>Final Exams</i><br/>Tuesday, 12/8, 5pm – Friday, 12/11, 8pm</p>
+          </section>
+
+          <section>
+            <h2>Grading Policy</h2>
+            <ul>
+              <li>Above all, assignments must demonstrate an understanding of topics covered in class and how to apply them.</li>
+              <li>Projects can be delivered by email or Canvas.</li>
+              <li>Please compress your projects into a single file.</li>
+              <li>Assignments that demonstrate appropriate effort but do not run or do not meet all required criteria will be returned with notes for improvement and an appropriate extension.</li>
+              <li>Attendance is a separate grade, has counted for 15% of the final grade.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2><a href="http://policies.tcnj.edu/policies/digest.php?docId=9136">Academic Integrity</a></h2>
+            <p><b>Please Do Not Plagiarize</b></p>
+          </section>
+
+          <section>
+            <h2>Not Plagiarism</h2>
+            <p>p5.js Libraries</p>
+            <p>Code Snippets</p>
+            <pre><code class="javascript" data-trim>
+// Line Intersection, from http://crhallberg.com/IMM120
+function linesIntersecting(l1x1, l1y1, l1x2, l1y2, l2x1, l2y1, l2x2, l2y2) {
+  // ...
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 id="plag-label">Plagiarism</h2>
+            <table><tr>
+              <td><iframe data-example="plag1"></iframe></td>
+              <td><iframe data-example="plag2"></iframe></td>
+              <td><iframe id="plag3-sketch" data-example="plag3" data-sound data-no-reload></iframe></td>
+           </tr><tr><td>Original</td></tr></table>
+           <code style="display:none" id="plag1">
+function setup() {
+  createCanvas(300, 270);
+}
+
+function draw() {
+  background(100);
+  fill(200);
+  stroke(50);
+  ellipse(mouseX, mouseY, 100, 100);
+}
+           </code>
+           <code style="display:none" id="plag2">
+function setup() {
+  createCanvas(300, 270);
+}
+
+function draw() {
+  background(100);
+  fill(200, 150, 100);
+  stroke(50);
+  rect(mouseX-50, mouseY-50, 100, 100);
+}
+           </code>
+           <code style="display:none" id="plag3">
+var dance, fft, bins = 16, mod = 8;
+
+function preload() {
+  dance = loadSound('../MacNCheese.mp3');
+  fft = new p5.FFT(.5, bins * mod);
+}
+
+function setup() {
+  createCanvas(300, 270);
+  colorMode(HSB, 360, 100, 100);
+  dance.loop();
+}
+
+function draw() {
+  background(100, 0, 40);
+  if(mouseIsPressed) {
+    var spectrum = fft.analyze();
+    fill(100, 0, 60);
+    noStroke();
+    var w = width/bins;
+    for(var i=0;i&lt;bins;i++) {
+      var h = map(spectrum[i * mod], 0, 255, height, 0);
+      rect(i*w, h, w+1, height-h);
+    }
+    dance.setVolume(.5, .3);
+  } else {
+    dance.setVolume(0);
+  }
+  fill(frameCount%360, 60, 100);
+  stroke(255);
+  push();
+  translate(mouseX, mouseY);
+  rotate(radians(frameCount*2));
+  triangle(-50, -35, 50, -35, 0, 55);
+  pop();
+}
+           </code>
+          </section>
+
+          <section>
+            <h2>Collaboration</h2>
+            <ul>
+              <li>Collaboration in class is highly encouraged.</li>
+              <li>Please ask before collaborating on assignments.</li>
+              <li>Please refrain from "doing all the work".</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2><a href="http://policies.tcnj.edu/policies/digest.php?docId=8082">ADA</a></h2>
+            <p>If you’re registered with ODAS, please let me know at the end of class or via email.</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Are We Done Downloading?</h2>
+        </section>
+
+        <section>
+          <section>
+            <h2>Navigating p5.js</h2>
+            <ul>
+              <li>new_sketch/
+                <ul>
+                  <li>index.html</li>
+                  <li>sketch.js</li>
+                  <li>style.css</li>
+                  <li>p5js/
+                    <ul>
+                      <li>p5.min.js</li>
+                      <li>p5.dom.js</li>
+                      <li>p5.sound.js</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Navigating p5.js</h2>
+            <ul>
+              <li>NEW_NAME/
+                <ul>
+                  <li>index.html</li>
+                  <li>sketch.js</li>
+                  <li>style.css</li>
+                  <li>p5js/
+                    <ul>
+                      <li>p5.min.js</li>
+                      <li>p5.dom.js</li>
+                      <li>p5.sound.js</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>index.html</h3>
+            <pre><code class="html" data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+    &lt;script type="text/javascript" src="./p5js/p5.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="./sketch.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="./style.css"/&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="sketch"&gt;&lt;div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>index.html</h3>
+            <p>(the important bits)</p>
+            <pre><code class="html" data-trim>
+...
+    &lt;script type="text/javascript" src="./p5js/p5.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript" src="./sketch.js"&gt;&lt;/script&gt;
+...
+    &lt;div id="sketch"&gt;&lt;div&gt;
+...
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>sketch.js</h3>
+            <pre><code class="javascript" data-trim>
+// Variables
+
+// Runs first and once
+function setup() {
+  var canvas = createCanvas(640, 480); // size
+  canvas.parent('sketch'); // put sketch in div
+}
+
+// Loops forever
+function draw() {
+  background(102);
+  // and other magic
+}
+            </code></pre>
+          </section>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        history: true,
+        center: true,
+        minScale: 1,
+        maxScale: 1,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script src="../revealjs/p5js-reveal.js"></script>
+  </body>
+</html>

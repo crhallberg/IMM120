@@ -1,0 +1,134 @@
+html {font-size: 36px;}
+body {background-color: #084b7f;}
+
+.left {text-align: left;}
+p.left {text-indent: 2em;}
+
+.reveal {
+  font-family: "Bitter", Georgia;
+  font-weight: normal;
+  color: #fff;
+}
+
+::selection {
+  color: #fff;
+  background: #bee4fd;
+  text-shadow: none;
+}
+
+.reveal .slides {bottom: 100px;}
+.reveal .slides > section,
+.reveal .slides > section > section {
+  line-height: 1.3;
+  font-weight: inherit;
+}
+
+.reveal a {
+  color: #42affa;
+  text-decoration: none;
+}
+
+.reveal a:hover {
+  color: #8dcffc;
+  text-shadow: none;
+  border: none;
+}
+
+.reveal b {font-weight: bold;}
+
+.reveal blockquote {
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  padding: 1em;
+  font-size: 85%;
+  background: rgba(255,255,255,.15);
+  border-radius: 1em;
+  box-shadow: 0px .3em .5em rgba(0,0,0,.5);
+}
+
+.reveal h1 {font-size: 2em;}
+.reveal h2 {font-size: 1.5em;}
+.reveal h3 {font-size: 1.2em;}
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Ensure certain elements are never larger than the slide itself */
+.reveal img,
+.reveal video {
+  display: inline-block;
+  max-width: 95%;
+  max-height: 95%;
+}
+
+.reveal ol,
+.reveal dl,
+.reveal ul {
+  display: table;
+  text-align: left;
+  margin: 0 auto;
+}
+.reveal ul ul,
+.reveal ul ol,
+.reveal ol ol,
+.reveal ol ul {
+  display: block;
+  margin-left: 40px;
+}
+
+.reveal pre {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+  border: 2px solid #888;
+  text-align: left;
+  font-size: 0.55em;
+  font-family: monospace;
+  line-height: 1.2em;
+  word-wrap: break-word;
+  border-radius: 4px;
+}
+.reveal pre.code,
+.reveal pre code {
+  display: block;
+  padding: 1em;
+  overflow: auto;
+  max-height: 480px;
+  word-wrap: normal;
+}
+
+.reveal table {margin: auto;}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {border-right-color: #42affa;}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {border-left-color: #42affa;}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {border-bottom-color: #42affa;}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {border-top-color: #42affa;}
+
+.reveal .controls div.navigate-left.enabled:hover {border-right-color: #8dcffc;}
+
+.reveal .controls div.navigate-right.enabled:hover {border-left-color: #8dcffc;}
+
+.reveal .controls div.navigate-up.enabled:hover {border-bottom-color: #8dcffc;}
+
+.reveal .controls div.navigate-down.enabled:hover {border-top-color: #8dcffc;}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress span {background: #fff;}
