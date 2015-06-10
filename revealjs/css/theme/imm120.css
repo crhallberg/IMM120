@@ -27,12 +27,16 @@ p.left {text-indent: 2em;}
   color: #42affa;
   text-decoration: none;
 }
-
 .reveal a:hover {
   color: #8dcffc;
   text-shadow: none;
   border: none;
 }
+.reveal a.jump {
+  color: #fff;
+  text-decoration: underline;
+}
+.reveal a:hover {color: #8dcffc;}
 
 .reveal b {font-weight: bold;}
 
@@ -99,10 +103,14 @@ p.left {text-indent: 2em;}
   display: block;
   padding: 1em;
   overflow: auto;
-  max-height: 480px;
+  max-height: 430px;
   word-wrap: normal;
 }
 
+.reveal small {
+  font-size: 75%;
+  color: rgba(255,255,255,.7);
+}
 .reveal table {margin: auto;}
 
 /*********************************************

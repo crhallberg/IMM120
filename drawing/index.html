@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Drawing Shapes</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/imm120.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/monokai_sublime.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="../revealjs/lib/js/head.min.js"></script>
+    <script src="../revealjs/js/reveal.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  </head>
+
+  <body style="background-color: #087f4b">
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Drawing Shapes</h1>
+        </section>
+
+        <section>
+          <section>
+            <ul>
+              <li>The Coordinate System</li>
+              <li>background(<small>red, green, blue</small>);</li>
+              <li>Computer Colors</li>
+              <li>rect(<small>x, y, width, height</small>);</li>
+              <li>ellipse(<small>x, y, width, height</small>);</li>
+              <li>line(<small>x, y, x, y</small>);</li>
+              <li>fill(<small>red, green, blue</small>);</li>
+              <li><a href="#/11/1" class="jump">stroke</a>(<small>red, green, blue</small>);</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>The Coordinate System</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>background(<small>red, green, blue</small>);</h2>
+            <p><small>background(grey);</small></p>
+            <p><small>background(red, green, blue, alpha);</small></p>
+            <p><small>background(grey, alpha);</small></p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Computer Colors</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>rect(<small>x, y, width, height</small>);</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>ellipse(<small>x, y, width, height</small>);</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>line(<small>x, y, x, y</small>);</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>fill(<small>red, green, blue</small>);</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>stroke</a>(<small>red, green, blue</small>);</h2>
+          </section>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        history: true,
+        center: true,
+        minScale: 1,
+        maxScale: 1,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script src="../revealjs/p5js-reveal.js"></script>
+  </body>
+</html>
