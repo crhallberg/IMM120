@@ -75,6 +75,7 @@
             <p>Javascript + Visual Tools</p>
             <p><a href="http://p5js.org">Website</a></p>
           </section>
+
           <section>
             <h2>Why p5.js?</h2>
             <ul>
@@ -83,28 +84,10 @@
               <li>Right in the browser</li>
             </ul>
           </section>
+
           <section>
             <h3>Like This!</h3>
             <iframe data-example="likethis"></iframe>
-          </section>
-
-          <section>
-            <h3>The Code Is Very Simple</h3>
-            <pre><code id="followmouse" class="javascript" data-trim contenteditable>
-function setup() {
-  createCanvas(640, 480);
-}
-
-function draw() {
-  background(204);
-  fill(102); // Change this to fill(102, 0, 0);
-  ellipse(mouseX, mouseY, 200, 200);
-}
-            </code></pre>
-          </section>
-
-          <section>
-            <iframe data-example="followmouse"></iframe>
           </section>
         </section>
 
@@ -123,6 +106,7 @@ function draw() {
               <li>The <a href="http://p5js.org/download/">p5.js library</a></li>
             </ol>
           </section>
+
           <section>
             <h3>Regular Text Editor</h3>
             <pre class="code">
@@ -182,6 +166,7 @@ Eye.prototype.display = function() {
 }
             </pre>
           </section>
+
           <section>
             <h3>Syntax Highlighting</h3>
             <pre><code id="likethis" class="javascript" data-trim>
@@ -241,6 +226,7 @@ Eye.prototype.display = function() {
 }
             </code></pre>
           </section>
+
           <section>
             <h2>You May Also Want</h2>
             <ul>
@@ -253,6 +239,7 @@ Eye.prototype.display = function() {
               </li>
             </ul>
           </section>
+
           <section>
             <h3>To Download All The Course Material</h3>
             <i>This will make a folder and download:</i>
@@ -430,7 +417,7 @@ function draw() {
           </section>
 
           <section>
-            <h2>Navigating p5.js</h2>
+            <h2>Step 1, change the name</h2>
             <ul>
               <li>NEW_NAME/
                 <ul>
@@ -462,9 +449,7 @@ function draw() {
     &lt;script type="text/javascript" src="./sketch.js"&gt;&lt;/script&gt;
     &lt;link rel="stylesheet" href="./style.css"/&gt;
   &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div id="sketch"&gt;&lt;div&gt;
-  &lt;/body&gt;
+  &lt;body&gt;&lt;/body&gt;
 &lt;/html&gt;
             </code></pre>
           </section>
@@ -477,20 +462,19 @@ function draw() {
     &lt;script type="text/javascript" src="./p5js/p5.min.js"&gt;&lt;/script&gt;
     &lt;script type="text/javascript" src="./sketch.js"&gt;&lt;/script&gt;
 ...
-    &lt;div id="sketch"&gt;&lt;div&gt;
+    &lt;body&gt;&lt;/body&gt;
 ...
             </code></pre>
           </section>
 
           <section>
             <h3>sketch.js</h3>
-            <pre><code class="javascript" data-trim>
+            <pre><code class="javascript" id="new_sketch" data-trim contenteditable>
 // Variables
 
 // Runs first and once
 function setup() {
-  var canvas = createCanvas(640, 480); // size
-  canvas.parent('sketch'); // put sketch in div
+  createCanvas(640, 480); // size
 }
 
 // Loops forever
@@ -500,6 +484,16 @@ function draw() {
 }
             </code></pre>
           </section>
+
+          <section>
+            <iframe data-example="new_sketch"></iframe>
+          </section>
+        </section>
+
+        <section>
+          <h2>What Next?</h2>
+          <p><a href="../drawing">Drawing Shapes</a></p>
+          <p><a href="../ftp">More Setup</a></p>
         </section>
 
       </div>

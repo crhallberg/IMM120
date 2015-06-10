@@ -32,7 +32,8 @@ h1 {text-align: center;}
 }
 .presentation .date {
   display: block;
-  font-size: 85%;
+  font-family: Georgia;
+  font-size: 75%;
   color: #444;
 }
 .presentation iframe {
