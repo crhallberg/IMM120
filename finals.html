@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./wtf-forms.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans">
+    <title>You're Done!</title>
+    <style>
+      html {font-size: 24px;}
+      body {
+        margin: 0 auto;
+        width: 20em;
+        padding: 2rem 1.5rem;
+        font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+        color: #5a5a5a;
+      }
+      label.control {
+        display: table;
+        cursor: pointer;
+      }
+      small {display: none;}
+    </style>
+    <script>
+      var startTime = 0;
+      var partying = false;
+      var partyLoop = false;
+      var songStart = 8.5;
+      var playLength = 7850;
+      function startParty() {
+        startTime = +new Date;
+        document.getElementById('song').play();
+        document.getElementsByTagName('small')[0].style.display = "block";
+        partyLoop = setInterval(function() {
+          if((+new Date)-startTime < playLength) {
+            document.body.style.background = "hsl("+(new Date%255)+", 60%, 60%)";
+          } else {
+            document.getElementById('song').pause();
+            document.getElementById('song').currentTime = songStart;
+            document.body.style.background = "#FFF";
+            clearInterval(partyLoop);
+          }
+        }, 100);
+      }
+      function stopParty() {
+      }
+      function init() {
+        var checks = document.querySelectorAll('input[type="checkbox"]');
+        for(var i=0;i<checks.length;i++) {
+          checks[i].addEventListener('change', startParty, false);
+        }
+        var labels = document.querySelectorAll('label.checkbox');
+        for(var i=0;i<labels.length;i++) {
+          labels[i].addEventListener('contextmenu', function(ev) {
+            ev.preventDefault();
+            this.style.display = "none";
+            return false;
+          }, false);
+        }
+        document.getElementById('song').currentTime = songStart;
+      }
+    </script>
+  </head>
+  <body onLoad="init()">
+    <audio src="./MacNCheese.mp3" preload="auto" id="song"></audio> 
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Amanda Braxton
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Christian Hansen
+    </label>
+    <!--<label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Coral Rudnick
+    </label>-->
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Dalton Ackerman
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Daniel Renna
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox" checked>
+      <span class="control-indicator"></span>
+      Isabel Bryant
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Jacqueline Vandewater
+    </label>
+    <!--<label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Jonathan Sayre
+    </label>-->
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Jonathan Sofo
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox" checked>
+      <span class="control-indicator"></span>
+      Joseph Dente
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Joseph Szalecki
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Josh Pierre-Louis
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Lucy Clementoni
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Matthew LaRosa
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox" checked>
+      <span class="control-indicator"></span>
+      Michael Lore
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Shay Vachhani
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Shelby Kuster
+    </label>
+    <label class="control checkbox">
+      <input type="checkbox">
+      <span class="control-indicator"></span>
+      Tracy Lee
+    </label><br/>
+    <small>Song: "Mac N' Cheese" by Shawn Wasabi</small>
+  </body>
+</html>

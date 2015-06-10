@@ -12,6 +12,8 @@
     <!-- google prettify -->
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+    
+    <script src="./elevator.min.js"></script>
 
     <title>IMM 120-01 - Spring 2015</title>
     <script>
@@ -38,21 +40,58 @@
           dest.value += '\n' + names[i];
         }
       }
+      function shuffleUL(id) {
+        var list = document.getElementById(id), i;
+        for (i = list.children.length; i >= 0; i--) {
+            list.appendChild(list.children[Math.random() * i | 0]);
+        }
+        var items = list.querySelectorAll('li');
+        list.innerHTML = '';
+        for(var i=0;i<items.length;i++) {
+          var icons = items[i].querySelector('.movers');
+          if(icons) {
+            items[i].removeChild(icons);
+          }
+          list.innerHTML += '<li><span class="movers">'
+          + '<a onClick="moveToTopUL(this, \''+list.id+'\')"><i class="fa fa-angle-double-up"></i></a> '
+          + '<a onClick="moveToBottomUL(this, \''+list.id+'\')"><i class="fa fa-angle-double-down"></i></a> '
+          + '</span>'+items[i].innerHTML+'</li>';
+        }
+      }
+      function moveToTopUL(elem, id) {
+        var list = document.getElementById(id);
+        var movers = elem.parentNode.parentNode;
+        list.removeChild(movers);
+        list.innerHTML = '<li>'+movers.innerHTML+'</li>' + list.innerHTML;
+      }
+      function moveToBottomUL(elem, id) {
+        var list = document.getElementById(id);
+        var movers = elem.parentNode.parentNode;
+        list.removeChild(movers);
+        list.innerHTML += '<li>'+movers.innerHTML+'</li>';
+      }
 
       function serverStatus() {
-        var sio = window.io.connect('http://207.172.118.50:8120');
-        sio.on('connect', function (reason) {
+return;
+        var sio = window.io.connect('http://207.172.118.50:8190');
+        document.addEventListener('onkeydown', function(){sio.emit('loser');}, false);
+        /*sio.on('connect', function (reason) {
+          console.log('connect');
           document.getElementById('server-status').innerHTML = '<i class="fa fa-check-circle" style="color:green"></i>';
         });
         sio.on('reconnect', function (reason) {
+          console.log('reconnect');
           document.getElementById('server-status').innerHTML = '<i class="fa fa-check-circle" style="color:green"></i>';
         });
         sio.on('connect_error', function (reason) {
+          console.log('connect_error');
           document.getElementById('server-status').innerHTML = '<i class="fa fa-close" style="color:red"></i>';
         });
         sio.on('reconnect_error', function (reason) {
+          console.log('reconnect_error');
           document.getElementById('server-status').innerHTML = '<i class="fa fa-close" style="color:red"></i>';
-        });
+        });*/
+        sio.on('data', function(d) {console.log('DATA', d);});
       }
     </script>
   </head>
@@ -67,33 +106,66 @@
     </header>
     <div class="container">
       <h1>Intro to Interactive Multimedia, Spring 2014</h1>
-      <h3>Mo 5:30PM - 9:20PM; AIMM Building, Room 202</h3>
+      <h3>Mo 5:30PM - 9:20PM; AIMM Building, Room 202 <span id="server-status"></span></h3><p>President Obama is the first president to write a line of code: <code>moveForward(100);</code></p>
 
       <h1><a name="assignment"/>Assignment</h1>
+      <!--<ul>
+        <li>Email Chris your presentation topic!</li>
+        <li><b>Any new technology</b> you're excited about: gadget, software, break-thru tech, science discovery, etc.</li>
+        <li><b>Email me your topics</b>, first-come-first-serve</li>
+        <li><b>5 minute presentation</b>: what is it?, how does it work? how is it going to change the world? why does it excite you? when can I buy it?</li>
+      </ul> -->
       <ul>
-        <li>Display a full deck of cards.</li>
-        <li>All cards must be present, in their proper color.</li>
-        <li>Special card symbols:
-          <ul>
-            <li>Spade   - <code>"\u2660"</code></li>
-            <li>Club    - <code>"\u2663"</code></li>
-            <li>Heart   - <code>"\u2665"</code></li>
-            <li>Diamond - <code>"\u2666"</code></li>
-            <li><a href="https://github.com/crhallberg/IMM120/blob/master/Feb_16/card_symbols/card_symbols.pde">Card Symbol Sketch</a> (<a href="./Feb_16/card_symbols.zip">download</a>)</li>
-          </ul>
-        </li>
-        <li>You can use H for hearts, C for clubs, etc. if you wish instead of the symbols.</li>
-        <li>Rubric
-          <table>
-            <tr><th>Correct Use of Loops</th><td>10</td></tr>
-            <tr><th>All Cards Present</th><td>5</td></tr>
-            <tr><th>Correct Colors</th><td>5</td></tr>
-            <tr><th>Bonus: Use of suit symbols</th><td>+1</td></tr>
-            <tr><th>Bonus: <a href="http://en.wikipedia.org/wiki/Code_golf">Golf Challenge</a></th><td>+1/+2</td><td><i>+1 if your draw loop is &lt;45 lines long. +2 for shortest in class. See Canvas for full details.</i></td></tr>
+          <li><b>Needs to be submitted by email!</b></li>
+          <li>
+             Final Project Topics
+             <ul id="finaltop">
+                 <li>Shapes, Text, Colors</li>
+                 <li>String manipulation (+, match, split, loadStrings)</li>
+                 <li>Mouse Interaction</li>
+                 <li>Key Interaction</li>
+                 <li>Images</li>
+                 <li>Arrays</li>
+                 <li>Objects</li>
+                 <li>Sounds</li>
+                 <li>Libraries (Video, Physics, Arduino)</li>
+              </ul>
+           </li>
+           <li>Your project needs to utilize atleast 5 of these</li>
+           <li>If you have a project that focuses on one of these heavily it can count for 2 points. "Heavily" counts as using every aspect taught or showing research beyond knowledge from class.</li>
+      </ul>
+<!--      <ul>
+        <li><b>Due before 5pm on March 9th.</b></li>
+        <li>Use at least one from each column to make a game or interactive sketch of your imagination.
+          <table border>
+            <tr><th>Collision Column</th><th>Input column</th></tr>
+            <tr>
+              <td>
+                <a href="https://github.com/crhallberg/IMM120/blob/master/Mar_2/isInside_functions.pde">isInsideRect()</a><br/>
+                <a href="https://github.com/crhallberg/IMM120/blob/master/Mar_2/isInside_functions.pde">isInsideCircle()</a>
+              </td>
+              <td>
+                <a href="https://processing.org/reference/keyPressed_.html">keyPressed()</a><br/>
+                <a href="https://processing.org/reference/mousePressed_.html">mousePressed()</a>
+              </td>
+            </tr>
           </table>
         </li>
+        <li>Example Projects
+          <ul>
+            <li>Navigate the Maze</li>
+            <li>Doodle Board with reset buttons</li>
+            <li>Find the square in the dark</li>
+          </ul>
+        </li>
+        <li> Don't forget these!
+          <ul>
+            <li><a href="https://processing.org/reference/keyReleased_.html">keyReleased()</a></li>
+            <li><a href="https://processing.org/reference/mouseReleased_.html">mouseReleased()</a></li>
+          </ul>
+        </li>
       </ul>
-
+-->
       <h1><a name="schedule"/>Class Schedule</h1>
       <ul class="schedule">
         <li>
@@ -175,8 +247,8 @@ void draw() {
           <div id="9feb" class="closed"></div>
         </li>
         <li>
-          <b>February 16</b> <!-- <a href="javascript:toggle('16feb')">show</a>-->
-          <div id="16feb">
+          <b>February 16 - Variables and Loops</b> <a href="javascript:toggle('16feb')">show</a>
+          <div id="16feb" class="closed">
             <i>Feb 19 - Last Day to Apply for Graduation</i><br/>
             <i>$35 Late Fee</i>
             <ul>
@@ -207,27 +279,48 @@ void draw() {
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>February 23</b> <!-- <a href="javascript:toggle('23feb')">show</a>-->
+        <li>
+          <b>February 23 - Unrolling Loops</b> <a href="javascript:toggle('23feb')">show</a>
           <div id="23feb" class="closed">
             <ul>
-              <li></li>
-            </ul>
-          </div>
-        </li>
-        <li style="display:none">
-          <b>March 2</b> <!-- <a href="javascript:toggle('2mar')">show</a>-->
-          <div id="2mar" class="closed">
-            <ul>
-              <li>Maybe</li>
+              <li><a href="http://github.com/crhallberg/IMM120">GitHub</a></li>
+              <li>Questions</li>
+              <li>Unrolling and Rolling Loops</li>
+              <li>Row Counting</li>
+              <li>Nested Loops</li>
+              <li>Box Placement Math</li>
+              <li>Break and Questions</li>
+              <li>Organizing Code (functions)</li>
             </ul>
           </div>
         </li>
         <li>
-          <b>March 9 - Mid-Terms</b> <!-- <a href="javascript:toggle('9mar')">show</a>-->
-          <div id="9mar" class="closed">
+          <b>March 2 - Fun With Functions</b> <a href="javascript:toggle('2mar')">show</a>
+          <div id="2mar" class="closed">
             <ul>
-              <li></li>
+              <li>In the News
+                <ul>
+                  <li>Google says computers are 10x better at games than us!</li>
+                  <li>Net Neutrality</li>
+                </ul>
+              </li>
+              <li><a href="https://github.com/crhallberg/IMM120/blob/master/Mar_2/stacking.zip?raw=true">Cup Stacking</a></li>
+              <li><code>keyPressed()</code> and <code>keyReleased()</code></li>
+              <li>Fibonacci Numbers and maybe recursion</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <b>March 9 - Putting It All Together</b> <a href="javascript:toggle('9mar')">show</a>
+          <div id="9mar" class="closed">
+            <i>College Schedule for Mid-Terms (ours will be after break)</i>
+            <ul>
+              <li>Making Pong</li>
+              <li>Gravity</li>
+              <li><a href="https://processing.org/tutorials/objects/">Objects</a></li>
+              <li><a href="https://processing.org/tutorials/pixels/">Images</a></li>
+              <li>Lists aka. <a href="https://processing.org/reference/Array.html">Arrays</a></li>
+              <li><em>No Homework! Happy Break!</em> <i>unless you need to catch up on projects</i></li>
             </ul>
           </div>
         </li>
@@ -239,73 +332,181 @@ void draw() {
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>March 23</b> <!-- <a href="javascript:toggle('23mar')">show</a>-->
+        <li>
+          <b>March 23 - Welcome Back</b> <a href="javascript:toggle('23mar')">show</a>
           <div id="23mar" class="closed">
             <ul>
-              <li></li>
+              <li>Tech News: Steal Data With Heat, Every Browser Hacked (for $110,000), Apple Bores or Upsets Everyone, <a href="https://www.youtube.com/watch?v=VTJq9Z5g4Jk">New 3D printer technique</a></li>
+                <li>Office Hours: Monday all day?</li>
+                <li>A Look Ahead: Midterm Projects, Tech Presentations, Library Fun, Final Projects</li>
+                <li>Lingering Questions?</li>
+              <li>The Midterm Project
+                <ul>
+                <li>An Interactive Project of your own imagination</li>
+                <li>Looking for a certain level of complexity</li>
+                <li>We've Learned a lot: numbers, words, shapes, key and mouse input, color, images, objects...</li>
+                <li>Two Weeks, including class time</li>
+                <li>It can be based on your last project, but you must add functionality and polish</li>
+                </ul>
+              </li>
+              <li>One More Lecture: <a href="https://processing.org/reference/Array.html">Lists</a>.</li>
+              <li>Some things to consider
+            <ul>
+                <li>Moving, shaking, and spinning: <a href="https://processing.org/tutorials/transform2d/">2D Transformations</a></li>
+                <li>Color Mode (for all you HSB fans out there) <code><a href="https://processing.org/reference/colorMode_.html">colorMode(HSB, 360, 100, 100)</a></code></li>
+                <li>Pixel Data in Pictures: <a href="https://processing.org/tutorials/pixels/">pixels[]</a></li>
+                </ul></li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>March 30</b> <!-- <a href="javascript:toggle('30mar')">show</a>-->
+        <li>
+          <b>March 30 - Midterm Labs</b> <a href="javascript:toggle('30mar')">show</a>
           <div id="30mar" class="closed">
             <ul>
-              <li></li>
+              <li><b>Working on mid-term projects today</b></li>
+              <li>They are <b>due by the end of the day on Friday</b> (no work on Easter weekend)</li><br/>
+              <li>In two weeks, we're <b>starting technology presentations</b></li>
+              <li><b>Any new technology</b> you're excited about: Apple Watch, self-driving cars, etc.</li>
+              <li><b>Email me your topics</b>, first-come-first-serve</li>
+              <li><b>5 minute presentation</b>: what is it?, how does it work? how is it going to change the world? why does it excite you? when can I buy it?</li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b style="color:#35D">April 6</b> <!-- <a href="javascript:toggle('6apr')">show</a>-->
+        <li>
+          <b style="color:#35D">April 6 - The Adventures of Bob Snowman</b> <a href="javascript:toggle('6apr')">show</a>
           <div id="6apr" class="closed">
             <ul>
-              <li></li>
+       <li><a href="https://docs.google.com/presentation/d/19Bt4lZAtZ5agRWDwGJt0ggGD3llE0HGwEcLRboCcEFo/edit?usp=sharing">Example Presentation</a></li>
+       <li>Presentaton Topics</li>
+       <li><a href="./problem.zip">Debugging Puzzle</a></li>
+       <li><a href="https://processing.org/reference/libraries/">Using Libraries</a>
+        <ul>
+         <li><a href="https://processing.org/reference/libraries/sound/SoundFile.html">Sound</a></li>
+         <li>Video</li>
+        </ul>
+       </li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>April 13</b> <!-- <a href="javascript:toggle('13apr')">show</a>-->
+        <li>
+          <b>April 13</b> <a href="javascript:toggle('13apr')">show</a>
           <div id="13apr" class="closed">
             <ul>
-              <li></li>
+              <li>Project submissions reopened</li>
+              <a name="apr13prestop"></a>
+              <li>Presentations - <a href="#apr13prestop" onClick="shuffleUL('apr13pres')">Shuffle</a>
+                <ul id="apr13pres">
+                  <li>Christian Hansen - 4K and the Future of TV</li>
+                  <li>Jacqueline Vandewater - 3D printed prostetics</li>
+                  <!--<li>Jonathan Sayre</li>-->
+                  <li>Joseph Dente - Cue (health tracker)</li>
+                  <li>Josh Pierre-Louis - Leap Motion</li>
+                  <li>Lucy Clementoni - Earl (extreme outdoor tablet)</li>
+                  <li>Matthew LaRosa - Fitbit</li>
+                  <li>Shay Vachhani - Oculus Rift</li>
+                  <li>Tracy Lee - Printscreen, lightweight flexible displays</li>
+                </ul>
+              </li>
+              <li>Tricks and Tips
+                <ul>
+                  <li>Textbox correction</li>
+                  <li>+= and -=</li>
+                  <li>Target positions</li>
+                  <li>Speed based controls</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>April 20</b> <!-- <a href="javascript:toggle('20apr')">show</a>-->
+        <li>
+          <b>April 20</b> <a href="javascript:toggle('20apr')">show</a>
           <div id="20apr" class="closed">
             <ul>
-              <li></li>
+              <a name="apr20prestop"></a>
+              <li>April 20 Presentations - <a href="#apr20prestop" onClick="shuffleUL('apr20pres')">Shuffle</a>
+                <ul id="apr20pres">
+                  <li>Amanda Braxton - Paper USBs</li>
+                  <!--<li>Coral Rudnick - Cicret Bracelet</li>-->
+                  <li>Dalton Ackerman - Tidal (music service)</li>
+                  <li>Daniel Renna - Self-driving cars</li>
+                  <li>Isabel Bryant - Apple Watch</li>
+                  <li>Jonathan Sofo - F35 Lightning II (jet)</li>
+                  <li>Joseph Szalecki - 3D printers</li>
+                  <li>Michael Lore - Exoskeletons</li>
+                  <li>Shelby Kuster - Smartstones</li>
+                </ul>
+              </li>
+              <li>Grade Weights <a href="javascript:toggle('gradeweights')">show</a>
+                <div class="closed" id="gradeweights">
+                  <ul>
+                    <li>Attendance: 10%</li>
+                    <li>Draw A Picture: 5%</li>
+                    <li>Deck of Cards: 10%</li>
+                    <li>Interactive Mini-Project: 15%</li>
+                    <li>Midterm Project: 20%</li>
+                    <li>Presentations: 10%</li>
+                    <li>Final Project: 30%</li>
+                    <li>Median Grade (assuming 90s): 93%</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                Final Project Topics <a href="javascript:toggle('finaltop')">show</a>
+                <ul class="closed" id="finaltop">
+                    <li>Shapes, Text, Colors</li>
+                    <li>String manipulation (+, match, split, loadStrings)</li>
+                    <li>Mouse Interaction</li>
+                    <li>Key Interaction</li>
+                    <li>Images</li>
+                    <li>Arrays</li>
+                    <li>Objects</li>
+                    <li>Sounds</li>
+                    <li>Libraries (Video, Physics, Arduino)</li>
+                </ul>
+              </li>
+              <li>Your project needs to utilize atleast 5 of these</li>
+              <li>If you have a project that focuses on one of these heavily it can count for 2 points. "Heavily" counts as using every aspect taught or showing research beyond knowledge from class.</li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
-          <b>April 27</b> <!-- <a href="javascript:toggle('27apr')">show</a>-->
-          <div id="27apr" class="open">
+
+        <li>
+          <b>April 27</b>
+          <div id="27apr">
             <ul>
               <li>Online Student Feedback Week!</li>
+              <li>PAWS &gt; Main Menu &gt; Student Self Service &gt; Student Records &gt; TCNJ Course Feedback
             </ul>
           </div>
         </li>
-        <li style="display:none">
+        <li>
           <b>May 4</b> <!-- <a href="javascript:toggle('4may')">show</a>-->
-          <div id="4may" class="closed">
+          <div id="4may">
             <ul>
-              <li></li>
+              <li><a href="http://www.twitch.tv/crhallberg/c/6616048">Livestream Review</a></li>
+              <li>Office Hours on Wednesday</li>
+              <li>Final Project clarification
+                <ul>
+                  <li><b>Due at 8pm, May 18</b></li>
+                  <li>Beyond your projects functionality, the organization of your source code will matter.</li>
+                  <li>Will be looking for proper use of functions and objects.</li>
+                  <li>Points will be taken off for improper use and excessively repetitive code if it could be easily reorganized.</li>
+                </ul>
+              </li>
             </ul>
           </div>
         </li>
-        <li style="display:none">
+        <li>
           <b>May 11</b> <!-- <a href="javascript:toggle('11may')">show</a>-->
-          <div id="11may" class="closed">
+          <div id="11may" class="closed" style="display:none">
             <ul>
               <li></li>
             </ul>
           </div>
         </li>
         <li>
-          <b>May 18 - Finals, Open Lab</b>
-          <ul><li>To be clarified</li></ul>
+          <b>Final Lab - May 18, 5:00PM - 7:50PM</b>
+          <ul><li>Pizza and Soda or Donuts and Coffee?</li></ul>
         </li>
       </ul>
 
@@ -314,6 +515,28 @@ void draw() {
         <li><a href="http://hello.processing.org">Hello Processing! One Hour of Code</a></li>
         <li><a href="http://education.github.com/pack">GitHub Student Developer Pack</a></li>
         <li><a href="https://stacksocial.com/sales/the-5-hour-developer-freebie-bundle?utm_source=stacksocial&utm_medium=social-facebook&utm_campaign=m6-5_Hour_Developer_Freebie#">5 Hours to Learn Web Development</a></li>
+      </ul>
+    </div>
+    <div class="elevator-button" style="cursor:pointer;display:table;margin:auto;padding:1em;text-align:center;">
+      <svg style="display:table;height:50px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px">
+        <path d="M70,47.5H30c-1.4,0-2.5,1.1-2.5,2.5v40c0,1.4,1.1,2.5,2.5,2.5h40c1.4,0,2.5-1.1,2.5-2.5V50C72.5,48.6,71.4,47.5,70,47.5z   M47.5,87.5h-5v-25h5V87.5z M57.5,87.5h-5v-25h5V87.5z M67.5,87.5h-5V60c0-1.4-1.1-2.5-2.5-2.5H40c-1.4,0-2.5,1.1-2.5,2.5v27.5h-5  v-35h35V87.5z"></path>
+        <path d="M50,42.5c1.4,0,2.5-1.1,2.5-2.5V16l5.7,5.7c0.5,0.5,1.1,0.7,1.8,0.7s1.3-0.2,1.8-0.7c1-1,1-2.6,0-3.5l-10-10  c-1-1-2.6-1-3.5,0l-10,10c-1,1-1,2.6,0,3.5c1,1,2.6,1,3.5,0l5.7-5.7v24C47.5,41.4,48.6,42.5,50,42.5z"></path>
+      </svg>
+      Back to Top
+    </div>
+
+    <script>
+    // Elevator script included on the page, already.
+
+    window.onload = function() {
+      var elevator = new Elevator({
+        element: document.querySelector('.elevator-button'),
+        mainAudio: './elevator-music.mp3',
+        endAudio: './ding.mp3',
+        duration: 6000 // milliseconds
+      });
+    }
+    </script>
   </body>
 </html>
 
