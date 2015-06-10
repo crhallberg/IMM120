@@ -4,10 +4,11 @@ body {
   font-family: "Bitter";
   background-color: #eee;
   color: #222;
+  overflow-x: hidden;
 }
 header {
-  background-color: #084b7f;
   text-align: center;
+  background-color: #084b7f;
 }
 header a {
   display: inline-block;
@@ -39,15 +40,9 @@ h1 {text-align: center;}
 .presentation iframe {
   width: 400%;
   height: 800px;
-  margin-bottom: -600px;
-  -moz-transform: scale(0.25, 0.25);
-  -webkit-transform: scale(0.25, 0.25);
-  -o-transform: scale(0.25, 0.25);
-  -ms-transform: scale(0.25, 0.25);
+  margin-bottom: -616px;
   transform: scale(0.25, 0.25);
-  -moz-transform-origin: top left;
-  -webkit-transform-origin: top left;
-  -o-transform-origin: top left;
-  -ms-transform-origin: top left;
   transform-origin: top left;
+  border: 16px solid #fff;
+  box-shadow: 0 1em 2em rgba(0,0,0,.3);
 }
