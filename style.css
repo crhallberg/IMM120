@@ -16,6 +16,19 @@ header a {
   color: #fff;
 }
 header a:hover {background-color: #2d7bb6;}
+header a.title{text-decoration: none;}
+@media (max-width: 976px) {
+  header a {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+@media (max-width: 600px) {
+  header a {
+    display: block;
+    width: 100%;
+  }
+}
 
 .container {
   max-width: 1170px;
