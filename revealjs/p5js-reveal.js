@@ -3,6 +3,39 @@ Reveal.addEventListener('slidechanged', function(event) {
     if("string" === typeof $(op).data('no-reload')) return;
     $(op).attr('src', $(op).attr('src'));
   });
+
+  var map = [];
+  $('[data-copy]').each(function(i, op) {
+    map[op.dataset.copy] = op.id;
+  });
+  var queue = [];
+  for(var i in map) {
+    if('undefined' === typeof document.getElementById(map[i]).dataset.copy) {
+      queue.push(map[i]);
+    }
+    if('undefined' === typeof document.getElementById(i).dataset.copy
+    && 'undefined' === typeof queue[i]) {
+      queue.push(i);
+    }
+  }
+  if(queue.length == 0) {
+    console.log('your copies are looped and have no beginning.');
+  }
+  var visited = [];
+  while(queue.length > 0) {
+    var id = queue.pop();
+    if('undefined' !== typeof map[id]) {
+      if('undefined' !== typeof visited[id]) {
+        console.log('loop prevented');
+        continue;
+      }
+      if('undefined' === typeof $('#'+map[id]).data('changed')) {
+        document.getElementById(map[id]).innerHTML = document.getElementById(id).innerHTML;
+      }
+      visited.push(id);
+      queue.push(map[id]);
+    }
+  }
 });
 
 $('iframe[data-example]').load(function() {
@@ -32,6 +65,11 @@ $(document).ready(function() {
     $(op).attr('src', '../revealjs/iframe/example.html');
     $(op).attr('src', '../revealjs/iframe/example_sound.html');
   });
+
+  $('[data-copy]').on('keyup', function() {
+    $(this).data('changed', 1);
+  });
+
   if('undefined' !== typeof tabOverride) {
     tabOverride.tabSize(2);
     $('pre.editor').each(function(i, op) {
