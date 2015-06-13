@@ -28,6 +28,21 @@ $('iframe[data-example]').load(function() {
 });
 
 $(document).ready(function() {
-  $('iframe[data-example]').attr('src', '../revealjs/iframe/example.html');
-  $('iframe[data-example][data-sound]').attr('src', '../revealjs/iframe/example_sound.html');
+  $('iframe[data-example]').each(function(i, op) {
+    $(op).attr('src', '../revealjs/iframe/example.html');
+    $(op).attr('src', '../revealjs/iframe/example_sound.html');
+  });
+  if('undefined' !== typeof tabOverride) {
+    tabOverride.tabSize(2);
+    $('pre.editor').each(function(i, op) {
+      var $textarea = $(op).find('textarea');
+      tabOverride.set($textarea[0]);
+      $textarea.on('keyup', function(event) {
+        $code = $(this).closest('pre.editor').find('code');
+        $code.html(this.value);
+        hljs.highlightBlock($code[0]);
+      });
+      $textarea.keyup();
+    });
+  }
 });
