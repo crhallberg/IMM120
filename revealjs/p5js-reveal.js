@@ -4,36 +4,38 @@ Reveal.addEventListener('slidechanged', function(event) {
     $(op).attr('src', $(op).attr('src'));
   });
 
-  var map = [];
-  $('[data-copy]').each(function(i, op) {
-    map[op.dataset.copy] = op.id;
-  });
-  var queue = [];
-  for(var i in map) {
-    if('undefined' === typeof document.getElementById(map[i]).dataset.copy) {
-      queue.push(map[i]);
-    }
-    if('undefined' === typeof document.getElementById(i).dataset.copy
-    && 'undefined' === typeof queue[i]) {
-      queue.push(i);
-    }
-  }
-  if(queue.length == 0) {
-    console.log('your copies are looped and have no beginning.');
-  }
-  var visited = [];
-  while(queue.length > 0) {
-    var id = queue.pop();
-    if('undefined' !== typeof map[id]) {
-      if('undefined' !== typeof visited[id]) {
-        console.log('loop prevented');
-        continue;
+  if($('[data-copy]').length > 0) {
+    var map = [];
+    $('[data-copy]').each(function(i, op) {
+      map[op.dataset.copy] = op.id;
+    });
+    var queue = [];
+    for(var i in map) {
+      if('undefined' === typeof document.getElementById(map[i]).dataset.copy) {
+        queue.push(map[i]);
       }
-      if('undefined' === typeof $('#'+map[id]).data('changed')) {
-        document.getElementById(map[id]).innerHTML = document.getElementById(id).innerHTML;
+      if('undefined' === typeof document.getElementById(i).dataset.copy
+      && 'undefined' === typeof queue[i]) {
+        queue.push(i);
       }
-      visited.push(id);
-      queue.push(map[id]);
+    }
+    if(queue.length == 0) {
+      console.log('your copies are looped and have no beginning.');
+    }
+    var visited = [];
+    while(queue.length > 0) {
+      var id = queue.pop();
+      if('undefined' !== typeof map[id]) {
+        if('undefined' !== typeof visited[id]) {
+          console.log('loop prevented');
+          continue;
+        }
+        if('undefined' === typeof $('#'+map[id]).data('changed')) {
+          document.getElementById(map[id]).innerHTML = document.getElementById(id).innerHTML;
+        }
+        visited.push(id);
+        queue.push(map[id]);
+      }
     }
   }
 });
@@ -63,6 +65,8 @@ $('iframe[data-example]').load(function() {
 $(document).ready(function() {
   $('iframe[data-example]').each(function(i, op) {
     $(op).attr('src', '../revealjs/iframe/example.html');
+  });
+  $('iframe[data-sound]').each(function(i, op) {
     $(op).attr('src', '../revealjs/iframe/example_sound.html');
   });
 
