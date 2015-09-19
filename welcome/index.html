@@ -22,9 +22,10 @@
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../revealjs/taboverride.min.js"></script>
     <script src="../revealjs/lib/js/head.min.js"></script>
     <script src="../revealjs/js/reveal.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 
   </head>
 
@@ -38,7 +39,8 @@
           <h1>IMM 120 / CSC 101</h1>
           <h3>Intro to Interactive Multimedia</h3>
           <p>Chris Hallberg</p>
-          <p>Fall 2015</p>
+          <p>Fall 2015</p><br/>
+          <p>http://crhallberg.com/IMM120</p>
         </section>
 
         <section>
@@ -62,6 +64,8 @@
             Mondays from 10 'til class<br/>
             Top of the stairs, left, end of the hall
             </p>
+            <p>Occasional Twitch streams (<a href="http://www.twitch.tv/crhallberg">twitch.tv/crhallberg</a>)</p>
+            <p>Skype and Google Hangouts</p>
           </section>
 
           <section>
@@ -96,14 +100,16 @@
             <h2>You're Going To Need</h2>
             <ol>
               <li>A Browser</li>
-              <li>A Text Editor (<a href="http://www.sublimetext.com/2">Sublime</a>)
+              <li>A Text Editor: <a href="http://brackets.io/">Brackets</a>
                 <ul>
-                  <li>Windows: <a href="https://notepad-plus-plus.org/download/v6.7.8.2.html">Notepad++</a></li>
-                  <li>Mac: <a href="http://macromates.com/download">TextMate</a></li>
-                  <li>Linux: <a href="http://kate-editor.org/get-it/">Kate</a></li>
+                  <li>Download WITHOUT Extract</li>
                 </ul>
               </li>
-              <li>The <a href="http://p5js.org/download/">p5.js library</a></li>
+              <li>The p5.js library:
+                <ul>
+                  <li><a href="../new_sketch.zip">download empty sketch</a></li>
+                </ul>
+              </li>
             </ol>
           </section>
 
@@ -348,6 +354,7 @@ function setup() {
   createCanvas(300, 270);
   colorMode(HSB, 360, 100, 100);
   dance.loop();
+  ellipse(2,3,3);
 }
 
 function draw() {
@@ -474,7 +481,7 @@ function draw() {
 
 // Runs first and once
 function setup() {
-  createCanvas(640, 480); // size
+  createCanvas(640, 300); // size
 }
 
 // Loops forever
@@ -485,19 +492,150 @@ function draw() {
             </code></pre>
           </section>
 
-          <section>
-            <iframe data-example="new_sketch"></iframe>
+          <section data-background="#888">
+            <h2>It'll look this magnificent</h2>
+            <iframe data-example="new_sketch"></iframe><br/>
+            <small>Oh yeah.</small>
           </section>
         </section>
 
         <section>
-          <h2>How Does It Work?</h2>
+          <section>
+            <h1>Your First Program</h1>
+          </section>
+          <section>
+            <h2>Statements</h2>
+            <p>Individual commands the computer can understand</p>
+            <p>Start with a command</p>
+            <p>Translate it into computer speak</p>
+          </section>
+          <section>
+            <h2>Statements</h2>
+            <p>Draw a line from here to there</p>
+            <p>Draw a line from (100, 100) to (300, 200)</p>
+            <p>line(100, 100, 300, 200);</p>
+          </section>
+          <section>
+            <h2>Calls</h2>
+            <p>line(100, 100, 300, 200);</p>
+            <p>p5.js has written 'line' for us</p>
+            <p>(...)s contain all the information that code needs</p>
+          </section>
+          <section>
+            <pre class="editor">
+              <code class="javascript" id="helloworld"></code>
+              <textarea spellcheck="false">
+// Variables
+
+// Runs first and once
+function setup() {
+  createCanvas(480, 360); // size
+}
+
+// Loops forever
+function draw() {
+  background(102);
+  // and other magic
+}</textarea>
+            </pre>
+          </section>
+          <section>
+            <iframe data-code="helloworld"></iframe><br/>
+            http://crhallberg.com/IMM120/sandbox
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>What to Expect When You're Coding</h1>
+          </section>
+          <section>
+            <h2>Programming is fun,<br/>except when it's not.</h2>
+          </section>
+          <section>
+            <h2>Math</h2>
+            <p>There will be math. It's going to be ok.</p>
+            <p>Simple math, repeated really fast</p><br/>
+            <p>x = x + 10;</p>
+            <iframe data-example="loop" data-no-reload></iframe>
+            <code id="loop" style="display:none;">
+var x = 0;
+function setup() {
+  createCanvas(500, 110);
+}
+
+function draw() {
+  background(0);
+  fill(255);
+  ellipse(x, height/2, 40, 40);
+  x = x + 5;
+  if (x > width+10) x = -10;
+}
+            </code>
+          </section>
+          <section>
+            <h2>Syntax Errors</h2>
+            <h3>Spelling Errors</h3>
+            <p>You'll get errors and usually a white screen</p>
+          </section>
+          <section>
+            <h3>Capitalization Matters</h3>
+            <p>elipse instead of ellipse</p>
+            <p>iskeypressed instead of isKeyPressed</p>
+          </section>
+          <section>
+            <h2>Syntax Errors</h2>
+            <h3>Missing Punctuation</h3>
+            <p>; at the the end of every line</p>
+            <p>{ } to surround code (indent)</p>
+            <p>( ) for crowd control</p>
+            <p>Do you see the mistake on this page?</p>
+          </section>
+          <section>
+            <h2>Semantic Errors</h2>
+            <h3>Mis-communication with your computer</h3>
+            <p>"All programmers are playwrights<br/>and all computers are lousy actors."</p>
+          </section>
+          <section>
+            <h2>Semantic Errors</h2>
+            <ul>
+              <li>Write out or speak aloud what you want to happen.</li>
+              <li>Write out or speak aloud what is happening.</li>
+              <li>If talking to yourself doesn't work, talk to your computer.</li>
+              <li>println</li>
+            </ul>
+          </section>
+          <section>
+            <h2>The Console is Your Best Friend</h2>
+            <p>Hit F12</p>
+            <p>println("hey");</p>
+            <p>println(number);</p>
+            <script>
+              console.log("hey");
+              console.log(number);
+            </script>
+          </section>
+          <section>
+            <h2>Your Best Friends<br/>are Your Best Friends</h2>
+            <p>Ask for help</p>
+          </section>
+          <section>
+            <h3>If All Else Fails...</h3>
+            <img src="http://i.imgur.com/cKm9AKj.png"/>
+          </section>
+          <section>
+            <h3>Save Backups</h3>
+            <ul>
+              <li>zip 'em</li>
+              <li>copy and rename folder (project_2)</li>
+              <li>version tracking</li>
+            </ul>
+          </section>
         </section>
 
         <section>
           <h2>What Next?</h2>
           <p><a href="../drawing">Drawing Shapes</a></p>
-          <p><a href="../ftp">More Setup</a></p>
         </section>
 
       </div>

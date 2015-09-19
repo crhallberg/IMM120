@@ -15,25 +15,73 @@
       <div class="container">
         <a class="title" href="index.html">IMM 120</a>
         <a href="http://www.crhallberg.com/IMM120/welcome/#/4">Syllabus</a>
-        <a href="./new_sketch.zip">Sketch Template</a>
+        <a href="./new_sketch.zip">Empty Sketch</a>
         <a href="https://p5js.org/reference/">p5.js Reference</a>
         <a href="./sandbox">Sandbox</a>
-        <a href="https://github.com/crhallberg/IMM120">GitHub</a>
+        <!--<a href="https://github.com/crhallberg/IMM120">GitHub</a>-->
       </div>
     </header>
     <div class="container">
       <h1>Intro to Interactive Multimedia, Fall 2015</h1>
+      <p>Professor's email: crhallberg@gmail.com</p>
+      <p>Today's Class: Buttons, Buttons, Buttons</p>
+      <h2>Homework</h2>
+      <p><b>Rock-Paper-Scissors that tells you who's won for bonus credit</b></p>
+      <p style="text-align:center">Pro-Tip: presentations go left-right AND up-down. Keep an eye on the arrows in the bottom-right.</p>
       <div class="row">
         <div class="three col presentation">
           <iframe src="./welcome"></iframe>
           <a href="./welcome">Hello World</a>
-          <span class="date">September 8</span>
+          <span class="date">August 31</span>
         </div>
         <div class="three col presentation">
           <iframe src="./drawing"></iframe>
           <a href="./drawing">Drawing Shapes</a>
+          <span class="date">August 31</span>
+        </div>
+        <div class="three col presentation">
+          <iframe src="./variables"></iframe>
+          <a href="./variables">Variables and Conditionals</a>
           <span class="date">September 8</span>
         </div>
+        <div class="three col presentation">
+          <iframe src="./functions"></iframe>
+          <a href="./functions">Functions</a>
+          <span class="date">September 8</span>
+        </div>
+      </div>
+      <h2>Getting Started</h2>
+      <ul>
+        <li><a href="./new_sketch.zip">Download an empty sketch</a></li>
+        <li>Find and unzip the file (Mac: double-click, Windows: right-click > Extract All)</li>
+        <li>Rename the new_sketch folder</li>
+        <li>In <a href="http://brackets.io/">Brackets</a>, File > Open Folder</li>
+        <li>Select the folder and click the Open button</li>
+        <li>On the left, double-click on sketch.js and hit the lightning bolt (top right) to run</li>
+      </ul>
+      <h2>Making A New Sketch (New File Method)</h2>
+      <ul>
+        <li>File > New File</li>
+        <li>Save it in the same folder as NAME<b>.js</b></li>
+        <li>On line 8 of index.html, change sketch.js to NAME.js</li>
+        <li>Refresh or relaunch preview</li>
+      </ul>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/17JTVuA9Ndk" frameborder="0" allowfullscreen></iframe>
+      <h2>Making A New Sketch (Folder Method)</h2>
+      <ul>
+        <li>Go back to the <a href="./new_sketch.zip">zip</a> file (likely in Downloads)</li>
+        <li>Extract the zip, will create a new folder</li>
+        <li>Rename the folder</li>
+        <li>Open Folder in Bracket</li>
+        <li>If you want another Brackets window, go to Debug > New Window</li>
+      </ul>
+      <div>
+        <h2>Useful Code</h2>
+        <pre>
+function isMouseInsideRect(x, y, w, h) {
+    return mouseX > x && mouseY > y && mouseX < x+w && mouseY < y+h;
+}
+        </pre>
       </div>
     </div>
   </body>

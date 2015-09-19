@@ -1,9 +1,4 @@
 Reveal.addEventListener('slidechanged', function(event) {
-  $('iframe[data-example]').each(function(i, op) {
-    if("string" === typeof $(op).data('no-reload')) return;
-    $(op).attr('src', $(op).attr('src'));
-  });
-
   if($('[data-copy]').length > 0) {
     var map = [];
     $('[data-copy]').each(function(i, op) {
@@ -38,11 +33,39 @@ Reveal.addEventListener('slidechanged', function(event) {
       }
     }
   }
+
+  $('iframe[data-code], iframe[data-example]').each(function(i, op) {
+    if("string" === typeof $(op).data('no-reload')) return;
+    $(op).attr('src', $(op).attr('src')); // calls load
+  });
 });
 
-$('iframe[data-example]').load(function() {
+function html_entity_decode(string, quote_style) {
+  var hash_map = {},
+      symbol = '',
+      tmp_str = '',
+      entity = '';
+  tmp_str = string.toString();
+
+  delete(hash_map['&']);
+  hash_map['&'] = '&amp;';
+
+  for (symbol in hash_map) {
+    entity = hash_map[symbol];
+    tmp_str = tmp_str.split(entity).join(symbol);
+  }
+  tmp_str = tmp_str.split('&#039;').join("'");
+
+  return tmp_str;
+}
+
+$('iframe[data-code], iframe[data-example]').load(function() {
   try {
-    var exampleCode = $('#'+$(this).data('example')).text();
+    var $code = $('#'+$(this).data('example'));
+    if ($code.length === 0) {
+      $code = $('#'+$(this).data('code'));
+    }
+    var exampleCode = html_entity_decode($code.text());
     if (exampleCode.indexOf('new p5()') === -1) {
       exampleCode += '\nnew p5();';
     }
@@ -63,7 +86,7 @@ $('iframe[data-example]').load(function() {
 });
 
 $(document).ready(function() {
-  $('iframe[data-example]').each(function(i, op) {
+  $('iframe[data-code], iframe[data-example]').each(function(i, op) {
     $(op).attr('src', '../revealjs/iframe/example.html');
   });
   $('iframe[data-sound]').each(function(i, op) {
@@ -77,12 +100,15 @@ $(document).ready(function() {
   if('undefined' !== typeof tabOverride) {
     tabOverride.tabSize(2);
     $('pre.editor').each(function(i, op) {
+      console.log(op);
       var $textarea = $(op).find('textarea');
       tabOverride.set($textarea[0]);
       $textarea.on('keyup', function(event) {
         $code = $(this).closest('pre.editor').find('code');
-        $code.html(this.value);
-        hljs.highlightBlock($code[0]);
+        $code.html($('<div/>').text(this.value).html());
+        if (typeof hljs !== "undefined") {
+          hljs.highlightBlock($code[0]);
+        }
       });
       $textarea.keyup();
     });

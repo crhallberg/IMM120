@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Variables and Conditionals</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../../font-awesome.min.css">
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/imm120.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/monokai_sublime.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../revealjs/taboverride.min.js"></script>
+    <script src="../revealjs/lib/js/head.min.js"></script>
+    <script src="../revealjs/js/reveal.js"></script>
+
+  </head>
+
+  <body style="background-color: #483F00">
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Functions</h1>
+          <small>or the benefits of organizing code</small>
+        </section>
+
+        <section>
+          <section>
+            <h2>function (noun)</h2>
+            <p>a named block of code</p>
+          </section>
+
+          <section>
+            <h2>block (noun)</h2>
+            <p>a group of code, normally separated from the rest of the code by { being between braces }</p>
+          </section>
+
+          <section>
+            <h2>block (cont)</h2>
+            <p>variables created in a block cannot be used outside the block, but can be used in blocks inside said block</p>
+          </section>
+
+          <section>
+            <pre><code class="javascript">// Example
+var a = 3;
+
+if (question) { // Block 1
+    var sum = 0;
+    sum = sum + a;
+
+    // Block 2
+    if (q2) {
+        var b = 7;
+        sum = sum + b; // sum is defined "above", so we're good
+    } // end Block 2
+
+    println(sum); // sum created inside this block, good
+    println(b);   // b is lost at the end of Block 2
+} // end Block 1
+
+println(sum); // error, sum was created in Block 1</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <p>Functions are excellent for code that does one particular thing.</p>
+            <p>Especially if you want to do that thing multiple times.</p>
+          </section>
+
+          <section>
+            <pre><code class="javascript">// Draw an apple where the mouse is
+function drawApple() {
+  // Stem
+  noStroke();
+  fill('green');
+  rect(mouseX-4, mouseY-60, 8, 20);
+  // Flesh
+  fill('red');
+  stroke('maroon');
+  ellipse(mouseX, mouseY, 100, 100);
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <pre><code class="javascript">function setup() {
+    createCanvas(640, 480);
+    background('blue');
+}
+
+function draw() {
+    // No background
+    if (isMousePressed) {
+        drawApple();
+    }
+}</code></pre>
+          </section>
+
+          <section>
+            <h3>click on the sketch</h3>
+            <iframe data-example="mouseapple"></iframe>
+            <pre style="display:none;" id="mouseapple">
+function setup() {
+    createCanvas(640, 480);
+    background('blue');
+}
+function draw() {
+    // No background
+    if (isMousePressed) {
+        drawApple();
+    }
+}
+function drawApple() {
+  // Stem
+  noStroke();
+  fill('green');
+  rect(mouseX-4, mouseY-60, 8, 20);
+  // Flesh
+  fill('red');
+  stroke('maroon');
+  ellipse(mouseX, mouseY, 100, 100);
+}</pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Parameters</h2>
+            <p>they have what functions crave</p>
+          </section>
+
+          <section>
+            <p>Functions can receive data through parameters.</p>
+            <p>All you have to give the information a name</p><br/>
+            <p>function drawApple(x, y) {</p><br/>
+            <p>drawApple is ready to receive two parameters,<br/>it will call them x and y</p>
+          </section>
+
+          <section>
+            <h3>Order is All</h3>
+            <p>function drawApple(x, y) {</p><br/>
+            <p>Regardless of name, functions will assign their parameters in order from left to right</p><br/>
+            <p>drawApple(7, mouseY); // call from draw</p>
+            <p><i class="fa fa-arrow-down"></i></p>
+            <p>function drawApple(x = 7, y = mouseY) {</p>
+          </section>
+
+          <section>
+            <pre><code class="javascript">// Add two numbers together and println them
+function sum(a, b) {
+    println(a + b);
+}
+
+sum(8, 4);            // prints 12
+sum(mouseX, mouseY);  // depends on the variables
+sum(-452435, 534566); // idk, try it
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>functions will create new variables for their blocks, overwriting old variable names</h2>
+            <pre><code class="javascript">// Add two numbers together and println them
+function sayHello(firstName, lastName) {
+    println("Hello, " + firstName + " " + lastName);
+    firstName = "James"; // Change the name for fun
+    lastName = "Brown";
+}
+
+var firstName = "Chris";
+var lastName = "Hallberg";
+
+sayHello(lastName, firstName); // "Hello, Hallberg Chris"
+println(firstName); // Still "Chris"
+// the firstName parameter that was changed doesn't affect this
+            </code></pre>
+          </section>
+        </section>
+      </div>
+
+    </div>
+
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        history: true,
+        center: true,
+        maxScale: 1,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script src="../revealjs/p5js-reveal.js"></script>
+  </body>
+</html>

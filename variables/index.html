@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Variables and Conditionals</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="../../font-awesome.min.css">
+    <link rel="stylesheet" href="../revealjs/css/reveal.css">
+    <link rel="stylesheet" href="../revealjs/css/theme/imm120.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="../revealjs/lib/css/monokai_sublime.css">
+    <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../revealjs/taboverride.min.js"></script>
+    <script src="../revealjs/lib/js/head.min.js"></script>
+    <script src="../revealjs/js/reveal.js"></script>
+
+  </head>
+
+  <body style="background-color: #720672">
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Variables<br/>and Conditionals</h1>
+        </section>
+
+        <section>
+          <h2>Named Values</h2>
+          <p>var apples = 7;</p>
+          <p>var name = "Chris";</p>
+          <p>var sum = a + b;</p>
+        </section>
+
+        <section>
+          <h2>p5.js Useful Variables</h2>
+          <p>width, height</p>
+          <p>mouseX, mouseY</p>
+          <p>pmouseX, pmouseY</p>
+          <p>isMousePressed</p>
+          <p>frameCount</p>
+          <p>PI, HALF_PI, TWO_PI</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>p5.js replaces variables<br/>while your sketch is running</h2>
+            <p>rect(100, y, 20, 20); // y = 130</p>
+            <p><i class="fa fa-arrow-down"></i></p>
+            <p>rect(100, 130, 20, 20);</p>
+          </section>
+
+          <section>
+            <pre class="editor">
+              <code class="javascript" id="rect"></code>
+              <textarea spellcheck="false">// Variables
+var y = 30;
+
+// Runs first and once
+function setup() {
+  createCanvas(600, 600); // size
+}
+
+// Loops forever
+function draw() {
+  background(255);
+  fill(0);
+  rect(200, y, 200, 200);
+}</textarea>
+            </pre>
+          </section>
+
+          <section>
+            <iframe data-example="rect"></iframe>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Asking Questions</h2>
+            <p>Yes or No Answers</p>
+            <p>Using Comparisons</p>
+          </section>
+
+          <section>
+            <h2>Boolean Operators</h2>
+            <table style="text-align: left">
+              <tr><td width="25%">==</td>    <td>"is equal to"</td></tr>
+              <tr><td>!=</td>    <td>"is NOT equal to"</td></tr>
+              <tr><td>&lt;</td>  <td>"is less than"</td></tr>
+              <tr><td>&gt;</td>  <td>"is greater than"</td></tr>
+              <tr><td>&lt;=</td> <td>"is less than or equal to"</td></tr>
+            </table>
+          </section>
+
+          <section>
+            <h2>if (question) { code }</h2>
+            <p>question is a boolean phrase, like a &lt; b</p>
+            <p>the code is run ONLY IF the answer is true</p>
+          </section>
+
+          <section>
+            <pre class="editor">
+              <code class="javascript" id="qcode"></code>
+              <textarea spellcheck="false">
+function setup() {
+  createCanvas(500, 150); // size
+  textSize(30);
+  textAlign(CENTER);
+  fill(0);
+}
+
+function draw() {
+  if (5 > 3) {
+    text("ONE", 100, 80);
+  }
+
+  var x = 5;
+  if (x > 5) {
+    text("x > 5", 250, 80);
+  }
+  if (x < 5) {
+    text("x < 5", 400, 80);
+  }
+}</textarea>
+            </pre>
+          </section>
+          <section>
+            <iframe data-example="qcode"></iframe>
+          </section>
+
+          <section>
+            <h2>if (question) { code1 } else { code2 }</h2>
+            <p>if the answer is true, only code1 is executed</p>
+            <p>if the answer is false, only code2</p>
+          </section>
+          <section>
+            <pre><code class="javascript">
+  if (score == 100) {
+    rect(50, 10, 80, 40);
+  } else {
+    ellipse(200, 200, 100, 100);
+  }
+            </code></pre>
+          </section>
+
+          <section>
+            <h3>Try to make this sketch</h3>
+            <iframe data-example="test1"></iframe>
+            <code id="test1" style="display: none">
+function setup() {
+  createCanvas(400, 400); // size
+  strokeWeight(2);
+}
+
+function draw() {
+  if (mouseX > width/2) {
+    background(200);
+  } else {
+    background(50);
+  }
+  line(width/2, 0, width/2, height);
+}
+            </code>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Combining Questions</h2>
+          </section>
+
+          <section>
+            <iframe data-example="comb1"></iframe>
+            <code id="comb1" style="display: none">
+function setup() {
+  createCanvas(400, 400); // size
+}
+
+function draw() {
+  background(255);
+  fill(255);
+  if (mouseX > width/3 && mouseX < 2*width/3) {
+    fill(0);
+  }
+  rect(width/3, -10, width/3, height+20);
+}
+            </code>
+          </section>
+
+          <section>
+            <h2>AND and OR</h2>
+            <h2><span style="font-family: Arial">&amp;&amp;</span> and <span style="font-family: Verdana">||</span></h2>
+          </section>
+
+          <section>
+            <pre><code class="javascript">
+  if (mouseX > 100 && mouseX < 200) {
+    // between
+  }
+
+  if (mouseX < 100 || mouseX > 200) {
+    // outside
+  }
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Inside Rectangle</h2>
+          </section>
+
+          <section>
+            <pre class="editor">
+              <code class="javascript">// Variables
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+
+// Runs first and once
+function setup() {
+  createCanvas(400, 400); // size
+}
+
+// Loops forever
+function draw() {
+  background(255);
+  fill(255);
+  rect(x, y, w, h);
+}</code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>When mouse is right of the left side...</h3>
+            <iframe data-example="inside1"></iframe>
+            <code id="inside1" style="display: none">
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+function setup() {
+  createCanvas(400, 400); // size
+}
+function draw() {
+  background(255);
+  fill(255);
+  if(mouseX > x) {
+    fill(0);
+  }
+  if(isMousePressed) {
+    line(x, 0, x, height);
+  }
+  rect(x, y, w, h);
+}
+            </code>
+          </section>
+
+          <section>
+            <h3>... AND below the top ...</h3>
+            <iframe data-example="inside2"></iframe>
+            <code id="inside2" style="display: none">
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+function setup() {
+  createCanvas(400, 400); // size
+}
+function draw() {
+  background(255);
+  fill(255);
+  if(mouseX > x && mouseY > y) {
+    fill(0);
+  }
+  if(isMousePressed) {
+    line(0, y, width, y);
+  }
+  rect(x, y, w, h);
+}
+            </code>
+          </section>
+
+          <section>
+            <h3>... AND left of the right side ...</h3>
+            <iframe data-example="inside3"></iframe>
+            <code id="inside3" style="display: none">
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+function setup() {
+  createCanvas(400, 400); // size
+}
+function draw() {
+  background(255);
+  fill(255);
+  if(mouseX > x && mouseX < x+w && mouseY > y) {
+    fill(0);
+  }
+  if(isMousePressed) {
+    line(x+w, 0, x+w, height);
+  }
+  rect(x, y, w, h);
+}
+            </code>
+          </section>
+
+          <section>
+            <h3>... AND above the bottom.</h3>
+            <iframe data-example="inside4"></iframe>
+            <code id="inside4" style="display: none">
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+function setup() {
+  createCanvas(400, 400); // size
+}
+function draw() {
+  background(255);
+  fill(255);
+  if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(0);
+  }
+  if(isMousePressed) {
+    line(y+h, 0, y+h, height);
+  }
+  rect(x, y, w, h);
+}
+            </code>
+          </section>
+
+          <section>
+            <pre><code class="javascript">// Variables
+var x = 100;
+var y = 100;
+var w = 200;
+var h = 200;
+
+function setup() {
+  createCanvas(400, 400); // size
+}
+
+function draw() {
+  background(255);
+  fill(255);
+  if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(0);
+  }
+  if(isMousePressed) {
+    line(y+h, 0, y+h, height);
+  }
+  rect(x, y, w, h);
+}
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Saving answers to variables</h2>
+            <p>var overTen = x > 10;</p>
+            <p>isMousePressed</p>
+          </section>
+
+          <section>
+            <pre><code class="javascript">
+  if (isMousePressed) {
+    // do something while the mouse is down
+  }
+            </code></pre>
+          </section>
+        </section>
+      </div>
+
+    </div>
+
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        history: true,
+        center: true,
+        maxScale: 1,
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../revealjs/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+    <script src="../revealjs/p5js-reveal.js"></script>
+  </body>
+</html>

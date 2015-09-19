@@ -38,69 +38,342 @@
           <h1>Drawing Shapes</h1>
         </section>
 
+        <!-- Table of Contents -->
         <section>
           <section>
-            <ul>
-              <li>The Coordinate System</li>
-              <li>background(<small>red, green, blue</small>);</li>
-              <li>Computer Colors</li>
-              <li>rect(<small>x, y, width, height</small>);</li>
-              <li>ellipse(<small>x, y, width, height</small>);</li>
-              <li>line(<small>x, y, x, y</small>);</li>
-              <li>fill(<small>red, green, blue</small>);</li>
-              <li><a href="#/11/1" class="jump">stroke</a>(<small>red, green, blue</small>);</li>
-            </ul>
+            <table style="text-align: left">
+              <tr><td>
+                <a href="#/2/0" class="jump">The Coordinate System</a><br/>
+                <a href="#/3/0" class="jump">line</a>(<small>x, y, x, y</small>);<br/>
+                <a href="#/4/0" class="jump">rect</a>(<small>x, y, width, height</small>);<br/>
+                <a href="#/5/0" class="jump">ellipse</a>(<small>x, y, width, height</small>);<br/>
+                <a href="#/13/0" class="jump">text</a>(<small>string, x, y</small>);<br/>
+                <a href="#/11/0" class="jump">arc</a>(<small>red, green, blue</small>);<br/>
+                <a href="#/12/0" class="jump">triangle</a>(<small>red, green, blue</small>);<br/>
+              </td><td>&nbsp;&nbsp;</td><td>
+                <a href="#/6/0" class="jump">Computer Colors</a><br/>
+                <a href="#/7/0" class="jump">background</a>(<small>red, green, blue</small>);<br/>
+                <a href="#/8/0" class="jump">fill</a>(<small>red, green, blue</small>);<br/>
+                <a href="#/9/0" class="jump">stroke</a>(<small>red, green, blue</small>);<br/>
+                <a href="#/10/0" class="jump">strokeWeight</a>(<small>pixels</small>);<br/>
+              </td></tr>
+            </table>
           </section>
         </section>
 
+        <!-- The Coordinate System -->
         <section>
           <section>
             <h2>The Coordinate System</h2>
           </section>
-        </section>
-
-        <section>
           <section>
-            <h2>background(<small>red, green, blue</small>);</h2>
-            <p><small>background(grey);</small></p>
-            <p><small>background(red, green, blue, alpha);</small></p>
-            <p><small>background(grey, alpha);</small></p>
+            <iframe data-example="coords" data-no-reload></iframe>
+           <code style="display:none" id="coords">
+var x = 0;
+var y = 0;
+var off = 25;
+
+function setup() {
+  createCanvas(400, 400);
+  textAlign(CENTER, CENTER);
+}
+
+function draw() {
+  background('#087f4b');
+
+  stroke(255);
+  fill(0);
+  rect(off, off, width-off*2, height-off*2);
+
+  stroke(255, 0, 0);
+  strokeWeight(8);
+  line(0, off, width, off);
+  line(off, 0, off, height);
+  line(off-14, height-17, off, height-3);
+  line(off+14, height-17, off, height-3);
+  line(width-17, off-14, width-3, off);
+  line(width-17, off+14, width-3, off);
+
+  stroke(255);
+  strokeWeight(2);
+  line(x+off, 0, x+off, height);
+  line(0, y+off, width, y+off);
+  fill(255);
+  ellipse(x+off, y+off, 10, 10);
+
+  noStroke();
+  fill(255, 100);
+  textSize(48);
+  text("("+x+", "+y+")", width/2, height/2);
+
+  fill(255);
+  textSize(20);
+  text("height", width/2, height-4);
+  push();
+  translate(width-4, height/2);
+  rotate(-HALF_PI);
+  text("width", 0, 0);
+  pop();
+}
+function keyPressed() {
+  var speed = 4;
+  if (keyCode === UP_ARROW) {
+    y -= speed;
+  } else if (keyCode === DOWN_ARROW) {
+    y += speed;
+  } else if (keyCode === LEFT_ARROW) {
+    x -= speed;
+  } else if (keyCode === RIGHT_ARROW) {
+    x += speed;
+  }
+}
+           </code>
           </section>
         </section>
 
+        <!-- line -->
+        <section>
+          <section>
+            <h2>line(<small>x, y, x, y</small>);</h2>
+            <p>Draw a line from here to there</p>
+            <small><a href="http://p5js.org/reference/#p5/line">reference</a></small>
+          </section>
+        </section>
+
+        <!-- rect -->
+        <section>
+          <section>
+            <h2>rect(<small>x, y, width, height</small>);</h2>
+            <p>Draw a rect with it's top left corner here,<br/>
+            and make it this wide and this tall from there</p>
+            <small><a href="http://p5js.org/reference/#p5/rect">reference</a></small>
+          </section>
+        </section>
+
+        <!-- ellipse -->
+        <section>
+          <section>
+            <h2>ellipse(<small>x, y, width, height</small>);</h2>
+            <p>Draw a circle centered here and<br/>make it this wide and this tall</p>
+            <small><a href="http://p5js.org/reference/#p5/rect">reference</a></small>
+          </section>
+        </section>
+
+        <!-- Computer Colors -->
         <section>
           <section>
             <h2>Computer Colors</h2>
           </section>
-        </section>
-
-        <section>
           <section>
-            <h2>rect(<small>x, y, width, height</small>);</h2>
+            <h3>Additive Colors</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Additive_color_mixing_simulated.png" height="400"/>
+          </section>
+          <section>
+            <h3>RGB color system</h3>
+            <iframe data-example="color-sliders" data-no-reload></iframe>
+           <code style="display:none" id="color-sliders">var rSlider, gSlider, bSlider;
+
+function setup() {
+  // create canvas
+  createCanvas(710, 300);
+  textSize(15)
+  noStroke();
+
+  // create sliders
+  rSlider = createSlider(0, 255, 1);
+  rSlider.position(20, 20);
+  gSlider = createSlider(0, 255, 1);
+  gSlider.position(20, 50);
+  bSlider = createSlider(0, 255, 1);
+  bSlider.position(20, 80);
+}
+
+function draw() {
+  var r = rSlider.value();
+  var g = gSlider.value();
+  var b = bSlider.value();
+  background(r, g, b);
+  text("red ("+r+")", 165, 35);
+  text("green ("+g+")", 165, 65);
+  text("blue ("+b+")", 165, 95);
+}
+           </code><br/>
+           <a href="http://p5js.org/examples/examples/Dom_Slider.php">Copied from p5.js</a>
+          </section>
+          <section>
+            <h3>Hexidecimal Color</h3>
+            <p>#rrggbb</p>
+          </section>
+          <section>
+            <h3>Other Color Systems</h3>
+            <p><a href="http://p5js.org/reference/#p5/colorMode">colorMode(HSB, 360, 100, 100, 100)</a></p><br/>
+            <img src="https://www.processing.org/tutorials/color/imgs/hsb.png" height="300"/>
           </section>
         </section>
 
+        <!-- background -->
         <section>
           <section>
-            <h2>ellipse(<small>x, y, width, height</small>);</h2>
+            <h2>background(<small>color</small>);</h2>
+            <p>Paint the whole sketch this color</p>
+            <small><a href="http://p5js.org/reference/#p5/background">reference</a></small>
+          </section>
+          <section>
+            <iframe data-example="bg-grey" data-no-reload></iframe>
+           <code style="display:none" id="bg-grey">
+var x = 0;
+var y = 0;
+var off = 25;
+
+function setup() {
+  createCanvas(256, 306);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+}
+
+function draw() {
+  background('#087f4b');
+  fill(255);
+  noStroke();
+  text("background("+mouseX+");", width/2, 40);
+
+  fill(mouseX);
+  stroke(255);
+  rect(0, 50, width-1, width-1);
+}
+           </code>
+          </section>
+          <section>
+            <iframe data-example="bg-color" data-no-reload></iframe>
+           <code style="display:none" id="bg-color">
+var x = 0;
+var y = 0;
+var off = 25;
+
+function setup() {
+  createCanvas(400, 306);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+}
+
+function draw() {
+  background('#087f4b');
+
+  var X = floor(max(0, Math.min(255, mouseX-((width-255)/2))));
+  var Y = floor(max(0, Math.min(255, mouseY-50)));
+
+  fill(255);
+  noStroke();
+  text("background("+X+", "+Y+", 100);", width/2, 40);
+
+  fill(X, Y, 100);
+  stroke(255);
+  rect((width-255)/2, 50, 255, 255);
+}
+           </code>
+          </section>
+          <section>
+            <h3>Transparent Backgrounds</h3>
+            <p>background(100, [0-255]);<br/>
+            background(red, green, blue, alpha);</p><br/>
+            <iframe data-example="bg-alpha" data-no-reload></iframe>
+           <code style="display:none" id="bg-alpha">
+var x = 0;
+var y = 0;
+var off = 25;
+
+function setup() {
+  createCanvas(500, 100);
+}
+
+function draw() {
+  background(255, 10);
+  fill(0);
+  ellipse(mouseX, mouseY, 20, 20);
+}
+           </code>
           </section>
         </section>
 
+        <!-- fill -->
         <section>
           <section>
-            <h2>line(<small>x, y, x, y</small>);</h2>
+            <h2>fill(<small>color</small>);</h2>
+            <p>Fill all the shapes with this color from here on out</p>
+            <p>noFill();</p>
+            <small><a href="http://p5js.org/reference/#p5/fill">reference</a></small>
           </section>
         </section>
 
+        <!-- stroke -->
         <section>
           <section>
-            <h2>fill(<small>red, green, blue</small>);</h2>
+            <h2>stroke</a>(<small>color</small>);</h2>
+            <p>Make all lines this color from here on out</p>
+            <p>noStroke();</p>
+            <small><a href="http://p5js.org/reference/#p5/stroke">reference</a></small>
           </section>
         </section>
 
+        <!-- strokeWeight -->
         <section>
           <section>
-            <h2>stroke</a>(<small>red, green, blue</small>);</h2>
+            <h2>strokeWeight</a>(<small>pixels</small>);</h2>
+            <p>Make all lines this many pixels thick from here on out</p>
+            <small><a href="http://p5js.org/reference/#p5/strokeWeight">reference</a></small>
+          </section>
+        </section>
+
+        <!-- arc -->
+        <section>
+          <section>
+            <h2>arc</a>(<small>x, y, width, height, start ,stop, [mode]</small>);</h2>
+            <p>Draw an arc centered here and this wide and tall.<br/>
+            Start the arc at this angle and end it at this one.</p>
+            <small><a href="http://p5js.org/reference/#p5/arc">reference</a></small>
+          </section>
+        </section>
+
+        <!-- triangle -->
+        <section>
+          <section>
+            <h2>triangle</a>(<small>x1, y1, x2, y2, x3, y3</small>);</h2>
+            <p>Draw a triangle between these three points</p>
+            <small><a href="http://p5js.org/reference/#p5/stroke">reference</a></small>
+          </section>
+        </section>
+
+        <!-- text -->
+        <section>
+          <section>
+            <h2>text</a>(<small>string|number, x, y, width, height</small>);</h2>
+            <p>Write text at this location.<br/>Maybe keep it inside this box.</p>
+            <p><small>textAlign(LEFT/CENTER/RIGHT)</small></p>
+            <p><small>textFont("font")</small></p>
+            <p><small>textSize(number)</small></p>
+            <small><a href="http://p5js.org/reference/#p5/text">reference</a></small>
+          </section>
+
+          <section>
+            <h2>textAlign(LEFT|CENTER|RIGHT);</h2>
+            <p>Change alignment of text</p>
+            <p>LEFT is default: x, y is bottom left corner of text</p>
+            <p>CENTER: x, y is bottom center of text</p>
+            <p>RIGHT: x, y is bottom right of text</p>
+            <small><a href="http://p5js.org/reference/#p5/textAlign">reference</a></small>
+          </section>
+
+          <section>
+            <h2>textFont("font");</h2>
+            <p>Change the font from here forward.</p>
+            <p>Arial, Georgia, Verdana</p>
+            <small><a href="http://p5js.org/reference/#p5/textFont">reference</a></small>
+          </section>
+
+          <section>
+            <h2>textSize(number);</h2>
+            <p>Change the size of text from here forward.</p>
+            <small><a href="http://p5js.org/reference/#p5/textSize">reference</a></small>
           </section>
         </section>
 
@@ -115,7 +388,6 @@
         controls: true,
         history: true,
         center: true,
-        minScale: 1,
         maxScale: 1,
 
         transition: 'slide', // none/fade/slide/convex/concave/zoom

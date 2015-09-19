@@ -12,7 +12,7 @@ header {
 }
 header a {
   display: inline-block;
-  padding: 1em;
+  padding: 1em 2em;
   color: #fff;
 }
 header a:hover {background-color: #2d7bb6;}
@@ -35,7 +35,14 @@ header a.title{text-decoration: none;}
   margin: auto;
 }
 
-h1 {text-align: center;}
+h1 {
+  margin-bottom: 0;
+  text-align: center;
+}
+h1 + p {
+  margin: 0;
+  text-align: center;
+}
 
 .presentation {
   display: block;
@@ -51,11 +58,20 @@ h1 {text-align: center;}
   color: #444;
 }
 .presentation iframe {
-  width: 400%;
-  height: 800px;
-  margin-bottom: -616px;
-  transform: scale(0.25, 0.25);
-  transform-origin: top left;
-  border: 16px solid #fff;
-  box-shadow: 0 1em 2em rgba(0,0,0,.3);
+  width: 100%;
+  height: 200px;
+  border: 4px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
 }
+
+.row.homework .col {text-align: center;}
+.row.homework .col img {max-width: 50%;}
+.row.homework .col .two {margin: 18px auto 38px;}
+.row.homework .col p {margin: 0;}
+.row.homework .col pre {
+  max-width: 50%;
+  margin: auto;
+  text-align: left;
+  font-size: 70%;
+}
+.row.homework .col small {font-size: 60%;}
