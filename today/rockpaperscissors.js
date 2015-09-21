@@ -2,7 +2,7 @@
 
 // Runs first and once
 function setup() {
-  createCanvas(640, 480); // size
+  createCanvas(640, 400); // size
   background(0);
   fill(255);
   textSize(42);
@@ -21,24 +21,24 @@ function keyPressed() {
   textAlign(LEFT);
   var padding = 10;
   if (key === 'A') {
-    text('ROCK', padding, height/2);
+    text('ROCK', padding, 150);
   }
   if (key === 'S') {
-    text('PAPER', padding, height/2);
+    text('PAPER', padding, 200);
   }
   if (key === 'D') {
-    text('SCISSORS', padding, height/2);
+    text('SCISSORS', padding, 250);
   }
   // RIGHT SIDE
   textAlign(RIGHT);
   var padding = 10;
   if (key === 'J') {
-    text('ROCK', width-padding, height/2);
+    text('ROCK', width-padding, 150);
   }
   if (key === 'K') {
-    text('PAPER', width-padding, height/2);
+    text('PAPER', width-padding, 200);
   }
   if (key === 'L') {
-    text('SCISSORS', width-padding, height/2);
+    text('SCISSORS', width-padding, 250);
   }
 }
