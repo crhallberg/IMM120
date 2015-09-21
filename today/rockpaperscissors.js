@@ -14,6 +14,7 @@ function draw() {
 }
 
 function keyPressed() {
+  // RESET
   if (key === ' ') {
     background(0);
   }
