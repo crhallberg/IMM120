@@ -34,20 +34,20 @@ function keyPressed() {
     if (key === 'A') {
         if (player1 === false) {
             player1 = 'rock';
+            text('ROCK', padding, 150);
         }
-        text('ROCK', padding, 150);
     }
     if (key === 'S') {
         if (player1 === false) {
             player1 = 'paper';
+            text('PAPER', padding, 200);
         }
-        text('PAPER', padding, 200);
     }
     if (key === 'D') {
         if (player1 === false) {
             player1 = 'scissors';
+            text('SCISSORS', padding, 250);
         }
-        text('SCISSORS', padding, 250);
     }
     // RIGHT SIDE
     textAlign(RIGHT);
@@ -55,19 +55,19 @@ function keyPressed() {
     if (key === 'J') {
         if (player2 === false) {
             player2 = 'rock';
+            text('ROCK', width - padding, 150);
         }
-        text('ROCK', width - padding, 150);
     }
     if (key === 'K') {
         if (player2 === false) {
             player2 = 'paper';
+            text('PAPER', width - padding, 200);
         }
-        text('PAPER', width - padding, 200);
     }
     if (key === 'L') {
         if (player2 === false) {
             player2 = 'scissors';
+            text('SCISSORS', width - padding, 250);
         }
-        text('SCISSORS', width - padding, 250);
     }
 }
