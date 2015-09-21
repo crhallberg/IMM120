@@ -2,9 +2,9 @@
 
 // Runs first and once
 function setup() {
-  createCanvas(640, 400); // size
-  background(0);
-  fill(255);
+  createCanvas(700, 400); // size
+  background(255);
+  fill(0);
   textSize(42);
 }
 
@@ -16,7 +16,7 @@ function draw() {
 function keyPressed() {
   // RESET
   if (key === ' ') {
-    background(0);
+    background(255);
   }
   // LEFT SIDE
   textAlign(LEFT);
