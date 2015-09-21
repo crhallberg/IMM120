@@ -2,10 +2,10 @@
 
 // Runs first and once
 function setup() {
-  createCanvas(700, 400); // size
+  createCanvas(800, 400); // size
   background(255);
   fill(0);
-  textSize(42);
+  textSize(45);
 }
 
 // Loops forever
