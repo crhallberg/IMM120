@@ -18,7 +18,42 @@ function setup() {
 var spin = 0;
 
 function draw() {
-    println(player1 + " vs " + player2);
+    background(255);
+    textAlign(LEFT);
+    // Players entering moves
+    if (player1 === false || player2 === false) {
+        if (player1 === false) {
+            text("A/S/D", 10, 200);
+        } else {
+            text("READY!", 10, 200);
+        }
+        textAlign(RIGHT);
+        if (player2 === false) {
+            text("J/K/L", width - 10, 200);
+        } else {
+            text("READY!", width - 10, 200);
+        }
+    } else if ( // PLAYER 1 WINS
+        (player1 == 'paper' && player2 == 'rock') ||
+        (player1 == 'rock' && player2 == 'scissors') ||
+        (player1 == 'scissors' && player2 == 'paper')
+    ) {
+        textAlign(CENTER);
+        text("P1 WINS!!", width/2, 200);
+        text(player1 + " vs " + player2, width/2, 300);
+    } else if ( // PLAYER 2 WINS
+        (player2 == 'paper' && player1 == 'rock') ||
+        (player2 == 'rock' && player1 == 'scissors') ||
+        (player2 == 'scissors' && player1 == 'paper')
+    ) {
+        textAlign(CENTER);
+        text("P2 WINS!!", width/2, 200);
+        text(player1 + " vs " + player2, width/2, 300);
+    } else { // TIE
+        textAlign(CENTER);
+        text("TIE", width/2, 200);
+        text(player1 + " vs " + player2, width/2, 300);
+    }
 }
 
 function keyPressed() {
@@ -34,19 +69,16 @@ function keyPressed() {
     if (key === 'A') {
         if (player1 === false) {
             player1 = 'rock';
-            text('ROCK', padding, 150);
         }
     }
     if (key === 'S') {
         if (player1 === false) {
             player1 = 'paper';
-            text('PAPER', padding, 200);
         }
     }
     if (key === 'D') {
         if (player1 === false) {
             player1 = 'scissors';
-            text('SCISSORS', padding, 250);
         }
     }
     // RIGHT SIDE
@@ -55,19 +87,16 @@ function keyPressed() {
     if (key === 'J') {
         if (player2 === false) {
             player2 = 'rock';
-            text('ROCK', width - padding, 150);
         }
     }
     if (key === 'K') {
         if (player2 === false) {
             player2 = 'paper';
-            text('PAPER', width - padding, 200);
         }
     }
     if (key === 'L') {
         if (player2 === false) {
             player2 = 'scissors';
-            text('SCISSORS', width - padding, 250);
         }
     }
 }
