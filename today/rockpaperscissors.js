@@ -10,7 +10,7 @@ function setup() {
 
 // Loops forever
 function draw() {
-
+  // We're not looping any drawing
 }
 
 function keyPressed() {
