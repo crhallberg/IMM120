@@ -1,5 +1,5 @@
 // Variables
-var rock;
+var rock; // declaring
 
 // Runs first and once
 function setup() {
@@ -14,7 +14,12 @@ function setup() {
 // Loops forever
 function draw() {
     // We're not looping any drawing
-    image(rock, 0, 0);
+    push(); // save
+    translate(400, 100); // move into position
+    rotate(HALF_PI); // rotate
+    image(rock, 0, 0, 200, 250); // draw
+    pop(); // restore
+    text('apple', 0, 200);
 }
 
 function keyPressed() {
