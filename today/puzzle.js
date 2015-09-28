@@ -21,8 +21,8 @@ function draw() {
 function drawMoon() {
   push();
 
-  translate(mouseX, mouseY);
   rotate(radians(angle));
+  translate(mouseX, mouseY);
   image(moon, -moonWidth/2, -moonHeight/2);
 
   pop();
