@@ -1,5 +1,5 @@
 // Variables    
-var distanceBetween = 50;
+var distanceBetween = 20;
 var offset = 35;
 
 // Runs first and once
@@ -10,12 +10,18 @@ function setup() {
 // Loops forever
 function draw() {
     background(102);
+    
+    for (var count = 0; count < 60; count++) {
+        var x = count * distanceBetween + offset;
+        ellipse(x, 100, count, 50);
+
+        println(count);
+    }
 
     var count = 0;
-
     while (count < 60) {
         var x = count * distanceBetween + offset;
-        ellipse(x, 250, 50, 50);
+        ellipse(x, 250, count, 50);
 
         println(count);
         count = count + 1;
