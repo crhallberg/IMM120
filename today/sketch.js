@@ -15,4 +15,4 @@ function draw() {
     ellipse(400, 250, 50, 50);
     ellipse(500, 250, 50, 50);
     ellipse(600, 250, 50, 50);
-}
+
