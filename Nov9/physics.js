@@ -3,7 +3,8 @@ var ballX = 400;
 var ballY = 200;
 var ballXSpeed = 2;
 var ballYSpeed = 3;
-var gravity = .4;
+var vAcc = 0;
+var hAcc = 0;
 
 // Runs first and once
 function setup() {
@@ -12,20 +13,21 @@ function setup() {
 
 // Loops forever
 function draw() {
-    background(200);
+    // background(200);
     
     ellipse(ballX, ballY, 100, 100);
     
     ballX += ballXSpeed;
     ballY += ballYSpeed;
-    ballYSpeed += gravity;
+    ballXSpeed += hAcc;
+    ballYSpeed += vAcc;
     
     if (ballX > width || ballX < 0) {
         ballXSpeed = -ballXSpeed;
     }
     // Bounce
     if (ballY > height || ballY < 0) {
-        ballYSpeed = -ballYSpeed;
+        ballYSpeed = -.8 * ballYSpeed;
     }
 }
 
