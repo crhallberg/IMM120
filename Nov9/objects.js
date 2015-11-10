@@ -40,3 +40,9 @@ function mousePressed() {
     };
     objects.push(circle);
 }
+
+function Ball(x, y, s) {
+    this.x = x;
+    this.y = y;
+    this.size = s;
+}

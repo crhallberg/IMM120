@@ -1,9 +1,5 @@
 // Variables
-var ballX = 400;
-var ballY = 300;
-var ballSize = 100;
-var ballXSpeed = 0;
-var ballYSpeed = 0;
+var ball = new Ball(400, 300, 100);
 var gravity = .2;
 
 // Runs first and once
@@ -15,21 +11,34 @@ function setup() {
 function draw() {
     background(0);
 
-    ballX += ballXSpeed;
-    ballY += ballYSpeed;
-    ballYSpeed -= gravity;
-
-    ellipse(ballX, ballY, ballSize, ballSize);
-
-    if (ballY > height) {
-        ballYSpeed = -.7 * ballYSpeed; // Bounce
-        ballY = height;
-    }
+    ball.draw();
 }
 
 function mousePressed() {
-    ballX = mouseY;
-    ballY = mouseY;
-    ballXSpeed = 0;
-    ballYSpeed = 0;
+    ball.x = mouseX;
+    ball.y = mouseY;
+    ball.xSpeed = 0;
+    ball.ySpeed = 0;
+}
+
+// Ball template (class)
+function Ball(x, y, s) {
+    this.x = x;
+    this.y = y;
+    this.size = s;
+    this.xSpeed = 0;
+    this.ySpeed = 0;
+    
+    this.draw = function () {
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        this.ySpeed += gravity;
+
+        ellipse(this.x, this.y, this.size, this.size);
+
+        if (this.y > height) {
+            this.ySpeed = -.7 * this.ySpeed; // Bounce
+            this.y = height;
+        }
+    }
 }
