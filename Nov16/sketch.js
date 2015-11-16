@@ -1,6 +1,6 @@
 // Variables
 var socket = window.io.connect('http://romeo.crhallberg.com:8120');
-var room = 'white';
+var room = 'skyblue';
 var colors = ['red', 'orange', 'yellow', 'green', 'lightblue', 'blue', 'indigo', 'purple', 'pink', 'brown', 'black', 'gray'];
 var myColor;
 var currentColor = Math.floor(Math.random()*colors.length);
@@ -38,12 +38,24 @@ function draw() {
         line(pmouseX, pmouseY, mouseX, mouseY);
         socket.emit('update', data);
     }
+    if (keyIsPressed) {        
+        if (key == 'a') {
+            fill(room);
+            noStroke();
+            ellipse(mouseX, mouseY, 100, 100);
+            socket.emit('erase', {
+                room: room,
+                x: mouseX,
+                y: mouseY
+            })
+        }
+    }
 }
 
 function keyPressed() {
     if (key == ' ') {
         background(room);
-    } else {
+    } else if (key != 'A') {
         currentColor++;
         if (currentColor >= colors.length) {
             currentColor = 0;

@@ -1,6 +1,6 @@
 // Variables
 var socket = window.io.connect('http://romeo.crhallberg.com:8120');
-var room = 'tan';
+var room = 'skyblue';
 
 // Run once at the start
 function setup() {
@@ -9,7 +9,14 @@ function setup() {
     socket.on('update', function (data) {
         stroke(data.color);
         line(data.px, data.py, data.x, data.y);
+        console.log(data.id);
     });
+
+    socket.on('erase', function (data) {
+        fill(room);
+        noStroke();
+        ellipse(data.x, data.y, 100, 100);
+    })
 
     socket.emit('join', room);
 
