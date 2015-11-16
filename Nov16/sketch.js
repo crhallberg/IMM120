@@ -2,7 +2,8 @@
 var socket = window.io.connect('http://romeo.crhallberg.com:8120');
 var room = 'white';
 var colors = ['red', 'orange', 'yellow', 'green', 'lightblue', 'blue', 'indigo', 'purple', 'pink', 'brown', 'black', 'gray'];
-var myColor, currentColor = Math.floor(Math.random()*colors.length);
+var myColor;
+var currentColor = Math.floor(Math.random()*colors.length);
 
 // Run once at the start
 function setup() {

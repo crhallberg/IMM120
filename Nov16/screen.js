@@ -1,6 +1,6 @@
 // Variables
 var socket = window.io.connect('http://romeo.crhallberg.com:8120');
-var room = 'white';
+var room = 'tan';
 
 // Run once at the start
 function setup() {
