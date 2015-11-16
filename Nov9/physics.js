@@ -1,13 +1,10 @@
 // Variables
-var objects = [];
-var ball = {
-    x: 400,
-    y: 200,
-    xspeed: 2,
-    yspeed: 3
-};
-
-var gravity = .2;
+var ballX = 400;
+var ballY = 200;
+var ballXSpeed = 2;
+var ballYSpeed = 3;
+var vAcc = 0;
+var hAcc = 0;
 
 // Runs first and once
 function setup() {
@@ -16,26 +13,27 @@ function setup() {
 
 // Loops forever
 function draw() {
-    background(200);
+    // background(200);
     
-    ellipse(ball.x, ball.y, 100, 100);
+    ellipse(ballX, ballY, 100, 100);
     
-    ball.x += ball.xspeed;
-    ball.y += ball.yspeed;
-    ball.yspeed += gravity;
+    ballX += ballXSpeed;
+    ballY += ballYSpeed;
+    ballXSpeed += hAcc;
+    ballYSpeed += vAcc;
     
-    if (ball.x > width || ball.x < 0) {
-        ball.xspeed = -ball.xspeed;
+    if (ballX > width || ballX < 0) {
+        ballXSpeed = -ballXSpeed;
     }
     // Bounce
-    if (ball.y > height || ball.y < 0) {
-        ball.yspeed = -.8 * ball.yspeed;
+    if (ballY > height || ballY < 0) {
+        ballYSpeed = -.8 * ballYSpeed;
     }
 }
 
 function mousePressed() {
-    ball.x = mouseX;
-    ball.y = mouseY;
+    ballX = mouseX;
+    ballY = mouseY;
 }
 
 function keyPressed() {
