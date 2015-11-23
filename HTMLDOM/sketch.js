@@ -10,12 +10,21 @@ function setup() {
     var boldElements = selectAll('b');
     for (var i=0; i<boldElements.length; i++) {
         boldElements[i].html('<img src="http://cliparts.co/cliparts/6iy/XxE/6iyXxERAT.jpg"/>')
+        boldElements[i].mousePressed(linkClicked);
     }
     
     var link = createA('#', 'CLICK ME FOR FUN');
     select('#sketch').child(link);
+    link.mousePressed(linkClicked);
+    
+    background('purple');
 }
 
 function draw() {
-    background('purple');
+}
+
+function linkClicked() {
+    background('blue');
+    this.style('background', 'red');
+    this.style('width', '100px');
 }
