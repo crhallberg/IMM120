@@ -2,6 +2,7 @@
 
     <head>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.19/p5.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.19/addons/p5.dom.js"></script>
         <script src="./sketch.js"></script>
         <style>
             b {
@@ -15,12 +16,17 @@
             }
             .other {
                 color: green;
-                font-size: 120%
+                font-size: 120%;
+            }
+            canvas {
+                display: block;
+                margin: auto;
             }
         </style>
     </head>
 
     <body>
+        <div id="sketch"></div>
         <p>This is a <b>paragraph</b>. There are many like it, but this one is mine.</p>           
         <p class="other">This is a <b>paragraph</b>. There are many like it, but this one is mine.</p>           
         <p id="third">This is a <b>paragraph</b>. There are many like it, but this one is mine.</p>           

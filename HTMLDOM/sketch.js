@@ -1,5 +1,8 @@
 function setup() {
-    createCanvas(300, 300);
+    var canvas = createCanvas(300, 300);
+    canvas.parent('#sketch');
+    
+    var third = select('#third');
 }
 
 function draw() {
