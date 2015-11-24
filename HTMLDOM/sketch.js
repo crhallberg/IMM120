@@ -17,7 +17,7 @@ function setup() {
     select('#sketch').child(link);
     link.mousePressed(linkClicked);
     
-    background('purple');
+    background('purple');    
 }
 
 function draw() {
