@@ -1,6 +1,6 @@
 // Variables
 var socket = window.io.connect('http://romeo.crhallberg.com:8120');
-var room = 'skyblue';
+var room = 'tan';
 var colors = ['red', 'orange', 'yellow', 'green', 'lightblue', 'blue', 'indigo', 'purple', 'pink', 'brown', 'black', 'gray'];
 var myColor;
 var currentColor = Math.floor(Math.random()*colors.length);
@@ -38,7 +38,7 @@ function draw() {
         line(pmouseX, pmouseY, mouseX, mouseY);
         socket.emit('update', data);
     }
-    if (keyIsPressed) {        
+    if (keyIsPressed) {
         if (key == 'a') {
             fill(room);
             noStroke();

@@ -1,27 +1,23 @@
-// Prototyping an animation tool for a game
+// Variables
+var socket = window.io.connect('http://romeo.crhallberg.com:8120');
+var room = 'skyblue';
 
 function setup() {
     createCanvas(600, 600);
-    socket.on('drawcircle', function (data) {
-        fill(255);
-        ellipse(data.x, data.y, 30, 30);
+
+    socket.on('update', function (data) {
+        fill('blue');
+        ellipse(data.x, data.y, 80, 80);
     });
+
     socket.emit('join', room);
-    background(200);
+
+    background('white');
 }
 
-function draw() {} // empty
-function mousePressed() {
-    // when the mouse is clicked, send a "drawcircle"
-    // to draw a circle where the mouse is
-    // build an appropriate object
-    var data = {
-        room: room, // always send a room
-        x: mouseX,
-        y: mouseY
-    };
-    socket.emit('drawcircle', data);
-    // Perform local drawing
-    fill(0);
-    ellipse(mouseX, mouseY, 20, 20);
+function draw() {
+    fill('red');
+    ellipse(mouseX, mouseY, 100, 100);
+
+    socket.emit('update', {x:mouseX, y:mouseY});
 }
