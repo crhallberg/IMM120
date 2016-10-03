@@ -1,3 +1,7 @@
+/**
+ * Acceleration affects speed
+ * Speed affects position
+ */
 float x = 100;
 float speedX = 0;
 float accX = 0;

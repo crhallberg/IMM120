@@ -1,3 +1,6 @@
+/**
+ * Events only fire once and immediately
+ */
 int presses = 0;
 
 void setup() {

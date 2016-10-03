@@ -1,3 +1,6 @@
+/**
+ * Function for determining if something is inside a rectangle or not
+ */
 int rectX = 400;
 int rectY = 100;
 int rectWidth = 100;

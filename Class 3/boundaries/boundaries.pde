@@ -1,4 +1,7 @@
-float x = 400; //<>//
+/** //<>//
+ * Keeping a bouncing ball inside a rectangle
+ */
+float x = 400;
 float speedX = 0;
 float accX = 0;
 
@@ -23,22 +26,23 @@ void draw() {
 
   ellipse(x, y, 50, 50);
 
+  // Only accelerate if not bouncing
   if (x < rectX || x > rectX + rectWidth) {
     speedX = speedX * -1;
   } else {
-    speedX = speedX + accX; // accY
+    speedX = speedX + accX; // accelaration X
   }
 
   if (y < rectY || y > rectY + rectHeight) {
     speedY = speedY * -1;
   } else {
-    speedY = speedY + gravity; // accY
+    speedY = speedY + gravity; // accelaration Y
   }
 
   x = x + speedX;
   y = y + speedY;
 
-  accX += .001;
+  accX += .001; // wind
 }
 
 void keyPressed() {

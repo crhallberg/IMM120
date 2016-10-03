@@ -1,3 +1,6 @@
+/**
+ * A function that takes arguments to build a house
+ */
 void setup() {
   size(640, 480);
   noStroke();

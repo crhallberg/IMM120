@@ -1,3 +1,6 @@
+/**
+ * Intro to loops
+ */
 float rectX;
 float rectY;
 
@@ -14,6 +17,7 @@ void draw() {
     float insideY = random(0, height);
     float outsideX = random(0, width);
     float outsideY = random(0, height);
+    // Try again, and again, and again...
     while (dist(insideX, insideY, outsideX, outsideY) > 100) {
       outsideX = random(0, width);
       outsideY = random(0, height);
