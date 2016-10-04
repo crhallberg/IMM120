@@ -14,5 +14,4 @@ void draw() {
     line(circleX+x, circleY-h, circleX+x, circleY+h);
     x += 10;
   }
-  println(color(244, 14, 33));
 }
