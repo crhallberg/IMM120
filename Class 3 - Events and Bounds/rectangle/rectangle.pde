@@ -26,7 +26,7 @@ void draw() {
 }
 
 boolean isInsideRect(float rx, float ry) {
-  if (mouseX > rx && mouseX < rx + rectWidth && mouseY > rectY && mouseY < rectY + rectHeight) {
+  if (mouseX > rx && mouseX < rx + rectWidth && mouseY > ry && mouseY < rectY + rectHeight) {
     return true;
   } else {
     return false;
