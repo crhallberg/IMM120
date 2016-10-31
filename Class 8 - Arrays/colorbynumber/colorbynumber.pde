@@ -19,6 +19,10 @@ void setup() {
   images[6] = loadImage("Beak.png");
   images[7] = loadImage("Cat.png");
   
+  // Fill colors with white 
+  for (int i=0; i<colors.length; i++) {
+    colors[i] = color(255);
+  }
   colors[0] = color(11, 60, 115);
   colors[5] = color(255, 10, 10);
 }
