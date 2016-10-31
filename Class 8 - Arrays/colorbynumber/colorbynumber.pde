@@ -1,3 +1,6 @@
+// Color-by-Number Picture by Steve Ogden
+//http://steveogden.com/blog/2013/halloween-sketch/
+
 PImage[] images;
 
 void setup() {
