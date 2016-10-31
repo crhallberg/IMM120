@@ -16,6 +16,9 @@ int ball5speed = 5;
 int ball6 = 100;
 int ball6speed = 5;
 
+int ball7 = 100;
+int ball7speed = 5;
+
 void setup() {
   size(320, 400);
 }
@@ -57,5 +60,11 @@ void draw() {
   ball6 += ball6speed;
   if (ball6 < 0 || ball6 > height) {
     ball6speed *= -1;
+  }
+  
+  ellipse(280, ball7, 20, 20);
+  ball7 += ball7speed;
+  if (ball7 < 0 || ball7 > height) {
+    ball7speed *= -1;
   }
 }
