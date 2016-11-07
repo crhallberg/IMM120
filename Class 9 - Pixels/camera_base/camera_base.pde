@@ -4,16 +4,10 @@ Capture cam;
 
 void setup() {
   size(640, 480);
-
-  String[] cameras = Capture.list();
-  
-  if (cameras.length == 0) {
-    println("There are no cameras available for capture.");
-    exit();
-  } else {
-    cam = new Capture(this, cameras[0]);
-    cam.start();     
-  }      
+  println(Capture.list());
+  cam = new Capture(this);
+  // cam = new Capture(this, width, height, fps); // 320, 240, 30 / 640, 480, 30
+  cam.start();
 }
 
 void draw() {
