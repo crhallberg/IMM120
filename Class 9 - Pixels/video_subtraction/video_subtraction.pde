@@ -1,29 +1,33 @@
 import processing.video.*;
 
 Capture cam;
+PImage bg, spring;
 
 void setup() {
   size(640, 480);
   println(Capture.list());
-  cam = new Capture(this);
-  // cam = new Capture(this, width, height, fps); // 320, 240, 30 / 640, 480, 30
+  cam = new Capture(this, 640, 480, 15); // 320, 240, 30 / 640, 480, 30
   cam.start();
+  spring = loadImage("spring.jpg");
 }
 
 void draw() {
   if (cam.available() == true) {
     cam.read();
   }
-  image(cam, 0, 0);
-  // Pixel analysis
-  loadPixels();
-  int mouseColor = cam.get(mouseX, mouseY);
-  for (int i=0; i<cam.pixels.length; i++) {
-    if (!colorsMatch(cam.pixels[i], mouseColor)) {
-      pixels[i] = color(100);
+  if (bg == null) {
+    image(cam, 0, 0);
+  } else {
+    image(spring, 0, 0, width, height);
+    // Pixel analysis
+    loadPixels();
+    for (int i=0; i<cam.pixels.length; i++) {
+      if (!colorsMatch(cam.pixels[i], bg.pixels[i])) {
+        pixels[i] = cam.pixels[i];
+      }
     }
+    updatePixels();
   }
-  updatePixels();
 }
 
 int threshold = 80;
@@ -32,6 +36,10 @@ boolean colorsMatch(int c1, int c2) {
   float diffGreen = abs(green(c1)-green(c2));
   float diffBlue = abs(blue(c1)-blue(c2));
   return diffRed+diffGreen+diffBlue < threshold;
+}
+
+void mousePressed() {
+  bg = cam.copy();
 }
 
 void keyPressed() {
