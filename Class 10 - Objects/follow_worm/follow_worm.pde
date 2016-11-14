@@ -7,7 +7,7 @@ void setup() {
 }
 
 void draw() {
-  background(200);
+  background(0, 50, 200);
   stroke(0);
   for (int i=0; i<circles.length; i++) {
     if (circles[i].size > 0) {
