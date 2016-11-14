@@ -9,6 +9,7 @@ void setup() {
   cam = new Capture(this, 640, 480, 15); // 320, 240, 30 / 640, 480, 30
   cam.start();
   spring = loadImage("spring.jpg");
+  loadPixels();
 }
 
 void draw() {
@@ -20,7 +21,6 @@ void draw() {
   } else {
     image(spring, 0, 0, width, height);
     // Pixel analysis
-    loadPixels();
     for (int i=0; i<cam.pixels.length; i++) {
       if (!colorsMatch(cam.pixels[i], bg.pixels[i])) {
         pixels[i] = cam.pixels[i];
