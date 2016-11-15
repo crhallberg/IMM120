@@ -1,5 +1,5 @@
 int[] positions = new int[8];
-int[] speeds;
+int[] speeds = new int[8];
 
 Ball[] circles = new Ball[8];
 
@@ -27,8 +27,10 @@ void setup() {
 void draw() {
   background(0);
 
+  int x = 0;
   for (int i=0; i<positions.length; i++) {
-    ellipse((40*i)+40, positions[i], 20, 20);
+    x += 40;
+    ellipse(x, positions[i], 20, 20);
     positions[i] += speeds[i];
     if (positions[i] < 0 || positions[i] > height) {
       speeds[i] *= -1;
