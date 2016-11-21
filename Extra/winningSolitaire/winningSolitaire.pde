@@ -1,5 +1,5 @@
 PImage[] cardImages = new PImage[52];
-Card[] cards = new Card[0];
+Card[] deck = new Card[0];
 float gravity = .98;
 float bounce = -.85;
 
@@ -37,16 +37,19 @@ Card makeCard(float x, float y) {
   if (random(0, 100) > 50) { // Half the time...
     nc.speedX *= -1;         // ...make it negative
   }
-  nc.speedY = random(-16, 0); // random negative speed so cards pop up when made
+  nc.speedY = random(-16, 0); // random negative speed so deck pop up when made
   return nc;
 }
 
 void draw() {
   if (mousePressed) {
-    cards =(Card[]) append(cards, makeCard(mouseX, mouseY));
+    deck =(Card[]) append(deck, makeCard(mouseX, mouseY));
   }
-  for (int i=0; i<cards.length; i++) {
-    drawCard(cards[i]);
+  for (int i=0; i<deck.length; i++) {
+    drawCard(deck[i]);
+  }
+  for (int i=0; i<deck.length; i++) {
+    removeCardIfOffScreen(i);
   }
 }
 
@@ -63,3 +66,17 @@ void drawCard(Card op) {
   
   image(op.image, op.x, op.y);
 }
+
+void removeCardIfOffScreen(int index) {
+  Card op = deck[index];
+  if (op.x > width || op.x + op.width < 0) {
+    deck = removeFromArray(deck, index);
+  }
+}
+
+Card[] removeFromArray(Card[] array, int item) {
+  for (int i = item+1; i < array.length; i++) {
+    array[i-1] = array[i];
+  }
+  return (Card[]) shorten(array);
+} 
