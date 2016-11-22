@@ -6,6 +6,7 @@ float bounce = -.85;
 void setup() {
   size(800, 600);
   // Images are names 0.png through 51.png so... 
+  // We made these images in cardSpliter
   for (int i=0; i<52; i++) {
     cardImages[i] = loadImage(i+".png");
   }
@@ -27,8 +28,8 @@ Card makeCard(float x, float y) {
   // Make a new "empty" card
   Card nc = new Card();
   // Assign parameters
-  nc.x = x - nc.width/2; // subtract half of width to center on mouse
-  nc.y = y - nc.height/2;
+  nc.x = x;
+  nc.y = y;
   // Assign a random image
   int number = floor(random(0, 52)); // floor = round down
   nc.image = cardImages[number];
@@ -69,14 +70,15 @@ void drawCard(Card op) {
 
 void removeCardIfOffScreen(int index) {
   Card op = deck[index];
-  if (op.x > width || op.x + op.width < 0) {
-    deck = removeFromArray(deck, index);
+  if (op.x > width || op.x + op.width < 0) { // check if card is off screen
+    deck = removeFromArray(deck, index); // delete and save new array
   }
 }
 
 Card[] removeFromArray(Card[] array, int item) {
+  // Copy everything right of our doomed item one left
   for (int i = item+1; i < array.length; i++) {
     array[i-1] = array[i];
   }
-  return (Card[]) shorten(array);
+  return (Card[]) shorten(array); // remove last item
 } 
