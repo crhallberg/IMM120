@@ -1,18 +1,21 @@
 Rect box;
-PVector drop; // PVector holds x,y,z
+Mover drop; // PVector holds x,y,z
 
 void setup() {
   size(800, 600);
   int w = 400;
   box = makeRect(random(100, width-w-100), random(100, height-150), w, 50);
-  drop = new PVector(random(100, width-100), 0);
+  drop = new Mover();
+  drop.x = random(100, width-100);
+  drop.y = 0;
+  drop.speedY = 3;
 }
 
 void draw() {
   drawRect(box);
   
   ellipse(drop.x, drop.y, 10, 10);
-  drop.y += 3;
+  updateMover(drop);
 }
 
 class Rect {
