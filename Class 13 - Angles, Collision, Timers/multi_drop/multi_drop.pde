@@ -1,5 +1,5 @@
 Rect[] box;
-Mover drop; // PVector holds x,y,z
+Mover[] drop; // PVector holds x,y,z
 
 void setup() {
   size(800, 600);
@@ -8,23 +8,31 @@ void setup() {
   for (int i=0; i<box.length; i++) {
     box[i] = makeRect(random(0, width-w), random(100, height-150), w, 50);
   }
-  drop = new Mover();
-  drop.x = random(100, width-100);
-  drop.y = 0;
-  drop.speedY = 3;
+  drop = new Mover[20];
+  for (int i=0; i<drop.length; i++) {
+    drop[i] = new Mover();
+    drop[i].x = i*30+100;
+    drop[i].y = 0;
+    drop[i].speedY = 3;
+  }
 }
 
 void draw() { 
   for (int i=0; i<box.length; i++) {
-    drawRect(box[i]);
-
-    if (pointRect(drop.x, drop.y, box[i].x, box[i].y, box[i].width, box[i].height)) {
-      drop.y = box[i].y;
+  for (int d=0; d<drop.length; d++) {
+    if (pointRect(drop[d].x, drop[d].y, box[i].x, box[i].y, box[i].width, box[i].height)) {
+      drop[d].y = box[i].y;
     }
   }
+  }
 
-  ellipse(drop.x, drop.y, 10, 10);
-  updateMover(drop);
+  for (int i=0; i<box.length; i++) {
+    drawRect(box[i]);
+  }
+  for (int i=0; i<drop.length; i++) {
+    ellipse(drop[i].x, drop[i].y, 10, 10);
+    updateMover(drop[i]);
+  }
 }
 
 class Rect {
