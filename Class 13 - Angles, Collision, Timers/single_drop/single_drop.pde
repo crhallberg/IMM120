@@ -1,5 +1,5 @@
 Rect box;
-PVector drop;
+PVector drop; // PVector holds x,y,z
 
 void setup() {
   size(800, 600);
