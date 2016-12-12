@@ -4,7 +4,7 @@ Object[] deleteFromArray(Object[] arr, int index) {
   for (int i=index+1; i<arr.length; i++) {
     arr[i-1] = arr[i];
   }
-  shorten(arr);
+  arr =(Object[]) shorten(arr);
   return arr;
 }
 // Copy this one for int arrays, you can change the type as well
@@ -12,7 +12,7 @@ int[] deleteFromArray(int[] arr, int index) {
   for (int i=index+1; i<arr.length; i++) {
     arr[i-1] = arr[i];
   }
-  shorten(arr);
+  arr = shorten(arr);
   return arr;
 }
 
@@ -31,16 +31,22 @@ void setup() {
     pets[i] = new Squid();
   }
   pets =(Squid[]) deleteFromArray(pets, 2); // Same function
-  
+  println(pets.length);
+
   Ball[] circles = new Ball[4];
   for (int i=0; i<circles.length; i++) {
     circles[i] = new Ball();
   }
   circles =(Ball[]) deleteFromArray(circles, 2); 
-  
+  println(circles.length);
+
   int[] x = new int[4];
   for (int i=0; i<x.length; i++) {
     x[i] = i;
   }
   x =(int[]) deleteFromArray(x, 2);
+  println(x.length);
+  
+  // Quit
+  exit();
 }
