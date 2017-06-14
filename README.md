@@ -2,7 +2,7 @@
 
 ## Schedule
 
- 1/ **5 September (Tuesday)** - [Intro to Class](./00 Intro to Class), [Learning to Program](./01 Learning to Program), [p5.js](./02 p5js)
+ 1/ **5 September (Tuesday)** - [Intro to Class](./00\ Intro\ to\ Class), [Learning to Program](./01\ Learning\ to\ Program), [p5.js](./02\ p5js)
 
  2/ **11 September** -
 
