@@ -22,7 +22,7 @@ One way you can think of the Y-axis in programming is as a submarine depth. The 
 
 For example, let's consider the coordinates (80, 150) and try to place this point on the grid. We would normally call 80 the **x-coordinate** since it specifies the horizontal position along the X-axis and 150 the **y-coordinate** since it specifies the same along the vertical Y-axis. The larger the x-coordinate, the farther left a point. The larger the y-coordinate, the farther down the canvas. In every coordinate pairing, **x is always first, followed by y**. This goes for all paired measurements in code (like width and height, they always go horizontal first, then vertical.
 
-[!Picture of points]()
+![Picture of points]()
 
 [Click here for answer]()
 
@@ -34,7 +34,7 @@ We're going to learn to draw four basic shapes: lines, rectangles, circles, and 
 
 > Using only these shapes, draw a house on the grid. Lining your points of up with the grid will make later steps easier.
 
-![A simple house on the grid](./house.jpg)
+![A simple house on the grid](house.jpg)
 
 ### 3.2.2 Quanitifying shapes
 
@@ -42,11 +42,11 @@ The first thing we need to discuss is how to quantify these shapes. We need to b
 
 So we have four numbers that define a line: x and y of the start point and the x and y of the end point. These four numbers (two pairs of coordinates) define any straight line we can draw.
 
-![Line diagram showing the numbers](./line.jpg)
+![Line diagram showing the numbers](line.jpg)
 
 We use four numbers for rectangles as well. The numbers we use for a rectangle are the x and y of the top left corner and the width and height of the shape.
 
-![Rectangle diagram showing the numbers](./rect.jpg()
+![Rectangle diagram showing the numbers](rect.jpg)
 
 A circle (or ellipse) uses 4 numbers: the coordinates of the center, followed by the width and height (horizontal and vertical diameters). Any ellipse that has an identical width and height would be a circle, else we call it an ellipse (fancy oval).
 
@@ -72,7 +72,7 @@ doorknob: center: (160, 220); 10 wide; 10 tall
 
 Now that we've come up with a system for how to define various shapes with numbers, we need to format that information in a way that is convenient for programming. The nearly universal format for this is **parameters**. Parameters are normally written out as numbers separated by commas and surrounded by parentheses. We would write a line's parameters out like this:
 
-# `line(x of start, y of start, x of end, y of end)`
+### `line(x of start, y of start, x of end, y of end)`
 
 Remember that when we have coordinate pairs, we always put the horizontal value first.
 
@@ -135,13 +135,13 @@ Now that we have a house (hopefully) it's time to bring it to life. However, we 
 
 It's very strange and takes a little getting used to. To help you pick the right colors, searching "color picker" in either [Google](https://encrypted.google.com/search?hl=en&q=color%20picker) or [DuckDuckGo](https://duckduckgo.com/?q=color+picker&ia=answer) will bring up a tool you can use.
 
-See the additive color system in action here: http://imgur.com/3Qnklmz.
+See the additive color system in action here: [http://imgur.com/3Qnklmz](http://imgur.com/3Qnklmz).
 
 ### 3.3.2 Defining colors
 
 Since p5 is drawing things on your screen, it needs information according to the additive color system. The most common way to do this is by telling p5 how much red, green, and blue to put into a color, in that order. Like so:
 
-# `background(red, green, blue)`
+### `background(red, green, blue)`
 
 These three numbers range from 0 to 255, least to most color. For example, a nice sky blue is (0, 150, 255). Putting 0 for red leaves out red all together. Setting green to 150 gives us about 2/3 of our full green capacity. Maxing out blue at 255 gives us all the blue the computer can muster.
 
