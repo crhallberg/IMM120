@@ -20,7 +20,7 @@ This is inverted from traditional math graphs, which has the origin in the *bott
 
 One way you can think of the Y-axis in programming is as a submarine depth. The larger the Y value of a coordinate, the farther from the top it is. This has to do with the way computers store information and will be clearer when we talk about arrays later this semester.
 
-For example, let's consider the coordinates (80, 150) and try to place this point on the grid. We would normally call 80 the **x-coordinate** since it specifies the horizontal position along the X-axis and 150 the **y-coordinate** since it specifies the same along the vertical Y-axis. The larger the x-coordinate, the farther left a point. The larger the y-coordinate, the farther down the canvas. In every coordinate pairing, **x is always first, followed by y**. This goes for all paired measurements in code (like width and height), they always go horizontal first, then vertical.
+For example, let's consider the coordinates (80, 150) and try to place this point on the grid. We would normally call 80 the **x-coordinate** since it specifies the horizontal position along the X-axis and 150 the **y-coordinate** since it specifies the same along the vertical Y-axis. The larger the x-coordinate, the farther left a point. The larger the y-coordinate, the farther down the canvas. In every coordinate pairing, **x is always first, followed by y**. This goes for all paired measurements in code (like width and height, they always go horizontal first, then vertical.
 
 [!Picture of points]()
 
@@ -34,7 +34,7 @@ We're going to learn to draw four basic shapes: lines, rectangles, circles, and 
 
 > Using only these shapes, draw a house on the grid. Lining your points of up with the grid will make later steps easier.
 
-![A simple house on the grid]()
+![A simple house on the grid](./house.jpg)
 
 ### 3.2.2 Quanitifying shapes
 
@@ -42,11 +42,11 @@ The first thing we need to discuss is how to quantify these shapes. We need to b
 
 So we have four numbers that define a line: x and y of the start point and the x and y of the end point. These four numbers (two pairs of coordinates) define any straight line we can draw.
 
-![Line diagram showing the numbers]()
+![Line diagram showing the numbers](./line.jpg)
 
 We use four numbers for rectangles as well. The numbers we use for a rectangle are the x and y of the top left corner and the width and height of the shape.
 
-![Rectangle diagram showing the numbers]()
+![Rectangle diagram showing the numbers](./rect.jpg()
 
 A circle (or ellipse) uses 4 numbers: the coordinates of the center, followed by the width and height (horizontal and vertical diameters). Any ellipse that has an identical width and height would be a circle, else we call it an ellipse (fancy oval).
 
@@ -59,6 +59,13 @@ A triangle uses 6 numbers: 3 pairs of coordinates for the 3 corners.
 > Using these systems, write out the appropriate numbers for each shape in your house drawing.
 
 ```
+ground - corner: (0, 200); 300 wide; 50 tall
+wall - corner: (75, 150); 150 wide; 125 tall
+door - corner: (125, 200); 50 wide; 75 tall
+chimney - corner: (175, 75); 25 wide; 75 tall
+roof: (75, 150), (150, 50), (225, 150)
+window: center: (150, 115); 25 wide; 25 tall
+doorknob: center: (160, 220); 10 wide; 10 tall
 ```
 
 ### 3.2.3 Parameters
@@ -71,9 +78,19 @@ Remember that when we have coordinate pairs, we always put the horizontal value 
 
 > Re-write your house shape numbers into the proper parameter formats.
 
+```
+ground - (0, 200, 300, 50)
+wall - (75, 150, 150, 125)
+door - (125, 200, 50, 75)
+chimney - (175, 75, 25, 75)
+roof: (75, 150, 150, 50, 225, 150)
+window: (150, 115, 25, 25)
+doorknob: (160, 220, 10, 10)
+```
+
 ### 3.2.4 Your First Program
 
-Now that we have the right information in the right format (hopefully), we just need to tell the computer to draw these shapes. This will be very straight forward, once we go over a few bits of vocabulary and caveat.
+Now that we have the right information in the right format (hopefully, we just need to tell the computer to draw these shapes. This will be very straight forward, once we go over a few bits of vocabulary and caveat.
 
 1. Every line of code you write is called a **statement**. The way a computer can tell where one statement ends and the next begins is with **semicolons (;)**, the same way you can tell where a sentence ends by the period.
 1. Every time you draw a shape in p5.js, it will draw on top of what is already displayed, so pick the order of your statements carefully. For example, if you want your house to sit on a hill with a sky, you'll want to draw those (and any other background elements) first so your house can be in front of them. The doorknob should be drawn after the door, etc.
@@ -92,11 +109,22 @@ Just replace the labels with the numbers you want to use. We will be putting our
 
 Don't forget to fork the p5.js template before putting in your code!
 
+```Javascript
+// slash-slash starts a comment, which are ignored by p5.js
+rect(0, 200, 300, 50);   // groud
+rect(75, 150, 150, 125); // wall
+rect(125, 200, 50, 75);  // door
+rect(175, 75, 25, 75);   // chimney
+triangle(75, 150, 150, 50, 225, 150); // roof
+ellipse(150, 115, 25, 25); // window
+ellipse(160, 220, 10, 10); // doorknob
+```
+
 ## 3.3 Colors
 
 ### 3.3.1 Additive Color
 
-Now that we have a house (hopefully), it's time to bring it to life. However, we are going to be using a color system that you're probably not used to. On the left below, we have the system you've likely been using your whole life, the **subtractive color system**, which models how paint, crayons, ink, and markers work. On the right is the **additive color system**, which is how we model the colors caused by light and therefore screens.
+Now that we have a house (hopefully) it's time to bring it to life. However, we are going to be using a color system that you're probably not used to. On the left below, we have the system you've likely been using your whole life, the **subtractive color system**, which models how paint, crayons, ink, and markers work. On the right is the **additive color system**, which is how we model the colors caused by light and therefore screens.
 
 | | Subtractive Color | Additive Color |
 |-|-------------------|----------------|
