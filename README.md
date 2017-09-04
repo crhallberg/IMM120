@@ -3,7 +3,7 @@
 ## Schedule
 
  1/ **5 September (Tuesday)**
- - [Intro to Class](00 Intro to Class/)
+ - [Intro to Class](00-Intro-to-Class/)
  - [Learning to Program](01 Learning to Program/README.md)
  - [p5.js and Codepen]("02 p5js and Codepen/README.md")
  - [Basic Drawing]("03 Basic Drawing/README.md")

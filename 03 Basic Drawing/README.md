@@ -22,7 +22,7 @@ One way you can think of the Y-axis in programming is as a submarine depth. The 
 
 For example, let's consider the coordinates (80, 150) and try to place this point on the grid. We would normally call 80 the **x-coordinate** since it specifies the horizontal position along the X-axis and 150 the **y-coordinate** since it specifies the same along the vertical Y-axis. The larger the x-coordinate, the farther left a point. The larger the y-coordinate, the farther down the canvas. In every coordinate pairing, **x is always first, followed by y**. This goes for all paired measurements in code (like width and height, they always go horizontal first, then vertical.
 
-![Picture of points]()
+![Picture of points](points.jpg)
 
 [Click here for answer]()
 
