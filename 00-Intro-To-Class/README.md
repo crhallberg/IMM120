@@ -62,8 +62,8 @@ The more important aspect of these surveys is feedback. There will always be a s
 
 If you would like a book for reference or extra help, I recommend:
 
-- [* **Make:** Getting Started with p5.js*](https://p5js.org/books/) by Lauren McCarthy (creator of p5.js)
-- [* **JavaScript:** The Good Parts*](http://shop.oreilly.com/product/9780596517748.do) by Douglas Crockford
+- [***Make:** Getting Started with p5.js*](https://p5js.org/books/) by Lauren McCarthy (creator of p5.js)
+- [***JavaScript:** The Good Parts*](http://shop.oreilly.com/product/9780596517748.do) by Douglas Crockford
   - [Presentation](http://gnab.github.io/js-workshop/)
 - [***The Nature of Code***](http://natureofcode.com/html) by Daniel Shiffman (online)
   - [examples in p5.js](https://github.com/shiffman/The-Nature-of-Code-Examples-p5.js)

@@ -3,39 +3,61 @@
 ## Schedule
 
  1/ **5 September (Tuesday)**
- - [Intro to Class](00-Intro-to-Class/)
- - [Learning to Program](01-Learning-to-Program/)
- - [p5.js and Codepen](02-p5js-and-Codepen/)
- - [Basic Drawing](03-Basic-Drawing/)
+ - [Intro to Class](00-Intro-to-Class/README.md)
+ - [Learning to Program](01-Learning-to-Program/README.md)
+ - [p5.js and Codepen](02-p5js-and-Codepen/README.md)
+ - [Basic Drawing](03-Basic-Drawing/README.md)
    - Drawing on a Grid
    - Shapes
    - Colors
 
  2/ **11 September**
- - [Conditionals](04-Conditionals/)
+ - Conditionals
+ - Variables
+ - Motion
+ - Simple Input
 
- 3/ **18 September** -
+ 3/ **18 September**
+ - Text
+ - Strings
 
- 4/ **25 September** -
+ 4/ **25 September**
+ - Rotating and Translating
+ - Trigonometry
+ - Images
 
- 5/ **2 October** -
+ 5/ **2 October**
+ - Functions
+ - Writing advanced programs
 
  *X/ 9 October - Off for Fall Break*
 
- 6/ **16 October** -
+ 6/ **16 October**
+ - *Midterm Project Lab*
 
- 7/ **23 October** -
+ 7/ **23 October**
+ - *Midterm Project Lab*
 
- 8/ **30 October** -
+ 8/ **30 October**
+ - Arrays
+ - While Loops
+ - For Loops
 
- 9/ **6 November** -
+ 9/ **6 November**
+ - Sounds
 
-10/ **13 November** -
+10/ **13 November**
+ - File Analysis
 
-11/ **20 November** -
+11/ **20 November**
+ - Objects
+ - Sockets
 
-12/ **27 November** -
+12/ **27 November**
+ - *Final Project Lab*
 
 13/ **4 December**
+ - *Final Project Lab*
 
 Final/
+ - *Final Project Lab*

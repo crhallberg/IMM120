@@ -24,7 +24,7 @@ For example, let's consider the coordinates (80, 150) and try to place this poin
 
 ![Picture of points](points.jpg)
 
-[Click here for answer]()
+[Click here for answer](points.md)
 
 ## 3.2 Shapes
 
