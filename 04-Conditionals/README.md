@@ -51,12 +51,13 @@ So how do we create these true-false ultimating statements? We do that by compar
 
 > Is chocolate better than vanilla? No.
 
-We need to translate these comparisons into code, so let me introduce you to the 4 basic boolean operators:
+We need to translate these comparisons into code, so let me introduce you to the 5 basic boolean operators:
 
 | &gt; | Greater than |
 | &lt; | Less than    |
 | ==   | Equal to     |
 | !=   | Not equal to |
+| !()  | Not |
 
 *We also have greater than or equal to (&gt;=) and less than or equal to (&lt;=) if you're feeling adventurous.*
 
@@ -76,6 +77,12 @@ Putting a boolean value-operator-value phrase into an if-statement's parentheses
 This code will never run, because 400 will always be larger than 5. Which means that a program with numbers like this in it would always do the same thing, over and over, really fast! That doesn't sound very useful (or fun).
 
 We need something to solve this "issue"...
+
+### 4.4.1 ! (The Not Operator)
+
+The Not operator is particularly interesting. It can take any boolean phrase and invert it value. For example, `4 < 5` is true. However, `!(4 < 5)` will return false. The Not operator takes what you give it and returns the opposite.
+
+This is a powerful and simple way to make more complex statements and is particularly useful with input booleans, which we'll cover in Section 5.
 
 ## 4.5 Numbers That Change
 
