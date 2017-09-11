@@ -3,5 +3,7 @@
 ## 6.1 Numbers that Change
 
 - Assignment
-- Save the position of a circle
 - Variable test
+- Save the position of a circle
+- Make the circle fall
+- Event bumping

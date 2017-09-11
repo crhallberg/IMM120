@@ -50,6 +50,7 @@ These functions are very useful and interesting because they happen immediately,
 
 The details:
 
+|---|---|
 | Boolean variable | `keyIsPressed` |
 | Event function   | `function keyPressed() {` |
 
