@@ -6,7 +6,7 @@ You are confronted with a bomb! In order to defuse the bomb, you need to cut the
 
 | Bomb Panel | Bomb Defusing Manual |
 |------------|----------------------|
-| ![6 wires: red, yellow, black, red, white, red](bombwires.jpg) | ![bombmanual.com page 5](wiresmanual.jpg) |
+| ![6 wires: red, yellow, black, red, white, red](bombwires.jpg) | ![bombmanual.com page 5](wirespage.jpg) |
 
 Which wire did you cut? [Was it this one?](bombcut.jpg) If so, congratulations!
 
