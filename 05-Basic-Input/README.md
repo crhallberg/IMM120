@@ -4,6 +4,8 @@
 
 Just like p5.js automatically runs `draw()` over and over again, it automatically creates and updates several variables for you. One of the most useful and simple to use of these variables are the mouse position variables, as seen below. Any of these names/labels can be used in place of a number in a formula or in the place of a parameter for a shape.
 
+| Name | Description |
+|------|-------------|
 | `mouseX`  | Current horizontal position for mouse (pixels between mouse and left edge) |
 | `mouseY`  | Current vertical position for mouse (pixels between mouse and top edge) |
 | `pmouseX` | Previous horizontal position for mouse |
@@ -50,11 +52,15 @@ These functions are very useful and interesting because they happen immediately,
 
 The details:
 
-|---|---|
+| Type | Syntax |
+|------|--------|
 | Boolean variable | `keyIsPressed` |
 | Event function   | `function keyPressed() {` |
 
 ### 5.3.1 key and keyCode
 
-Here is a sketch to reference what you're looking for: [keyCode printer](https://codepen.io/crhallberg/pen/eGOENd).
+When you press keys on the keyboard, p5.js saves the most recent letter to `key` and the most recent key code to `keyCode`.
 
+![a keyboard map of key code numbers](keycodes.gif)
+
+Here is a sketch to reference what you're looking for: [keyCode printer](https://codepen.io/crhallberg/pen/eGOENd).
