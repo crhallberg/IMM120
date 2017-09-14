@@ -61,6 +61,10 @@ At the top of `keyPressed()`, add `loop();`.
 
 That's it! Now [the sketch](https://codepen.io/crhallberg/pen/YrPQBZ) will wait until you jump to get started! Easy!
 
+# A Brief Word
+
+Now that you have a working skeleton for the project, I'm more going to guide you through the process and the reasoning rather than spell out the code. I'll link to examples along the way, but I'm going to encourage you to try to implement these steps on your own before seeing how I did it. It all depends on how you learn, of course, do what is best for you.
+
 ## Hitting the World
 
-Now that you have a working skeleton for the project, I'm more going to guide you through the process and the reasoning rather than spell out the code. I'll link to examples along the way, but I'm going to encourage you to 
+For simplicity, we will be using the center of our bird-circle for all of our collision. You can absolutely factor in the width of the circle into collisions, but for conciseness and clarity we'll just be using the circle's center.
