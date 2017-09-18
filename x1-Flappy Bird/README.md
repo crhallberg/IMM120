@@ -71,9 +71,9 @@ For simplicity, we will be using the center of our bird-circle for all of our co
 
 1. Add a ground rectangle
 1. In draw detect when our bird hits the ground
-1. When it does, let's set `birdY` to half way down the screen and run `noLoop()` again. *Let's call this **reset** *.
+1. When it does, let's set `birdY` to half way down the screen and run `noLoop()` again. Let's call this ***reset***.
 
-![visual of the ground]()
+![visual of the ground](ground.gif)
 
 ## Between the Lines
 
@@ -85,7 +85,23 @@ The goal of Flappy Bird is to keep the bird from hitting pipes by flying between
 1. If we fly above the top line, *reset*.
 1. If we fall below the bottom line, *reset*.
 
-![visual of the lines]()
+![visual of the lines](lines.gif)
+
+> Don't go into the red
+
+### `return;`
+
+So, you may have noticed that when you reset, sometimes weird things happen, namely that your code seems to continue running. You can fix this by adding a `return;` into your code. Putting this in draw prevents any code after `return;` to run until the next time draw loops.
+
+```Javascript
+// Reset
+birdY = height / 2;
+speedY = 0;
+noLoop();
+return;
+```
+
+You can also used `redraw()` to run draw once. Especially useful when `noLoop()` is activated.
 
 ## The Approaching Pipe
 
@@ -96,11 +112,9 @@ The pipes, of course, aren't always there to dodge, they approach from the right
 1. Subtract 1 from the pipe's position each frame to make it come left.
 1. Only do the check for the top and bottom lines if the bird is to the right of this approaching line.
 
-![visual of the pipe]()
-
 With these three pipe checks and the ground check, we're now checking the following:
 
-![visual of the hit zones]()
+![visual of the hit zones](cave.gif)
 
 Getting pretty dangerous!
 
@@ -145,7 +159,7 @@ This is good, because we need to reset the approaching pipe:
 
 1. Inside of our new `reset()` function, add a line of code to put the approaching vertical line all the way to the right again.
 
-![example reset]()
+![example reset](reset.gif)
 
 Great!
 
