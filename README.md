@@ -18,8 +18,10 @@
  - Simple Input
 
  3/ **18 September**
- - Text
- - Strings
+ - Flappy Bird
+   - [text()](https://p5js.org/reference/#/p5/text)
+   - Boolean AND
+   - Functions
 
  4/ **25 September**
  - Rotating and Translating
