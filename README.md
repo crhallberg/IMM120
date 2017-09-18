@@ -21,16 +21,20 @@
  - Flappy Bird
    - [text()](https://p5js.org/reference/#/p5/text)
    - Boolean AND
-   - Functions
+   - Functions intro
 
  4/ **25 September**
- - Rotating and Translating
- - Trigonometry
+ - Writing advanced programs
+   - Functions
  - Images
+   - Rotating and Translating
+   - Trigonometry
 
  5/ **2 October**
- - Functions
- - Writing advanced programs
+ - Strings
+   - Detecting key presses, part 2
+   - Searching for words and letters
+   - Maybe file loading
 
  *X/ 9 October - Off for Fall Break*
 
