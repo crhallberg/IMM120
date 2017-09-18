@@ -35,6 +35,8 @@
    - Detecting key presses, part 2
    - Searching for words and letters
    - Maybe file loading
+ - Midterm Requirements
+   - Things that are hard
 
  *X/ 9 October - Off for Fall Break*
 
