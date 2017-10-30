@@ -1,6 +1,6 @@
-# 9. Images
+# 8. Images
 
-## 9.1 Loading Images
+## 8.1 Loading Images
 
 To use images in p5.js, we need to **load** them first, then we can display them.
 
@@ -20,7 +20,7 @@ After this, you need to use the command [`loadImage`](https://p5js.org/reference
 
 > If you're loading huge images and having some problems, try using [preload()](https://p5js.org/reference/#/p5/preload).
 
-## 9.2 Drawing Images
+## 8.2 Drawing Images
 
 Now that our image is saved to a variable, we can draw an image in nearly the same way as a rectangle:
 
@@ -28,6 +28,6 @@ Now that our image is saved to a variable, we can draw an image in nearly the sa
 
 Not specifying a width and height will cause the image to draw at full size, which may be far too big for your sketch.
 
-## 9.3 The Image Object
+## 8.3 The Image Object
 
 Loading an image in p5 gives you access to a [whole bunch of information](https://p5js.org/reference/#/p5.Image) about the image. As an example, [here's some code](https://codepen.io/crhallberg/pen/PJbdYX) that will change the background of the sketch to equal the color of the pixel the mouse is over. It uses [image.get](https://p5js.org/reference/#/p5.Image/get) and an image's width and height properties.
